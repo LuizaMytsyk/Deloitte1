@@ -4,17 +4,18 @@ using System;
 
 namespace DeloitteLib
 {
-    class AddProject : BaseClass
+    public class AddProject : BaseClass
     {
         public AddProject(IWebDriver driver) : base(driver)
         {
         }
 
         [FindsBy(How = How.XPath, Using = "//button[@placeholder='Select Project Type']")]
-        private IWebElement _selectProjectType;
+        public IWebElement _selectProjectTypeButton;
 
         [FindsBy(How = How.XPath, Using = "//div[@class='col-sm-6']//button[@id='projectSelect']")]
-        private IWebElement _projectsList;
+        private IWebElement _projectsListButton;        
+
 
         [FindsBy(How = How.Id, Using = "projectNameInput")]
         private IWebElement _projectNameInput;
