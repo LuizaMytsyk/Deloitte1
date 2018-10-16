@@ -44,15 +44,15 @@ namespace DeloitteLib
         }
 
        
-        public AddProject SetType (IWebDriver driver, string value)
+        public AddProject SetType (string value)
         {
             _selectProjectTypeButton.Click();
             SelectOption(driver, value);
             return this;
         }
-        public AddProject SetProject(IWebDriver driver, string value)
+        public AddProject SetProject(string value)
         {
-            _projectsListButton.Click();
+            _projectsListButton.Click();            
             SelectOption(driver, value);
             return this;
         }
@@ -60,6 +60,7 @@ namespace DeloitteLib
         public AddProject SetProjectName(string value)
         {
             _projectNameInput.Click();
+            _projectNameInput.Clear();
             _projectNameInput.SendKeys(value);
             return this;
         }
@@ -67,30 +68,35 @@ namespace DeloitteLib
         public AddProject SetStartMonth(string value)
         {
             _startMonth.Click();
+            _startMonth.Clear();
             _startMonth.SendKeys(value);
-            _startMonth.Click();
+            driver.FindElement(By.XPath("//label[contains(text(),'Reporting Start Month')]")).Click();
             return this;
         }
 
         public AddProject SetEndMonth(string value)
         {
             _endMonth.Click();
+            _endMonth.Clear();
             _endMonth.SendKeys(value);
-            _endMonth.Click();
+            driver.FindElement(By.XPath("//label[contains(text(),'Reporting End Month')]")).Click();
             return this;
         }
 
         public AddProject SetDueDate(string value)
         {
             _dueDate.Click();
+            _dueDate.Clear();
             _dueDate.SendKeys(value);
+            driver.FindElement(By.XPath("//label[contains(text(),'Due Date')]")).Click();
             return this;
         }
 
-        public AddProject SetMethodology(IWebDriver driver, string value)
+        public AddProject SetMethodology(string value)
         {
             _selectMethodolody.Click();
             SelectOption(driver, value);
+            driver.FindElement(By.XPath("//label[@class='control-label col-sm-4']")).Click();            
             return this;
         }
 
@@ -103,6 +109,12 @@ namespace DeloitteLib
         {
             _cancelButton.Click();
 
+        }
+
+        public bool IsAddProjectDisplayed()
+        {
+            return driver.FindElements(By.XPath("//form[@name='createProjectForm']")).Count > 0  ?
+               true : false;
         }
 
     }
