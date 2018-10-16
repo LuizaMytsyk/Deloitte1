@@ -17,6 +17,5 @@ namespace DeloitteLib
         [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-primary pull-right']")]
         public IWebElement _addProjectButton;
 
-
     }
 }
