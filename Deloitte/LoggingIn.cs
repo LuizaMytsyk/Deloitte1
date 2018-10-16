@@ -32,10 +32,16 @@ namespace DeloitteTests
         {
             LoginPageInstance.SingIn("gp_integrator", "Dummy#123");
             ProjectsPageInstance._addProjectButton.Click();
-            AddProjectInstance._selectProjectTypeButton.Click();
 
-            IWebElement Option1 = driver.FindElement(By.XPath("//span[text() = 'Adhoc']"));
-            Option1.Click();
+            AddProjectInstance
+                .SetType(driver, "Adhoc")
+                .SetProject(driver, "MDM")
+                .SetProjectName("erqwerqewr")
+                .SetStartMonth("Jul 2018")
+                .SetEndMonth("Dec 2019")
+                .SetDueDate("Dec 2019")
+                .SetMethodology(driver, "a2")
+                .ClickCreate();      
 
         }
     }

@@ -14,28 +14,96 @@ namespace DeloitteLib
         public IWebElement _selectProjectTypeButton;
 
         [FindsBy(How = How.XPath, Using = "//div[@class='col-sm-6']//button[@id='projectSelect']")]
-        private IWebElement _projectsListButton;        
-
+        public IWebElement _projectsListButton;    
 
         [FindsBy(How = How.Id, Using = "projectNameInput")]
-        private IWebElement _projectNameInput;
+        public IWebElement _projectNameInput;
 
         [FindsBy(How = How.XPath, Using = "//input[@placeholder='Select Start Month']")]
-        private IWebElement _startMonth;
+        public IWebElement _startMonth;
 
         [FindsBy(How = How.XPath, Using = "//input[@placeholder='Select End Month']")]
-        private IWebElement _endMonth;
+        public IWebElement _endMonth;
 
         [FindsBy(How = How.XPath, Using = "//input[@placeholder='Due Date MM/DD/YYYY']")]
-        private IWebElement _dueDate;
+        public IWebElement _dueDate;
 
         [FindsBy(How = How.XPath, Using = "//div[@class='col-sm-8']//button[@id='projectSelect']")]
-        private IWebElement _selectMethodolody;
+        public IWebElement _selectMethodolody;
 
         [FindsBy(How = How.XPath, Using = "//button[contains(text(),'Cancel')]")]
-        private IWebElement _cancelButton;
+        public IWebElement _cancelButton;
 
         [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-primary']")]
-        private IWebElement _createButton;
+        public IWebElement _createButton;
+
+        public void SelectOption (IWebDriver driver, String value)
+        {
+            String path = "//span[text() = '" + value + "']";
+            driver.FindElement(By.XPath(path)).Click();            
+        }
+
+       
+        public AddProject SetType (IWebDriver driver, string value)
+        {
+            _selectProjectTypeButton.Click();
+            SelectOption(driver, value);
+            return this;
+        }
+        public AddProject SetProject(IWebDriver driver, string value)
+        {
+            _projectsListButton.Click();
+            SelectOption(driver, value);
+            return this;
+        }
+
+        public AddProject SetProjectName(string value)
+        {
+            _projectNameInput.Click();
+            _projectNameInput.SendKeys(value);
+            return this;
+        }
+
+        public AddProject SetStartMonth(string value)
+        {
+            _startMonth.Click();
+            _startMonth.SendKeys(value);
+            _startMonth.Click();
+            return this;
+        }
+
+        public AddProject SetEndMonth(string value)
+        {
+            _endMonth.Click();
+            _endMonth.SendKeys(value);
+            _endMonth.Click();
+            return this;
+        }
+
+        public AddProject SetDueDate(string value)
+        {
+            _dueDate.Click();
+            _dueDate.SendKeys(value);
+            return this;
+        }
+
+        public AddProject SetMethodology(IWebDriver driver, string value)
+        {
+            _selectMethodolody.Click();
+            SelectOption(driver, value);
+            return this;
+        }
+
+        public void ClickCreate()
+        {
+            _createButton.Click();     
+          
+        }
+        public void ClickCancel()
+        {
+            _cancelButton.Click();
+
+        }
+
     }
 }

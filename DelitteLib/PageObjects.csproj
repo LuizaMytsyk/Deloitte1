@@ -57,7 +57,7 @@
   <ItemGroup>
     <Compile Include="AddMethodology.cs" />
     <Compile Include="AddProject.cs" />
-    <Compile Include="BaseClass.cs" />
+    <Compile Include="BasePage.cs" />
     <Compile Include="HeaderNavigation.cs" />
     <Compile Include="IdePage.cs" />
     <Compile Include="LeftMenu.cs" />
