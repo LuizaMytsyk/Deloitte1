@@ -37,6 +37,9 @@ namespace DeloitteLib
         [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-primary']")]
         public IWebElement _createButton;
 
+        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Start Month should be before End Month')]")]
+        public IWebElement _errorMessageStartMonth;
+
         public void SelectOption (IWebDriver driver, String value)
         {
             String path = "//span[text() = '" + value + "']";

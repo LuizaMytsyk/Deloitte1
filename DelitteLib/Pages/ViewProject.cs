@@ -8,14 +8,11 @@ using System.Threading.Tasks;
 
 namespace DeloitteLib
 {
-    public class ProjectsPage : BaseClass
+    public class ViewProject : BaseClass
     {
-        public ProjectsPage(IWebDriver driver) : base(driver)
+        public ViewProject(IWebDriver driver) : base(driver)
         {
-        }
-
-        [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-primary pull-right']")]
-        public IWebElement _addProjectButton;
+        }        
 
 
     }

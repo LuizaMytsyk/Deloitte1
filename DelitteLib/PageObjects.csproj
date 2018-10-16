@@ -55,16 +55,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddMethodology.cs" />
-    <Compile Include="AddProject.cs" />
+    <Compile Include="Pages\ViewProject.cs" />
+    <Compile Include="PopUps\ConfigureProjectPopUp.cs" />
+    <Compile Include="PopUps\AddProjectPopUp.cs" />
     <Compile Include="BasePage.cs" />
-    <Compile Include="HeaderNavigation.cs" />
-    <Compile Include="IdePage.cs" />
-    <Compile Include="LeftMenu.cs" />
-    <Compile Include="LoginPage.cs" />
-    <Compile Include="ProjectsPage.cs" />
+    <Compile Include="Components\HeaderNavigation.cs" />
+    <Compile Include="Pages\IdePage.cs" />
+    <Compile Include="Components\LeftMenu.cs" />
+    <Compile Include="Pages\LoginPage.cs" />
+    <Compile Include="Pages\ProjectsPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SaveMethodologyPopUp.cs" />
+    <Compile Include="PopUps\SaveMethodologyPopUp.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

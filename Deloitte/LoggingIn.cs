@@ -46,7 +46,6 @@ namespace DeloitteTests
                 .SetMethodology("a2")
                 .SetMethodology("a1")
                 .ClickCreate();     
-
         }
     }
 }
