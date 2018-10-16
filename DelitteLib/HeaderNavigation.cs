@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
+using System.Collections.Generic;
 
 namespace DeloitteLib
 {
@@ -12,17 +13,25 @@ namespace DeloitteLib
         [FindsBy(How = How.Id, Using = "clients")]
         private IWebElement _clients;
 
-        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Umbrella Corporation')]")]
-        private IWebElement _umbrellaCorporation;
+        [FindsBy(How = How.XPath, Using = "//ul[contains(@class, 'list-unstyled')]/li")]
+        private IList<IWebElement> _allClients;
 
-        [FindsBy(How = How.XPath, Using = "//span[contains(text(),'medicines')]")]
-        private IWebElement _medicines;
+        public string GetCurrentClient()
+        {
+            return _clients.GetAttribute("text");
+        }
 
-        [FindsBy(How = How.Id, Using = "d-menu-small-web")]
-        private IWebElement _rightMenu;
-
-        [FindsBy(How = How.XPath, Using = "//xl-icon[@icon='d-code']")]
-        private IWebElement _ide;
-
+        public void SelectClient(string name)
+        {
+            _clients.Click();
+            foreach(var i in _allClients)
+            {
+                if(i.Text == name)
+                {
+                    i.Click();
+                }
+            }
+        }
+        //'Umbrella Corporation'
     }
 }
