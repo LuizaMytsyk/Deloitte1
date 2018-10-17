@@ -1,6 +1,9 @@
 ﻿using NUnit.Framework;
 using DeloitteLib;
 using DeloitteTests;
+using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium;
+using System;
 
 namespace Deloitte
 {
@@ -10,6 +13,7 @@ namespace Deloitte
         IdePage IdePageInstance;
         HeaderNavigation headerNavigation;
         LeftMenu leftMenu;
+        SaveMethodologyPopUp saveMethodologyPopUp;
 
         [SetUp]
         public void LogIn()
@@ -17,14 +21,21 @@ namespace Deloitte
             LoginPageInstance = new LoginPage(driver);
             headerNavigation = new HeaderNavigation(driver);
             leftMenu = new LeftMenu(driver);
+            IdePageInstance = new IdePage(driver);
+            saveMethodologyPopUp = new SaveMethodologyPopUp(driver);
 
             LoginPageInstance.SingIn("gp_integrator", "Dummy#123");
             headerNavigation.SelectClient("Umbrella Corporation");
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//xl-icon[@icon='d-code']")));
+            leftMenu.OpenIde();
         }
         [Test]
-        public void TestMethod1()
+        public void Test_CreateMethodology_Successful()
         {
-            Assert.AreEqual("Umbrella Corporation", headerNavigation.GetCurrentClient());
+            IdePageInstance.AddAce("asdasdasdada");
+            saveMethodologyPopUp.SetName("11111");
+            CollectionAssert.Contains(IdePageInstance.Methodologies, "11111");
+
         }
     }
 }

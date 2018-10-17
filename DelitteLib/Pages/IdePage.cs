@@ -21,29 +21,29 @@ namespace DeloitteLib
                 List<String> list = new List<String>();
                 foreach (var element in _allMethodologies)
                 {
-                    list.Add(element.GetAttribute("text"));
+                    list.Add(element.Text);
                 }
                 return list;
             }
         }
-
         public void AddAce(string code)
         {
             _newMethodologyBtn.Click();
             _aceContent.SendKeys(code);
             _saveBtn.Click();
         }
+
         [FindsBy(How = How.XPath, Using = "//textarea[@class='ace_text-input']")]
-        public IWebElement _aceContent;
+        private IWebElement _aceContent;
 
         [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-primary save']")]
-        public IWebElement _saveBtn;
+        private IWebElement _saveBtn;
 
         [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-default new-meth-btn']")]
-        public IWebElement _newMethodologyBtn;
+        private IWebElement _newMethodologyBtn;
 
-        [FindsBy(How = How.XPath, Using = "//div[contains(@class, 'wrapper')]/xl-ide-navigator-item")]
-        public IList<IWebElement> _allMethodologies;
+        [FindsBy(How = How.XPath, Using = "//span[contains(@class, 'name overlapping')]")]
+        private IList<IWebElement> _allMethodologies;
                
     }
 }
