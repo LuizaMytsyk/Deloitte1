@@ -7,7 +7,7 @@ namespace DeloitteLib
     public class ConfigureProject : BaseClass
     {
         public ConfigureProject(IWebDriver driver) : base(driver)
-        {
+        {         
         }
     }
 
