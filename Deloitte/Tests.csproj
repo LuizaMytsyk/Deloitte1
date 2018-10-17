@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseTest.cs" />
+    <Compile Include="Test_IDE_CreateNewMethodology.cs" />
     <Compile Include="LoggingIn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -32,7 +32,7 @@ namespace DeloitteTests
         {
             LoginPageInstance.SingIn("gp_integrator", "Dummy#123");
 
-            ProjectsPageInstance._addProjectButton.Click();
+            ProjectsPageInstance.AddProject();
 
             wait.Until((d) => AddProjectInstance.IsAddProjectDisplayed());
 

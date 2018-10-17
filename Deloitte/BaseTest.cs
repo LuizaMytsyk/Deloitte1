@@ -28,7 +28,8 @@ namespace DeloitteTests
             driver = new ChromeDriver();
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             driver.Manage().Window.Maximize();
-            baseURL = "https://perf.exalinkservices.com";
+            baseURL = "https://int1.exalinkservices.com";
+            driver.Navigate().GoToUrl(baseURL); 
 
         }
 
