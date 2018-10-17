@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeloitteTests", "Deloitte\DeloitteTests.csproj", "{6DE49FB9-219B-4760-9C27-43F97211593B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Deloitte\Tests.csproj", "{6DE49FB9-219B-4760-9C27-43F97211593B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeloitteLib", "DelitteLib\DeloitteLib.csproj", "{D4DF11D8-B751-4542-9264-D56B46ACAF8A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PageObjects", "DelitteLib\PageObjects.csproj", "{D4DF11D8-B751-4542-9264-D56B46ACAF8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

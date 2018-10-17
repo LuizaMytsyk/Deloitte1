@@ -8,11 +8,11 @@ namespace DeloitteLib
     {
         protected BaseClass(IWebDriver driver)
         {
-            Driver = driver;
+            this.driver = driver;
 
             PageFactory.InitElements(this, new RetryingElementLocator(driver, TimeSpan.FromSeconds(15)));
         }
 
-        protected IWebDriver Driver;
+        protected IWebDriver driver;
     }
 }
