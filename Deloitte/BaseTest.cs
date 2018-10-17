@@ -19,7 +19,7 @@ namespace DeloitteTests
         protected WebDriverWait wait;
         protected string baseURL;
         protected LoginPage LoginPageInstance;
-        protected ProjectsPage ProjectsPageInstance;
+       
 
         [OneTimeSetUp]
 

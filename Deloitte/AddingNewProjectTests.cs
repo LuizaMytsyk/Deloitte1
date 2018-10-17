@@ -9,9 +9,10 @@ using OpenQA.Selenium;
 
 namespace DeloitteTests
 {
-    public class LoggingInTest : BaseTest
+    public class AddingNewProjectTests : BaseTest
     {
         AddProject AddProjectInstance;
+        ProjectsPage ProjectsPageInstance;
 
         [SetUp]
         public void SetUp()
@@ -28,7 +29,7 @@ namespace DeloitteTests
 
         [Test]
 
-        public void CheckLoggingIn()
+        public void AddingAnd()
         {
             LoginPageInstance.SingIn("gp_integrator", "Dummy#123");
 
