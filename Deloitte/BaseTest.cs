@@ -19,7 +19,9 @@ namespace DeloitteTests
         protected WebDriverWait wait;
         protected string baseURL;
         protected LoginPage LoginPageInstance;
-       
+        protected HeaderNavigation HeaderNavigationInstance;
+        protected LeftMenu LeftMenuInstance;
+
 
         [OneTimeSetUp]
 

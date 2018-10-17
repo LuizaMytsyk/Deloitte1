@@ -24,29 +24,81 @@ namespace DeloitteTests
             LoginPageInstance = new LoginPage(driver);
             ProjectsPageInstance = new ProjectsPage(driver);
             AddProjectInstance = new AddProject(driver);
+            HeaderNavigationInstance = new HeaderNavigation(driver);
 
+            //Logging in
+            LoginPageInstance.SingIn("gp_integrator", "Dummy#123");
+            wait.Until((d) => ProjectsPageInstance.IsProjectPageDisplayed());
+
+            //Changing Client on Umbrella
+
+            HeaderNavigationInstance.SelectClient("Umbrella Corporation");
         }
 
         [Test]
 
-        public void AddingAnd()
-        {
-            LoginPageInstance.SingIn("gp_integrator", "Dummy#123");
-
-            ProjectsPageInstance._addProjectButton.Click();
+        public void AddingProjectAndSaving()
+        {           
+            ProjectsPageInstance.ClickAddProject();
 
             wait.Until((d) => AddProjectInstance.IsAddProjectDisplayed());
 
             AddProjectInstance
                 .SetType("Adhoc")
                 .SetProject("MDM")
-                .SetProjectName("test3")
+                .SetProjectName("test111")
                 .SetStartMonth("Jul 2018")
                 .SetEndMonth("Dec 2019")
                 .SetDueDate("Dec 2019")
-                .SetMethodology("a2")
-                .SetMethodology("a1")
-                .ClickCreate();     
+                .SetMethodology("oddd")                
+                .ClickCreate();
+
+            //Verify project was added in list with correct name
+
+            Assert.True(ProjectsPageInstance.VerifyProjectAdded("test111"));            
+        }
+
+        [Test]
+
+        public void AddingProjectAndCanceling()
+        {
+            ProjectsPageInstance.ClickAddProject();
+
+            wait.Until((d) => AddProjectInstance.IsAddProjectDisplayed());
+
+            AddProjectInstance
+                .SetType("Adhoc")
+                .SetProject("MDM")
+                .SetProjectName("test111")
+                .SetStartMonth("Jul 2018")
+                .SetEndMonth("Dec 2019")
+                .SetDueDate("Dec 2019")
+                .SetMethodology("oddd")
+                .ClickCancel();
+
+            //Verify project was not added
+
+            Assert.False(ProjectsPageInstance.VerifyProjectAdded("test111"));
+        }
+
+        [Test]
+
+        public void AddingProjectStartDateError()
+        {
+            ProjectsPageInstance.ClickAddProject();
+
+            wait.Until((d) => AddProjectInstance.IsAddProjectDisplayed());
+
+            AddProjectInstance
+                .SetType("Adhoc")
+                .SetProject("MDM")
+                .SetProjectName("test111")
+                .SetStartMonth("Jul 2018")
+                .SetEndMonth("Dec 2019");
+
+            //Verify project was added in list with correct name
+
+            Assert.True(AddProjectInstance.IsErrorMessageStartMonthDisplayed());
         }
     }
 }

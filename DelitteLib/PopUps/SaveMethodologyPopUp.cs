@@ -15,18 +15,18 @@ namespace DeloitteLib
 
         public void Save()
         {
-            Driver.SwitchTo().DefaultContent();
+            driver.SwitchTo().DefaultContent();
             _saveButton.Click();
         }
         public void Close()
         {
-            Driver.SwitchTo().DefaultContent();
+            driver.SwitchTo().DefaultContent();
             _closeButton.Click();
         }
 
         public void Cancel()
         {
-            Driver.SwitchTo().DefaultContent();
+            driver.SwitchTo().DefaultContent();
             _cancelButton.Click();
         }
 
@@ -37,7 +37,7 @@ namespace DeloitteLib
 
         public void CloseError()
         {
-            Driver.SwitchTo().DefaultContent();
+            driver.SwitchTo().DefaultContent();
             _closeErrorMsg.Click();
         }
 

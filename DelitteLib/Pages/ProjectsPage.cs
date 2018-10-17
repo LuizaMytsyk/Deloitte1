@@ -26,18 +26,35 @@ namespace DeloitteLib
                 return list;
             }
         }
-
-        public ProjectsPage AddProject()
-        {
-            _addProjectButton.Click();
-            return this;
-        }
+       
 
         [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-primary pull-right']")]
         private IWebElement _addProjectButton;
 
         [FindsBy(How = How.XPath, Using = "//p[contains(@class, 'project-name')]")]
         private IList<IWebElement> _allProjects;
+
+        public void ClickAddProject()
+        {
+            _addProjectButton.Click();
+        }
+
+        public bool VerifyProjectAdded(string projectName)
+        {             
+            if (Projects.First() == projectName) {
+                return true;
+            }
+            else
+                return false;          
+           
+        }
+        public bool IsProjectPageDisplayed()
+        {
+            return driver.FindElements(By.Id("platform-nav")).Count > 0  &
+                driver.FindElements(By.XPath("//div[@class='service-nav-container']")).Count > 0 &
+                driver.FindElements(By.XPath("//button[@class='btn btn-primary pull-right']")).Count > 0 ?
+               true : false;
+        }
 
     }
 }
