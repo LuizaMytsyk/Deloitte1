@@ -12,25 +12,21 @@ namespace DeloitteLib
 
         [FindsBy(How = How.Id, Using = "clients")]
         private IWebElement _clients;
-
-        [FindsBy(How = How.XPath, Using = "//ul[contains(@class, 'list-unstyled')]/li")]
-        private IList<IWebElement> _allClients;
-
+        
         public string GetCurrentClient()
         {
             return _clients.GetAttribute("text");
         }
 
+
+
         public void SelectClient(string name)
         {
+
+            String path = "//span[contains(text(),'" + name + "')]";
             _clients.Click();
-            foreach(var i in _allClients)
-            {
-                if(i.Text == name)
-                {
-                    i.Click();
-                }
-            }
+            driver.FindElement(By.XPath(path)).Click();
+
         }
         //'Umbrella Corporation'
     }
