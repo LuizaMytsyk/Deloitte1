@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddingNewProjectTests.cs" />
     <Compile Include="BaseTest.cs" />
     <Compile Include="Test_IDE_CreateNewMethodology.cs" />
     <Compile Include="LoggingIn.cs" />

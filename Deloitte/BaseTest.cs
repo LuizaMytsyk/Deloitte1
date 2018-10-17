@@ -19,7 +19,9 @@ namespace DeloitteTests
         protected WebDriverWait wait;
         protected string baseURL;
         protected LoginPage LoginPageInstance;
-        protected ProjectsPage ProjectsPageInstance;
+        protected HeaderNavigation HeaderNavigationInstance;
+        protected LeftMenu LeftMenuInstance;
+
 
         [OneTimeSetUp]
 
@@ -28,8 +30,7 @@ namespace DeloitteTests
             driver = new ChromeDriver();
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             driver.Manage().Window.Maximize();
-            baseURL = "https://int1.exalinkservices.com";
-            driver.Navigate().GoToUrl(baseURL); 
+            baseURL = "https://perf.exalinkservices.com";
 
         }
 
@@ -44,7 +45,7 @@ namespace DeloitteTests
         public void OneTimeTearDown()
         {
             //driver.Close();
-           // driver.Quit();
+            // driver.Quit();
         }
 
     }

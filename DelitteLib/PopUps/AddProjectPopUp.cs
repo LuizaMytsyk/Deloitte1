@@ -11,43 +11,43 @@ namespace DeloitteLib
         }
 
         [FindsBy(How = How.XPath, Using = "//button[@placeholder='Select Project Type']")]
-        public IWebElement _selectProjectTypeButton;
+        private IWebElement _selectProjectTypeButton;
 
         [FindsBy(How = How.XPath, Using = "//div[@class='col-sm-6']//button[@id='projectSelect']")]
-        public IWebElement _projectsListButton;    
+        private IWebElement _projectsListButton;
 
         [FindsBy(How = How.Id, Using = "projectNameInput")]
-        public IWebElement _projectNameInput;
+        private IWebElement _projectNameInput;
 
         [FindsBy(How = How.XPath, Using = "//input[@placeholder='Select Start Month']")]
-        public IWebElement _startMonth;
+        private IWebElement _startMonth;
 
         [FindsBy(How = How.XPath, Using = "//input[@placeholder='Select End Month']")]
-        public IWebElement _endMonth;
+        private IWebElement _endMonth;
 
         [FindsBy(How = How.XPath, Using = "//input[@placeholder='Due Date MM/DD/YYYY']")]
-        public IWebElement _dueDate;
+        private IWebElement _dueDate;
 
         [FindsBy(How = How.XPath, Using = "//div[@class='col-sm-8']//button[@id='projectSelect']")]
-        public IWebElement _selectMethodolody;
+        private IWebElement _selectMethodolody;
 
         [FindsBy(How = How.XPath, Using = "//button[contains(text(),'Cancel')]")]
-        public IWebElement _cancelButton;
+        private IWebElement _cancelButton;
 
         [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-primary']")]
-        public IWebElement _createButton;
+        private IWebElement _createButton;
 
         [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Start Month should be before End Month')]")]
-        public IWebElement _errorMessageStartMonth;
+        private IWebElement _errorMessageStartMonth;
 
-        public void SelectOption (IWebDriver driver, String value)
+        public void SelectOption(IWebDriver driver, String value)
         {
             String path = "//span[text() = '" + value + "']";
-            driver.FindElement(By.XPath(path)).Click();            
+            driver.FindElement(By.XPath(path)).Click();
         }
 
-       
-        public AddProject SetType (string value)
+
+        public AddProject SetType(string value)
         {
             _selectProjectTypeButton.Click();
             SelectOption(driver, value);
@@ -55,20 +55,20 @@ namespace DeloitteLib
         }
         public AddProject SetProject(string value)
         {
-            _projectsListButton.Click();            
+            _projectsListButton.Click();
             SelectOption(driver, value);
             return this;
         }
 
         public AddProject SetProjectName(string value)
-        {            
+        {
             _projectNameInput.Clear();
             _projectNameInput.SendKeys(value);
             return this;
         }
 
         public AddProject SetStartMonth(string value)
-        {            
+        {
             _startMonth.Clear();
             _startMonth.SendKeys(value);
             driver.FindElement(By.XPath("//label[contains(text(),'Reporting Start Month')]")).Click();
@@ -76,7 +76,7 @@ namespace DeloitteLib
         }
 
         public AddProject SetEndMonth(string value)
-        {            
+        {
             _endMonth.Clear();
             _endMonth.SendKeys(value);
             driver.FindElement(By.XPath("//label[contains(text(),'Reporting End Month')]")).Click();
@@ -84,7 +84,7 @@ namespace DeloitteLib
         }
 
         public AddProject SetDueDate(string value)
-        {            
+        {
             _dueDate.Clear();
             _dueDate.SendKeys(value);
             driver.FindElement(By.XPath("//label[contains(text(),'Due Date')]")).Click();
@@ -95,14 +95,14 @@ namespace DeloitteLib
         {
             _selectMethodolody.Click();
             SelectOption(driver, value);
-            driver.FindElement(By.XPath("//label[@class='control-label col-sm-4']")).Click();            
+            driver.FindElement(By.XPath("//label[@class='control-label col-sm-4']")).Click();
             return this;
         }
 
         public void ClickCreate()
         {
-            _createButton.Click();     
-          
+            _createButton.Click();
+
         }
         public void ClickCancel()
         {
@@ -112,7 +112,18 @@ namespace DeloitteLib
 
         public bool IsAddProjectDisplayed()
         {
-            return driver.FindElements(By.XPath("//form[@name='createProjectForm']")).Count > 0  ?
+            return driver.FindElements(By.XPath("//form[@name='createProjectForm']")).Count > 0 ?
+               true : false;
+        }
+
+        public String GetErrorMessage()
+        {
+            return _errorMessageStartMonth.Text;
+        }
+
+        public bool IsErrorMessageStartMonthDisplayed()
+        {
+            return driver.FindElements(By.XPath("//span[contains(text(),'Start Month should be before End Month')]")).Count > 0 ?
                true : false;
         }
 
