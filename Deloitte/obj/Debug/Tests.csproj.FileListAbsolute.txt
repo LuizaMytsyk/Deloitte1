@@ -113,3 +113,7 @@ C:\Users\tmanu\source\repos\DeloitteWeb\Deloitte1\Deloitte\bin\Debug\nunit.frame
 C:\Users\tmanu\source\repos\DeloitteWeb\Deloitte1\Deloitte\bin\Debug\WebDriver.xml
 C:\Users\tmanu\source\repos\DeloitteWeb\Deloitte1\Deloitte\bin\Debug\WebDriver.Support.xml
 C:\Users\tmanu\source\repos\DeloitteWeb\Deloitte1\Deloitte\obj\Debug\Tests.csproj.CopyComplete
+C:\Users\lmyts\Documents\NewDeloitte\Deloitte1\Deloitte\obj\Debug\Tests.csprojAssemblyReference.cache
+C:\Users\lmyts\Documents\NewDeloitte\Deloitte1\Deloitte\obj\Debug\Tests.csproj.CoreCompileInputs.cache
+C:\Users\lmyts\Documents\NewDeloitte\Deloitte1\Deloitte\obj\Debug\Deloitte.dll
+C:\Users\lmyts\Documents\NewDeloitte\Deloitte1\Deloitte\obj\Debug\Deloitte.pdb
