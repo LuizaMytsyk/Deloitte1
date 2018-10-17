@@ -61,16 +61,14 @@ namespace DeloitteLib
         }
 
         public AddProject SetProjectName(string value)
-        {
-            _projectNameInput.Click();
+        {            
             _projectNameInput.Clear();
             _projectNameInput.SendKeys(value);
             return this;
         }
 
         public AddProject SetStartMonth(string value)
-        {
-            _startMonth.Click();
+        {            
             _startMonth.Clear();
             _startMonth.SendKeys(value);
             driver.FindElement(By.XPath("//label[contains(text(),'Reporting Start Month')]")).Click();
@@ -78,8 +76,7 @@ namespace DeloitteLib
         }
 
         public AddProject SetEndMonth(string value)
-        {
-            _endMonth.Click();
+        {            
             _endMonth.Clear();
             _endMonth.SendKeys(value);
             driver.FindElement(By.XPath("//label[contains(text(),'Reporting End Month')]")).Click();
@@ -87,8 +84,7 @@ namespace DeloitteLib
         }
 
         public AddProject SetDueDate(string value)
-        {
-            _dueDate.Click();
+        {            
             _dueDate.Clear();
             _dueDate.SendKeys(value);
             driver.FindElement(By.XPath("//label[contains(text(),'Due Date')]")).Click();

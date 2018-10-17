@@ -39,7 +39,7 @@ namespace DeloitteTests
             AddProjectInstance
                 .SetType("Adhoc")
                 .SetProject("MDM")
-                .SetProjectName("test")
+                .SetProjectName("test3")
                 .SetStartMonth("Jul 2018")
                 .SetEndMonth("Dec 2019")
                 .SetDueDate("Dec 2019")
