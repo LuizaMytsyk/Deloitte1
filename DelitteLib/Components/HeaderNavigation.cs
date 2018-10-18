@@ -14,13 +14,15 @@ namespace DeloitteLib
         private IWebElement _clients;
                 
         public void SelectClient(string name)
-        {
-
-            String path = "//span[contains(text(),'" + name + "')]";
+        {                        
             _clients.Click();
+            String path = "//span[contains(text(),'"+name+"')]";
             driver.FindElement(By.XPath(path)).Click();
 
         }
         //'Umbrella Corporation'
     }
 }
+//span[contains(text(),'Amgen Corporation')
+
+
