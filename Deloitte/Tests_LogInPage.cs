@@ -6,32 +6,52 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using DeloitteLib;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium.Chrome;
 
 namespace DeloitteTests
 {
-    public class Tests_LogInPage : BaseTest
+    public class Tests_LogInPage 
     {
-        AddProject AddProjectInstance;
+
+        IWebDriver driver;
+        WebDriverWait wait;
+        string baseURL;
+        LoginPage LoginPageInstance;
         ProjectsPage ProjectsPageInstance;
+
+
         static object[] InvalidCredentials =
         {
             new object[] { "qwerty", "12345" },
             new object[] { "gp_integrator", "!@#!$@!$#" },
-            new object[] { "12345", "Dummy#123" },
-            new object[] { "«♣☺♂» , «»‘~!@#$%^&*()?>,./<][ /*<!—«», «${code}»;—>", "gp_integrator" },
-            new object[] { "   gp_integrator", "Dummy#123" },
+            new object[] { "12345", "Dummy#123" },            
+            new object[] { "   gp_integrator   ", "Dummy#123" },
             new object[] { "gp_integrator   ", "Dummy#123" },
-            new object[] { "GP_INTEGRATOR", "Dummy#123" },
+            new object[] { "GP_INTEGRATORК", "Dummy#123" },
 
         };
+
+        [OneTimeSetUp]
+
+        public void OneTimeSetUp()
+        {
+            driver = new ChromeDriver();
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            driver.Manage().Window.Maximize();
+
+            baseURL = "https://int1.exalinkservices.com";
+                      
+           
+        }
 
         [SetUp]
         public void SetUp()
         {
-            //Opening app and Logging in
-            driver.Url = baseURL;
 
-            //creating instances of needed pages
+            driver.Navigate().GoToUrl(baseURL);
+
             LoginPageInstance = new LoginPage(driver);
             ProjectsPageInstance = new ProjectsPage(driver);          
 

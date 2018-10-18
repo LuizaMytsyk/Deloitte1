@@ -17,24 +17,15 @@ namespace DeloitteTests
 
         [SetUp]
         public void SetUp()
-        {
-            //Opening app and Logging in
-            driver.Url = baseURL;
+        {          
 
             //creating instances of needed pages
             LoginPageInstance = new LoginPage(driver);
             ProjectsPageInstance = new ProjectsPage(driver);
             AddProjectInstance = new AddProject(driver);
-            HeaderNavigationInstance = new HeaderNavigation(driver);
-
-            //Logging in
-            LoginPageInstance.SingIn("gp_integrator", "Dummy#123");
-            wait.Until((d) => ProjectsPageInstance.IsProjectPageDisplayed());
-
-            //Changing Client on Umbrella
-
-            HeaderNavigationInstance.SelectClient("Umbrella Corporation");
-        }
+            HeaderNavigationInstance = new HeaderNavigation(driver);   
+            
+         }
 
         [Test]
 
@@ -46,24 +37,17 @@ namespace DeloitteTests
 
             AddProjectInstance
                 .SetType("Adhoc")
-                .SetProject("pname4")
-                .SetProjectName("auto_test911")
+                .SetProject("DP2")
+                .SetProjectName("auto_test31")
                 .SetStartMonth("Jul 2018")
                 .SetEndMonth("Dec 2019")
-                .SetDueDate("Dec 2019")
-                .SetMethodology("oddd")
+                .SetDueDate("Dec 2019")                
                 .ClickCreate();
 
             driver.Navigate().Refresh();
             wait.Until((d) => ProjectsPageInstance.IsProjectPageDisplayed());
-
-            //Verify project was added in list with correct name
-
-            Console.WriteLine(ProjectsPageInstance.Projects[1]);
-            Console.WriteLine(ProjectsPageInstance.Projects[2]);
-            Console.WriteLine(ProjectsPageInstance.Projects[3]);
-
-            //Assert.True(ProjectsPageInstance.VerifyProjectAdded("auto_test777"));
+                       
+            Assert.True(ProjectsPageInstance.VerifyProjectAdded("Adhoc: auto_test31"));
         }
 
         [Test]
@@ -76,17 +60,17 @@ namespace DeloitteTests
 
             AddProjectInstance
                 .SetType("Adhoc")
-                .SetProject("MDM")
-                .SetProjectName("auto_test")
+                .SetProject("DP2")
+                .SetProjectName("auto_test41")
                 .SetStartMonth("Jul 2018")
                 .SetEndMonth("Dec 2019")
-                .SetDueDate("Dec 2019")
-                .SetMethodology("oddd")
+                .SetDueDate("Dec 2019")                
                 .ClickCancel();
 
-            //Verify project was not added
+            driver.Navigate().Refresh();
+            wait.Until((d) => ProjectsPageInstance.IsProjectPageDisplayed());
 
-            Assert.False(ProjectsPageInstance.VerifyProjectAdded("auto_test"));
+            Assert.False(ProjectsPageInstance.VerifyProjectAdded("Adhoc: auto_test41"));
         }
 
         [Test]
@@ -99,12 +83,10 @@ namespace DeloitteTests
 
             AddProjectInstance
                 .SetType("Adhoc")
-                .SetProject("MDM")
+                .SetProject("DP2")
                 .SetProjectName("test111")
                 .SetStartMonth("Jul 2019")
                 .SetEndMonth("Dec 2018");
-
-            //Verify error message for incorrect Start Month is displayed
 
             Assert.True(AddProjectInstance.IsErrorMessageStartMonthDisplayed());
         }

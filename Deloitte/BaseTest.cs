@@ -39,9 +39,11 @@ namespace DeloitteTests
             baseURL = "https://int1.exalinkservices.com";
             driver.Navigate().GoToUrl(baseURL);
             LoginPageInstance = new LoginPage(driver);
+            ProjectsPageInstance = new ProjectsPage(driver);
             HeaderNavigationInstance = new HeaderNavigation(driver);
 
             LoginPageInstance.SingIn("gp_integrator", "Dummy#123");
+            wait.Until((d) => ProjectsPageInstance.IsProjectPageDisplayed());
             HeaderNavigationInstance.SelectClient("Umbrella Corporation");
         }
 
