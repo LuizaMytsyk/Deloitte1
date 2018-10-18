@@ -25,6 +25,7 @@ namespace Deloitte
             saveMethodologyPopUp = new SaveMethodologyPopUp(driver);
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//xl-icon[@icon='d-code']")));
             LeftMenuInstance.OpenIde();
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//button[@class='btn btn-default new-meth-btn']")));
         }
 
         [Test, TestCaseSource("MethodologyName_Success")]
