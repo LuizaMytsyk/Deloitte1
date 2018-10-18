@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using DeloitteLib;
 using OpenQA.Selenium;
+using System.Threading;
 
 namespace DeloitteTests
 {
-    public class AddingNewProjectTests : BaseTest
+    public class Tests_AddingNewProject : BaseTest
     {
         AddProject AddProjectInstance;
         ProjectsPage ProjectsPageInstance;
@@ -45,17 +46,24 @@ namespace DeloitteTests
 
             AddProjectInstance
                 .SetType("Adhoc")
-                .SetProject("MDM")
-                .SetProjectName("test111")
+                .SetProject("pname4")
+                .SetProjectName("auto_test911")
                 .SetStartMonth("Jul 2018")
                 .SetEndMonth("Dec 2019")
                 .SetDueDate("Dec 2019")
                 .SetMethodology("oddd")
                 .ClickCreate();
 
+            driver.Navigate().Refresh();
+            wait.Until((d) => ProjectsPageInstance.IsProjectPageDisplayed());
+
             //Verify project was added in list with correct name
 
-            Assert.True(ProjectsPageInstance.VerifyProjectAdded("test111"));
+            Console.WriteLine(ProjectsPageInstance.Projects[1]);
+            Console.WriteLine(ProjectsPageInstance.Projects[2]);
+            Console.WriteLine(ProjectsPageInstance.Projects[3]);
+
+            //Assert.True(ProjectsPageInstance.VerifyProjectAdded("auto_test777"));
         }
 
         [Test]
@@ -69,7 +77,7 @@ namespace DeloitteTests
             AddProjectInstance
                 .SetType("Adhoc")
                 .SetProject("MDM")
-                .SetProjectName("test111")
+                .SetProjectName("auto_test")
                 .SetStartMonth("Jul 2018")
                 .SetEndMonth("Dec 2019")
                 .SetDueDate("Dec 2019")
@@ -78,7 +86,7 @@ namespace DeloitteTests
 
             //Verify project was not added
 
-            Assert.False(ProjectsPageInstance.VerifyProjectAdded("test111"));
+            Assert.False(ProjectsPageInstance.VerifyProjectAdded("auto_test"));
         }
 
         [Test]
@@ -93,10 +101,10 @@ namespace DeloitteTests
                 .SetType("Adhoc")
                 .SetProject("MDM")
                 .SetProjectName("test111")
-                .SetStartMonth("Jul 2018")
-                .SetEndMonth("Dec 2019");
+                .SetStartMonth("Jul 2019")
+                .SetEndMonth("Dec 2018");
 
-            //Verify project was added in list with correct name
+            //Verify error message for incorrect Start Month is displayed
 
             Assert.True(AddProjectInstance.IsErrorMessageStartMonthDisplayed());
         }

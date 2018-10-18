@@ -28,5 +28,22 @@ namespace DeloitteLib
 
         [FindsBy(How = How.Id, Using = "login-submit")]
         private IWebElement _submitButton;
+
+        [FindsBy(How = How.XPath, Using = "//p[@class='ng-binding']")]
+        private IWebElement _incorrectCredentialsMessage;
+
+        public bool IsIncorrectCredentialsMessageDisplayed()
+        {
+            return driver.FindElements(By.XPath("//p[@class='ng-binding']")).Count > 0  ?
+                true : false;
+        }
+
+        public bool IsLoginPageOpened()
+        {
+            return driver.FindElements(By.Id("username")).Count > 0 &
+                driver.FindElements(By.XPath("//input[@placeholder='Password']")).Count > 0 &
+                driver.FindElements(By.Id("login-submit")).Count > 0 ?
+                true : false;
+        }
     }
 }

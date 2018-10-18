@@ -21,7 +21,7 @@ namespace DeloitteLib
                 List<String> list = new List<String>();
                 foreach (var element in _allProjects)
                 {
-                    list.Add(element.GetAttribute("text"));
+                    list.Add(element.Text);
                 }
                 return list;
             }
