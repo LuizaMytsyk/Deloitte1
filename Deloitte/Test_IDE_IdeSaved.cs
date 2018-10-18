@@ -11,7 +11,6 @@ namespace Deloitte
     public class Test_IDE_IdeSaved : BaseTest
     {
         IdePage IdePageInstance;
-        LeftMenu leftMenu;
         SaveMethodologyPopUp saveMethodologyPopUp;
 
         static string[] MethodologyName_Success = new string[] { "test", "123454646", "#@$*$^" };
@@ -21,11 +20,11 @@ namespace Deloitte
         [SetUp]
         public void LogIn()
         {
-            leftMenu = new LeftMenu(driver);
+            LeftMenuInstance = new LeftMenu(driver);
             IdePageInstance = new IdePage(driver);
             saveMethodologyPopUp = new SaveMethodologyPopUp(driver);
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//xl-icon[@icon='d-code']")));
-            leftMenu.OpenIde();
+            LeftMenuInstance.OpenIde();
         }
 
         [Test, TestCaseSource("MethodologyName_Success")]

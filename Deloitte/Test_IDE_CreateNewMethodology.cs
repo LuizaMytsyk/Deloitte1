@@ -10,8 +10,7 @@ namespace Deloitte
     [TestFixture]
     public class Test_IDE_CreateNewMethodology : BaseTest
     {
-        IdePage IdePageInstance;        
-        LeftMenu leftMenu;
+        IdePage IdePageInstance; 
         SaveMethodologyPopUp saveMethodologyPopUp;
 
         static string[] AceContent_Success = new string[] { "testtest", "123454646", "#@$*$^@"};
@@ -20,12 +19,12 @@ namespace Deloitte
 
         [SetUp]
         public void LogIn()
-        {           
-            leftMenu = new LeftMenu(driver);
+        {
+            LeftMenuInstance = new LeftMenu(driver);
             IdePageInstance = new IdePage(driver);
             saveMethodologyPopUp = new SaveMethodologyPopUp(driver);            
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//xl-icon[@icon='d-code']")));
-            leftMenu.OpenIde();
+            LeftMenuInstance.OpenIde();
         }
 
         [Test, TestCaseSource("AceContent_Success")]

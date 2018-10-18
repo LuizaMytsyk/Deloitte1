@@ -19,14 +19,13 @@ namespace DeloitteTests
         protected WebDriverWait wait;
         protected string baseURL;
         protected LoginPage LoginPageInstance;
-<<<<<<< HEAD
+
         protected ProjectsPage ProjectsPageInstance;
-        protected HeaderNavigation headerNavigation;
-=======
         protected HeaderNavigation HeaderNavigationInstance;
+
         protected LeftMenu LeftMenuInstance;
 
->>>>>>> development
+
 
         [OneTimeSetUp]
 
@@ -36,17 +35,14 @@ namespace DeloitteTests
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             driver.Manage().Window.Maximize();
-<<<<<<< HEAD
+
             baseURL = "https://int1.exalinkservices.com";
             driver.Navigate().GoToUrl(baseURL);
             LoginPageInstance = new LoginPage(driver);
-            headerNavigation = new HeaderNavigation(driver);
-=======
-            baseURL = "https://perf.exalinkservices.com";
->>>>>>> development
+            HeaderNavigationInstance = new HeaderNavigation(driver);
 
             LoginPageInstance.SingIn("gp_integrator", "Dummy#123");
-            headerNavigation.SelectClient("Umbrella Corporation");
+            HeaderNavigationInstance.SelectClient("Umbrella Corporation");
         }
 
         [TearDown]
