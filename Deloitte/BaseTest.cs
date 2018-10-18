@@ -20,6 +20,7 @@ namespace DeloitteTests
         protected string baseURL;
         protected LoginPage LoginPageInstance;
         protected ProjectsPage ProjectsPageInstance;
+        protected HeaderNavigation headerNavigation;
 
         [OneTimeSetUp]
 
@@ -30,7 +31,12 @@ namespace DeloitteTests
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             driver.Manage().Window.Maximize();
             baseURL = "https://int1.exalinkservices.com";
-            driver.Navigate().GoToUrl(baseURL); 
+            driver.Navigate().GoToUrl(baseURL);
+            LoginPageInstance = new LoginPage(driver);
+            headerNavigation = new HeaderNavigation(driver);
+
+            LoginPageInstance.SingIn("gp_integrator", "Dummy#123");
+            headerNavigation.SelectClient("Umbrella Corporation");
         }
 
         [TearDown]
@@ -43,8 +49,8 @@ namespace DeloitteTests
         [OneTimeTearDown]
         public void OneTimeTearDown()
         {
-            //driver.Close();
-           // driver.Quit();
+            driver.Close();
+            driver.Quit();
         }
 
     }
