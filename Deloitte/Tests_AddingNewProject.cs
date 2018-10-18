@@ -46,22 +46,24 @@ namespace DeloitteTests
 
             AddProjectInstance
                 .SetType("Adhoc")
-                .SetProject("pname1")
-                .SetProjectName("auto_test21")
+                .SetProject("pname4")
+                .SetProjectName("auto_test911")
                 .SetStartMonth("Jul 2018")
                 .SetEndMonth("Dec 2019")
                 .SetDueDate("Dec 2019")
-                .SetMethodology("oddd");
+                .SetMethodology("oddd")
+                .ClickCreate();
 
-            Thread.Sleep(2000);
-            AddProjectInstance.ClickCreate();
-
+            driver.Navigate().Refresh();
             wait.Until((d) => ProjectsPageInstance.IsProjectPageDisplayed());
-
 
             //Verify project was added in list with correct name
 
-            //Assert.True(ProjectsPageInstance.VerifyProjectAdded("auto_test"));
+            Console.WriteLine(ProjectsPageInstance.Projects[1]);
+            Console.WriteLine(ProjectsPageInstance.Projects[2]);
+            Console.WriteLine(ProjectsPageInstance.Projects[3]);
+
+            //Assert.True(ProjectsPageInstance.VerifyProjectAdded("auto_test777"));
         }
 
         [Test]
