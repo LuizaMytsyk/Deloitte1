@@ -61,10 +61,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddingNewProjectTests.cs" />
+    <Compile Include="Tests_AddingNewProject.cs" />
     <Compile Include="BaseTest.cs" />
     <Compile Include="Test_IDE_CreateNewMethodology.cs" />
-    <Compile Include="LoggingIn.cs" />
+    <Compile Include="Tests_LogInPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
