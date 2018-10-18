@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
 
@@ -11,11 +12,12 @@ namespace DeloitteLib
         [FindsBy(How = How.Id, Using = "service-nav-toggle")]
         private IWebElement _navToggle;
 
-        [FindsBy(How = How.Name, Using = "Ide")]
+        [FindsBy(How = How.XPath, Using = "//xl-icon[@icon='d-code']")]
         private IWebElement _ide;
+
+
         public void OpenIde()
         {
-            _navToggle.Click();
             _ide.Click();
         }
 

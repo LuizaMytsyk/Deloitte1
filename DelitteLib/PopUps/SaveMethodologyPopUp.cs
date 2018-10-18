@@ -3,43 +3,46 @@ using OpenQA.Selenium.Support.PageObjects;
 using System;
 namespace DeloitteLib
 {
-    class SaveMethodologyPopUp : BaseClass
+    public class SaveMethodologyPopUp : BaseClass
     {
         public SaveMethodologyPopUp(IWebDriver driver) : base(driver)
         {
         }
         public void SetName(string name)
         {
+            _nameField.Clear();
             _nameField.SendKeys(name);
+            Save();
         }
 
         public void Save()
         {
-            driver.SwitchTo().DefaultContent();
             _saveButton.Click();
         }
         public void Close()
         {
-            driver.SwitchTo().DefaultContent();
             _closeButton.Click();
         }
 
         public void Cancel()
         {
-            driver.SwitchTo().DefaultContent();
             _cancelButton.Click();
         }
 
-        public string GetErrorMsg()
+        public bool MsgDisplayed()
         {
-            return _errorMsg.GetAttribute("text");
+            return _Msg.Displayed;
         }
 
-        public void CloseError()
+        public void CloseMsg()
         {
-            driver.SwitchTo().DefaultContent();
             _closeErrorMsg.Click();
         }
+        public string GetMsg()
+        {
+            return _Msg.GetAttribute("text");
+        }
+
 
         [FindsBy(How = How.Id, Using = "name")]
         private IWebElement _nameField;
@@ -51,7 +54,9 @@ namespace DeloitteLib
         private IWebElement _cancelButton;
 
         [FindsBy(How = How.XPath, Using = "//div[@class='toastr-message-text toast-message']")]
-        private IWebElement _errorMsg;
+        private IWebElement _Msg;
+        //methodology was saved successfully
+        //Error: Failed saving methodology.
 
         [FindsBy(How = How.XPath, Using = "//button[@class='action-btn toast-close-button']")]
         private IWebElement _closeErrorMsg;

@@ -12,14 +12,7 @@ namespace DeloitteLib
 
         [FindsBy(How = How.Id, Using = "clients")]
         private IWebElement _clients;
-        
-        public string GetCurrentClient()
-        {
-            return _clients.GetAttribute("text");
-        }
-
-
-
+                
         public void SelectClient(string name)
         {                        
             _clients.Click();

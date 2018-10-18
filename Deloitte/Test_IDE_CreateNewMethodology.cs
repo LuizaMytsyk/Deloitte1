@@ -1,30 +1,47 @@
 ﻿using NUnit.Framework;
 using DeloitteLib;
 using DeloitteTests;
+using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium;
+using System;
 
 namespace Deloitte
 {
     [TestFixture]
     public class Test_IDE_CreateNewMethodology : BaseTest
     {
-        IdePage IdePageInstance;
-        HeaderNavigation headerNavigation;
+        IdePage IdePageInstance;        
         LeftMenu leftMenu;
+        SaveMethodologyPopUp saveMethodologyPopUp;
+
+        static string[] AceContent_Success = new string[] { "testtest", "123454646", "#@$*$^@"};
+
+        static string[] AceContent_Fail = new string[] { "", " "};
 
         [SetUp]
         public void LogIn()
-        {
-            LoginPageInstance = new LoginPage(driver);
-            headerNavigation = new HeaderNavigation(driver);
+        {           
             leftMenu = new LeftMenu(driver);
-
-            LoginPageInstance.SingIn("gp_integrator", "Dummy#123");
-            headerNavigation.SelectClient("Umbrella Corporation");
+            IdePageInstance = new IdePage(driver);
+            saveMethodologyPopUp = new SaveMethodologyPopUp(driver);            
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//xl-icon[@icon='d-code']")));
+            leftMenu.OpenIde();
         }
-        [Test]
-        public void TestMethod1()
+
+        [Test, TestCaseSource("AceContent_Success")]
+        public void Test_CreateMethodology_Success(string text)
         {
-            Assert.AreEqual("Umbrella Corporation", headerNavigation.GetCurrentClient());
+            IdePageInstance.AddAce(text);
+            saveMethodologyPopUp.SetName("test" + text);
+            CollectionAssert.Contains(IdePageInstance.Methodologies, ("test" + text));
+        }
+
+        [Test, TestCaseSource("AceContent_Fail")]
+        public void Test_CreateMethodology_Fail(string text)
+        {
+            IdePageInstance.AddAce(text);
+            saveMethodologyPopUp.SetName("test"+ text);
+            CollectionAssert.Contains(IdePageInstance.Methodologies, ("test" + text));
         }
     }
 }
