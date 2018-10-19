@@ -8,28 +8,32 @@ namespace DeloitteLib
         public SaveMethodologyPopUp(IWebDriver driver) : base(driver)
         {
         }
-        public void SetName(string name)
+        public SaveMethodologyPopUp SetName(string name)
         {
             _nameField.Clear();
             _nameField.SendKeys(name);
+            return this;
         }
 
-        public void Save()
+        public SaveMethodologyPopUp Save()
         {
             _saveButton.Click();
+            return this;
         }
-        public bool SaveDisplayed()
+        public bool SaveDisabled()
         {
-            return _saveButton.Displayed;
+            return _saveButton.GetAttribute("disabled").Equals("disabled");
         }
-        public void Close()
+        public SaveMethodologyPopUp Close()
         {
             _closeButton.Click();
+            return this;
         }
 
-        public void Cancel()
+        public SaveMethodologyPopUp Cancel()
         {
             _cancelButton.Click();
+            return this;
         }
 
         public bool MsgDisplayed()
@@ -37,9 +41,10 @@ namespace DeloitteLib
             return _Msg.Displayed;
         }
 
-        public void CloseMsg()
+        public SaveMethodologyPopUp CloseMsg()
         {
             _closeErrorMsg.Click();
+            return this;
         }
         public string GetMsg()
         {
