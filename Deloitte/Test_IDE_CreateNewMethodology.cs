@@ -30,18 +30,20 @@ namespace Deloitte
 
         [Test, TestCaseSource("AceContent_Success")]
         public void Test_CreateMethodology_Success(string text)
-        {
+        {            
             IdePageInstance.AddAce(text);
+            saveMethodologyPopUp.Save();
             saveMethodologyPopUp.SetName("test" + text);
             CollectionAssert.Contains(IdePageInstance.Methodologies, ("test" + text));
         }
 
         [Test, TestCaseSource("AceContent_Fail")]
         public void Test_CreateMethodology_Fail(string text)
-        {
-            IdePageInstance.AddAce(text);
-            saveMethodologyPopUp.SetName("test"+ text);
-            CollectionAssert.Contains(IdePageInstance.Methodologies, ("test" + text));
+        {              
+            IdePageInstance.NewMethodology()
+                .AddAce("sdfdsfsdf");
+            saveMethodologyPopUp.Save();
+            Assert.IsFalse(saveMethodologyPopUp.SaveDisplayed());
         }
     }
 }

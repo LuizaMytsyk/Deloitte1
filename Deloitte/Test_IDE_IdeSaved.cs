@@ -32,7 +32,9 @@ namespace Deloitte
         public void Test_SavedMsg_Success(string text)
         {
             IdePageInstance.AddAce("testtest");
+            saveMethodologyPopUp.Save();
             saveMethodologyPopUp.SetName(text);
+            saveMethodologyPopUp.Save();
             Assert.AreEqual(saveMethodologyPopUp.GetMsg(), (text + ": methodology was saved successfully."));
         }
 
@@ -40,6 +42,7 @@ namespace Deloitte
         public void Test_SavedMsg_Fail(string text)
         {
             IdePageInstance.AddAce("testtest");
+            saveMethodologyPopUp.Save();
             saveMethodologyPopUp.SetName(text);
             Assert.AreEqual(saveMethodologyPopUp.GetMsg(), "Error: Failed saving methodology.");
         }
