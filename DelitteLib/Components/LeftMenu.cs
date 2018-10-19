@@ -16,9 +16,18 @@ namespace DeloitteLib
         private IWebElement _ide;
 
 
-        public void OpenIde()
+        [FindsBy(How = How.XPath, Using = "//xl-icon[@icon='d-list']")]
+        private IWebElement _projects;
+
+        public LeftMenu OpenIde()
         {
             _ide.Click();
+            return this;
+        }
+        public LeftMenu OpenProjects()
+        {
+            _projects.Click();
+            return this;
         }
 
     }

@@ -29,22 +29,37 @@ namespace Deloitte
         }
 
         [Test, TestCaseSource("MethodologyName_Success")]
-        public void Test_SavedMsg_Success(string text)
+        public void Test_SavedMsg_Positive(string text)
         {
-            IdePageInstance.AddAce("testtest");
-            saveMethodologyPopUp.Save();
-            saveMethodologyPopUp.SetName(text);
-            saveMethodologyPopUp.Save();
+            IdePageInstance.
+                AddAce("testtest")
+                .Save();
+            saveMethodologyPopUp
+                .SetName(text)
+                .Save();
             Assert.AreEqual(saveMethodologyPopUp.GetMsg(), (text + ": methodology was saved successfully."));
         }
 
         [Test, TestCaseSource("MethodologyName_Fail")]
-        public void Test_SavedMsg_Fail(string text)
+        public void Test_SavedMsg_Negative(string text)
         {
-            IdePageInstance.AddAce("testtest");
-            saveMethodologyPopUp.Save();
-            saveMethodologyPopUp.SetName(text);
+            IdePageInstance.
+                AddAce("testtest")
+                .Save();
+            saveMethodologyPopUp.
+                SetName(text)
+                .Cancel();
             Assert.AreEqual(saveMethodologyPopUp.GetMsg(), "Error: Failed saving methodology.");
         }
+
+        [TearDown]
+        public void tearDownTest()
+        {
+            saveMethodologyPopUp.CloseMsg();
+            LeftMenuInstance.OpenProjects();
+            saveMethodologyPopUp.Cancel();
+            
+        }
+
     }
 }

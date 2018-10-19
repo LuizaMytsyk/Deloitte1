@@ -29,6 +29,11 @@ namespace DeloitteLib
             _saveButton.Click();
         }
 
+        public bool SaveDisabled()
+        {
+            return _saveButton.GetAttribute("disabled").Equals("disabled");
+        }
+
         public IdePage NewMethodology()
         {            
             _newMethodologyBtn.Click();
@@ -37,13 +42,16 @@ namespace DeloitteLib
         }
         public IdePage AddAce(string code)
         {
-            IJavaScriptExecutor js = driver as IJavaScriptExecutor;
-            js.ExecuteScript("document.getElementByXPath('//div[@class='ace_content']').value='" + code+"'");
-           // _aceContent.SendKeys(code);
+            //IJavaScriptExecutor js = driver as IJavaScriptExecutor;
+            //js.ExecuteScript("document.getElementByXPath('//div[@class='ace_content']').value='" + code+"'");
+            _aceContent.SendKeys(Keys.Enter);
+            _aceContent.SendKeys(Keys.Up);
+            _aceContent.SendKeys(Keys.Delete);
+            _aceContent.SendKeys(code);
             return this;
         }
         
-        [FindsBy(How = How.XPath, Using = "//div[@class='ace_scroller']")]
+        [FindsBy(How = How.XPath, Using = "//textarea[@class = 'ace_text-input']")]
         private IWebElement _aceContent;
 
         [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-primary save']")]
