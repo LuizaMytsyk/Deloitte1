@@ -67,6 +67,7 @@
     <Compile Include="Tests_LogInPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test_IDE_IdeSaved.cs" />
+    <Compile Include="UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -12,12 +12,15 @@ namespace DeloitteLib
         {
             _nameField.Clear();
             _nameField.SendKeys(name);
-            Save();
         }
 
         public void Save()
         {
             _saveButton.Click();
+        }
+        public bool SaveDisplayed()
+        {
+            return _saveButton.Displayed;
         }
         public void Close()
         {

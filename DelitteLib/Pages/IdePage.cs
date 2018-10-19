@@ -2,9 +2,6 @@
 using OpenQA.Selenium.Support.PageObjects;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DeloitteLib
 {
@@ -26,18 +23,31 @@ namespace DeloitteLib
                 return list;
             }
         }
-        public void AddAce(string code)
+
+        public void Save()
         {
+            _saveButton.Click();
+        }
+
+        public IdePage NewMethodology()
+        {            
             _newMethodologyBtn.Click();
-            _aceContent.SendKeys(code);
-            _saveBtn.Click();
+            return this;
+
+        }
+        public IdePage AddAce(string code)
+        {
+            IJavaScriptExecutor js = driver as IJavaScriptExecutor;
+            js.ExecuteScript("document.getElementByXPath('//div[@class='ace_content']').value='" + code+"'");
+           // _aceContent.SendKeys(code);
+            return this;
         }
         
-        [FindsBy(How = How.XPath, Using = "//textarea[@class='ace_text-input']")]
+        [FindsBy(How = How.XPath, Using = "//div[@class='ace_scroller']")]
         private IWebElement _aceContent;
 
         [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-primary save']")]
-        private IWebElement _saveBtn;
+        private IWebElement _saveButton;
 
         [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-default new-meth-btn']")]
         private IWebElement _newMethodologyBtn;
