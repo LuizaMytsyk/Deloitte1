@@ -169,3 +169,5 @@ C:\Users\lmyts\Documents\NewDeloitte2\Deloitte1\Deloitte\obj\Debug\Tests.csproj.
 C:\Users\lmyts\Documents\NewDeloitte2\Deloitte1\Deloitte\obj\Debug\Tests.csproj.CopyComplete
 C:\Users\lmyts\Documents\NewDeloitte2\Deloitte1\Deloitte\obj\Debug\Deloitte.dll
 C:\Users\lmyts\Documents\NewDeloitte2\Deloitte1\Deloitte\obj\Debug\Deloitte.pdb
+C:\Users\tmanu\source\repos\DeloitteWeb\Deloitte1\Deloitte\bin\Debug\RestSharp.dll
+C:\Users\tmanu\source\repos\DeloitteWeb\Deloitte1\Deloitte\bin\Debug\RestSharp.xml
