@@ -67,6 +67,7 @@
     <Compile Include="ProjectBlock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PopUps\SaveMethodologyPopUp.cs" />
+    <Compile Include="WebDriverExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

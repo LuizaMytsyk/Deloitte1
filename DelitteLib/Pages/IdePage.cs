@@ -42,8 +42,6 @@ namespace DeloitteLib
         }
         public IdePage AddAce(string code)
         {
-            //IJavaScriptExecutor js = driver as IJavaScriptExecutor;
-            //js.ExecuteScript("document.getElementByXPath('//div[@class='ace_content']').value='" + code+"'");
             _aceContent.SendKeys(Keys.Enter);
             _aceContent.SendKeys(Keys.Up);
             _aceContent.SendKeys(Keys.Delete);
