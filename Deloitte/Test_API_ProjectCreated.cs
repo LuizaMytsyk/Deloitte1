@@ -10,13 +10,14 @@ using System.Collections.Generic;
 namespace Deloitte
 {
     [TestFixture]
-    public class UnitTest2
+    public class Test_API_ProjectCreated
     {
+        RestClient restClient;
         string sessionId;
-        [Test]
+        [OneTimeSetUp]
         public void Login()
         {
-            RestClient restClient = new RestClient("https://perf.exalinkservices.com:8443/apigateway/v1/sessions");
+            restClient = new RestClient("https://perf.exalinkservices.com:8443/apigateway/v1/sessions");
             RestRequest restRequest = new RestRequest(Method.POST);
             restRequest.AddHeader("Content-type", "application/json");
             restRequest.AddJsonBody(
@@ -43,7 +44,7 @@ namespace Deloitte
             RestRequest restRequest = new RestRequest(Method.POST);
             restRequest.AddHeader("Content-type", "application/json");
             restRequest.AddHeader("x-client", "umbrella");
-            restRequest.AddHeader("Authorization", "SessionID 1024MxoqBTdQ1yg7LyXxYzUsQ");
+            restRequest.AddHeader("Authorization", "SessionID"+sessionId);
 
             restRequest.AddJsonBody(
                 new
@@ -51,7 +52,7 @@ namespace Deloitte
                     due_date = "2018-10-26",
                     end_month = "07",
                     end_year = "2018",
-                    name = "qwerty987",
+                    name = "Project_qwerty258",
                     start_month = "02",
                     start_year = "2018",
                     type = "Adhoc"
