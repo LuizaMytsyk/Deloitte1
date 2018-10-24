@@ -1,40 +1,16 @@
-﻿using System;
-using NUnit.Framework;
-using DeloitteLib;
-using DeloitteTests;
-using OpenQA.Selenium.Support.UI;
-using OpenQA.Selenium;
+﻿using NUnit.Framework;
 using RestSharp;
 using System.Collections.Generic;
 
-namespace Deloitte
+namespace Deloitte.APITests
 {
-    [TestFixture]
-    public class Test_API_ProjectCreated : API_Base_Test
+    class Test_API_AddMethodology : API_Base_Test
     {
+
         [Test]
-        public void AddProjectPopUpOpened_Projects_Get()
+        public void AddMethodology()
         {
-            RestClient restClient = new RestClient("https://perf.exalinkservices.com:8443/gpproj/v1/projects/");
-            RestRequest restRequest = new RestRequest(Method.GET);
-            restRequest.AddHeader("Content-type", "application/json");
-            restRequest.AddHeader("x-client", "umbrella");
-            restRequest.AddHeader("Authorization", "SessionID " + sessionId);         
-
-            IRestResponse responce = restClient.Execute(restRequest);
-
-            RestSharp.Deserializers.JsonDeserializer deserial = new RestSharp.Deserializers.JsonDeserializer();
-            var JSONObj = deserial.Deserialize<Dictionary<string, string>>(responce);
-            string status = JSONObj["status"];
-
-            Assert.AreEqual("success", status);
-        }
-
-       
-        [Test]
-        public void CreateProject_Post()
-        {
-            RestClient restClient = new RestClient("https://perf.exalinkservices.com:8443/gpproj/v1/projects/");
+            RestClient restClient = new RestClient("https://perf.exalinkservices.com:8443/gpmeth/v1/methodologies/");
             RestRequest restRequest = new RestRequest(Method.POST);
             restRequest.AddHeader("Content-type", "application/json");
             restRequest.AddHeader("x-client", "umbrella");
@@ -43,13 +19,8 @@ namespace Deloitte
             restRequest.AddJsonBody(
                 new
                 {
-                    due_date = "2018-10-26",
-                    end_month = "12",
-                    end_year = "2018",
-                    name = "qwertdy96sf66555827",
-                    start_month = "05",
-                    start_year = "2018",
-                    type = "Adhoc"
+                    data = "This is test",
+                    name = "APITestName"
                 });
 
             IRestResponse responce = restClient.Execute(restRequest);
@@ -61,5 +32,25 @@ namespace Deloitte
             Assert.AreEqual("success", status);
         }
 
+        [Test]
+        public void AddProjectPopUpOpened_Methodologies_Get()
+        {
+            RestClient restClient = new RestClient("https://perf.exalinkservices.com:8443/gpmeth/v1/methodologies/");
+            RestRequest restRequest = new RestRequest(Method.GET);
+            restRequest.AddHeader("Content-type", "application/json");
+            restRequest.AddHeader("x-client", "umbrella");
+            restRequest.AddHeader("Authorization", "SessionID " + sessionId);
+
+            IRestResponse responce = restClient.Execute(restRequest);
+
+            RestSharp.Deserializers.JsonDeserializer deserial = new RestSharp.Deserializers.JsonDeserializer();
+            var JSONObj = deserial.Deserialize<Dictionary<string, string>>(responce);
+            string status = JSONObj["status"];
+            
+            Assert.AreEqual("success", status);
+        }
+
     }
 }
+
+    
