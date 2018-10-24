@@ -46,5 +46,11 @@ namespace Deloitte
                 .AddAce(text);
             Assert.IsTrue(IdePageInstance.SaveDisabled());
         }
+
+        [TearDown]
+        public void AfterTest()
+        {
+            TakeScreenShot();
+        }
     }
 }

@@ -2,16 +2,15 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using NUnit.Framework.Interfaces;
 
 namespace DeloitteTests
 {
     [TestFixture]
-
-
     public class BaseTest
     {
 
@@ -47,13 +46,40 @@ namespace DeloitteTests
             HeaderNavigationInstance.SelectClient("Umbrella Corporation");
         }
 
-        [TearDown]
-        public void TearDown()
+        private string ScreenShotFileName
         {
-            //Log out from app
+            get
+            {
+                var filename = TestContext.CurrentContext.Test.Name + "_" + DateTime.UtcNow.ToString("yyyy-MM-dd-HH-mm") + ".jpg";
 
+                foreach (char c in Path.GetInvalidFileNameChars())
+                    filename = filename.Replace(c.ToString(), String.Empty);
+
+                string screenShotFolder = @"c:\Temp\Screenshots";
+
+                var path = Path.Combine(screenShotFolder, filename);
+
+                if (path.Length > 250)
+                {
+                    throw new Exception("File path too long");
+                }
+
+                return path;
+            }
         }
 
+        public void TakeScreenShot()
+        {
+            if (TestContext.CurrentContext.Result.Outcome.Equals(ResultState.Failure) ||
+                TestContext.CurrentContext.Result.Outcome.Equals(ResultState.Error) ||
+                TestContext.CurrentContext.Result.Outcome.Equals(ResultState.SetUpFailure) ||
+                TestContext.CurrentContext.Result.Outcome.Equals(ResultState.SetUpError))
+            {
+                ((ITakesScreenshot)driver)?.GetScreenshot().SaveAsFile(ScreenShotFileName, ScreenshotImageFormat.Jpeg);
+            }
+        }
+
+       
         [OneTimeTearDown]
         public void OneTimeTearDown()
         {

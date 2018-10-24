@@ -55,6 +55,7 @@ namespace Deloitte
         [TearDown]
         public void tearDownTest()
         {
+            TakeScreenShot();
             saveMethodologyPopUp.CloseMsg();
             LeftMenuInstance.OpenProjects();
             saveMethodologyPopUp.Cancel();

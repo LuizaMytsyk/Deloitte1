@@ -6,6 +6,8 @@ using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium;
 using RestSharp;
 using System.Collections.Generic;
+using System.IO;
+using NUnit.Framework.Interfaces;
 
 namespace Deloitte
 {
@@ -36,6 +38,6 @@ namespace Deloitte
             Assert.Warn(sessionId);
 
         }
-
+      
     }
 }
