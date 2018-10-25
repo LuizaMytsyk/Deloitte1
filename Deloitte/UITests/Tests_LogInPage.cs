@@ -12,6 +12,7 @@ using Deloitte;
 
 namespace DeloitteTests
 {
+    [TestFixture]
     public class Tests_LogInPage 
     {
 

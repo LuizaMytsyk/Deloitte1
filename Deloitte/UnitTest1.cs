@@ -11,15 +11,26 @@ namespace Deloitte
     [TestFixture]
     public class UnitTest1 : BaseTest
     {
-        ProjectBlock projectBlockInstance;
+        IdePage IdePageInstance;
+        SaveMethodologyPopUp saveMethodologyPopUp;
+        
+        [SetUp]
+        public void LogIn()
+        {
+            LeftMenuInstance = new LeftMenu(driver);
+            IdePageInstance = new IdePage(driver);
+            saveMethodologyPopUp = new SaveMethodologyPopUp(driver);
+            LeftMenuInstance.OpenIde();
+        }
 
         [Test]
-        public void TestMethod1()
+        public void Test_CreateMethodology_Negative()
         {
-            foreach(var i in ProjectsPageInstance.Items)
-            {
-                Console.WriteLine(i.Name);
-            }
+            IdePageInstance.
+                NewMethodology();
+
+            Console.WriteLine("Test_UI: Save button is enable {0}", IdePageInstance.SaveDisabled());
+            Assert.IsFalse(IdePageInstance.SaveDisabled());
         }
     }
 }

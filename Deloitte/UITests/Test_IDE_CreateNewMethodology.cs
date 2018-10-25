@@ -15,8 +15,6 @@ namespace Deloitte
 
         static string[] AceContent_Success = new string[] { "testtest", "123454646", "#@$*$^@"};
 
-        static string[] AceContent_Fail = new string[] {"", " "};
-
         [SetUp]
         public void LogIn()
         {
@@ -39,8 +37,8 @@ namespace Deloitte
             CollectionAssert.Contains(IdePageInstance.Methodologies, ("test" + text));
         }
 
-        [Test, TestCaseSource("AceContent_Fail")]
-        public void Test_CreateMethodology_Negative(string text)
+        [Test]
+        public void Test_CreateMethodology_Empty(string text)
         {              
             IdePageInstance.
                 NewMethodology()

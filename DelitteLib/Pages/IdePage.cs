@@ -32,15 +32,12 @@ namespace DeloitteLib
         public bool SaveDisabled()
         {
             bool displayedBtn;
-            try
+
+            if (_saveButton.GetAttribute("disabled").Equals("disabled"))
             {
-                driver.FindElement(By.XPath("//button[@class='btn btn-primary save']"));
                 displayedBtn = true;
             }
-            catch(ElementNotVisibleException)
-            {
-                displayedBtn = false;
-            }
+            displayedBtn = false;
 
             return displayedBtn;
         }

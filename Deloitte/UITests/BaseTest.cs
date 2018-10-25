@@ -79,13 +79,13 @@ namespace DeloitteTests
             }
         }
 
-       
+
         [OneTimeTearDown]
         public void OneTimeTearDown()
         {
             driver.Close();
             driver.Quit();
-        }        
+        }
 
     }
 }

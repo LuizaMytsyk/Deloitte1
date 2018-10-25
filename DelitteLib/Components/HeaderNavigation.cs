@@ -19,7 +19,6 @@ namespace DeloitteLib
             _clients.Click();
             String path = "//span[contains(text(),'"+name+"')]";
             driver.FindElement(By.XPath(path)).Click();
-
         }
         //'Umbrella Corporation'
     }
