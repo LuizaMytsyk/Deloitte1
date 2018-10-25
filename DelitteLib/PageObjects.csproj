@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PageObjectsList.cs" />
     <Compile Include="Pages\ViewProject.cs" />
     <Compile Include="PopUps\ConfigureProjectPopUp.cs" />
     <Compile Include="PopUps\AddProjectPopUp.cs" />

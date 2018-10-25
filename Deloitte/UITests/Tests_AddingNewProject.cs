@@ -7,35 +7,22 @@ using NUnit.Framework;
 using DeloitteLib;
 using OpenQA.Selenium;
 using System.Threading;
+using DelitteLib;
 
 namespace DeloitteTests
 {
     public class Tests_AddingNewProject : BaseTest
     {
-        AddProject AddProjectInstance;
-        ProjectsPage ProjectsPageInstance;
-
-        [SetUp]
-        public void SetUp()
-        {          
-
-            //creating instances of needed pages
-            LoginPageInstance = new LoginPage(driver);
-            ProjectsPageInstance = new ProjectsPage(driver);
-            AddProjectInstance = new AddProject(driver);
-            HeaderNavigationInstance = new HeaderNavigation(driver);   
-            
-         }
-
+        
         [Test]
 
         public void AddingProjectAndSaving()
         {
-            ProjectsPageInstance.ClickAddProject();
+            Pages.ProjectsPageInstance().ClickAddProject();
 
-            wait.Until((d) => AddProjectInstance.IsAddProjectDisplayed());
+            wait.Until((d) => Pages.AddProjectInstance().IsAddProjectDisplayed());
 
-            AddProjectInstance
+            Pages.AddProjectInstance()
                 .SetType("Adhoc")
                 .SetProject("DP2")
                 .SetProjectName("auto_test31")
@@ -45,20 +32,20 @@ namespace DeloitteTests
                 .ClickCreate();
 
             driver.Navigate().Refresh();
-            wait.Until((d) => ProjectsPageInstance.IsProjectPageDisplayed());
+            wait.Until((d) => Pages.ProjectsPageInstance().IsProjectPageDisplayed());
                        
-            Assert.True(ProjectsPageInstance.VerifyProjectAdded("Adhoc: auto_test31"));
+            Assert.True(Pages.ProjectsPageInstance().VerifyProjectAdded("Adhoc: auto_test31"));
         }
 
         [Test]
 
         public void AddingProjectAndCanceling()
         {
-            ProjectsPageInstance.ClickAddProject();
+            Pages.ProjectsPageInstance().ClickAddProject();
 
-            wait.Until((d) => AddProjectInstance.IsAddProjectDisplayed());
+            wait.Until((d) => Pages.AddProjectInstance().IsAddProjectDisplayed());
 
-            AddProjectInstance
+            Pages.AddProjectInstance()
                 .SetType("Adhoc")
                 .SetProject("DP2")
                 .SetProjectName("auto_test41")
@@ -68,27 +55,27 @@ namespace DeloitteTests
                 .ClickCancel();
 
             driver.Navigate().Refresh();
-            wait.Until((d) => ProjectsPageInstance.IsProjectPageDisplayed());
+            wait.Until((d) => Pages.ProjectsPageInstance().IsProjectPageDisplayed());
 
-            Assert.False(ProjectsPageInstance.VerifyProjectAdded("Adhoc: auto_test41"));
+            Assert.False(Pages.ProjectsPageInstance().VerifyProjectAdded("Adhoc: auto_test41"));
         }
 
         [Test]
 
         public void AddingProjectStartDateError()
         {
-            ProjectsPageInstance.ClickAddProject();
+            Pages.ProjectsPageInstance().ClickAddProject();
 
-            wait.Until((d) => AddProjectInstance.IsAddProjectDisplayed());
+            wait.Until((d) => Pages.AddProjectInstance().IsAddProjectDisplayed());
 
-            AddProjectInstance
+            Pages.AddProjectInstance()
                 .SetType("Adhoc")
                 .SetProject("DP2")
                 .SetProjectName("test111")
                 .SetStartMonth("Jul 2019")
                 .SetEndMonth("Dec 2018");
 
-            Assert.True(AddProjectInstance.IsErrorMessageStartMonthDisplayed());
+            Assert.True(Pages.AddProjectInstance().IsErrorMessageStartMonthDisplayed());
         }
 
         [TearDown]

@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using NUnit.Framework.Interfaces;
+using DelitteLib;
 
 namespace DeloitteTests
 {
@@ -17,12 +18,7 @@ namespace DeloitteTests
         protected IWebDriver driver;
         protected WebDriverWait wait;
         protected string baseURL;
-        protected LoginPage LoginPageInstance;
-
-        protected ProjectsPage ProjectsPageInstance;
-        protected HeaderNavigation HeaderNavigationInstance;
-
-        protected LeftMenu LeftMenuInstance;
+        protected PageObjectsList Pages;
 
 
 
@@ -37,13 +33,12 @@ namespace DeloitteTests
 
             baseURL = "https://int1.exalinkservices.com";
             driver.Navigate().GoToUrl(baseURL);
-            LoginPageInstance = new LoginPage(driver);
-            ProjectsPageInstance = new ProjectsPage(driver);
-            HeaderNavigationInstance = new HeaderNavigation(driver);
 
-            LoginPageInstance.SingIn("gp_integrator", "Dummy#123");
-            wait.Until((d) => ProjectsPageInstance.IsProjectPageDisplayed());
-            HeaderNavigationInstance.SelectClient("Umbrella Corporation");
+            Pages = new PageObjectsList(driver);
+            
+            Pages.LoginPageInstance().SingIn("gp_integrator", "Dummy#123");
+            wait.Until((d) => Pages.ProjectsPageInstance().IsProjectPageDisplayed());
+            Pages.NewHeaderNavigation().SelectClient("Umbrella Corporation");
         }
 
         private string ScreenShotFileName
