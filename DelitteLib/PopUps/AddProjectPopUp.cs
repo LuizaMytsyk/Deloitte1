@@ -11,33 +11,43 @@ namespace DeloitteLib
         }
 
         [FindsBy(How = How.XPath, Using = "//button[@placeholder='Select Project Type']")]
+        [CacheLookup]
         private IWebElement _selectProjectTypeButton;
 
         [FindsBy(How = How.XPath, Using = "//div[@class='col-sm-6']//button[@id='projectSelect']")]
+        [CacheLookup]
         private IWebElement _projectsListButton;
 
         [FindsBy(How = How.Id, Using = "projectNameInput")]
+        [CacheLookup]
         private IWebElement _projectNameInput;
 
         [FindsBy(How = How.XPath, Using = "//input[@placeholder='Select Start Month']")]
+        [CacheLookup]
         private IWebElement _startMonth;
 
         [FindsBy(How = How.XPath, Using = "//input[@placeholder='Select End Month']")]
+        [CacheLookup]
         private IWebElement _endMonth;
 
         [FindsBy(How = How.XPath, Using = "//input[@placeholder='Due Date MM/DD/YYYY']")]
+        [CacheLookup]
         private IWebElement _dueDate;
 
         [FindsBy(How = How.XPath, Using = "//div[@class='col-sm-8']//button[@id='projectSelect']")]
+        [CacheLookup]
         private IWebElement _selectMethodolody;
 
         [FindsBy(How = How.XPath, Using = "//button[contains(text(),'Cancel')]")]
+        [CacheLookup]
         private IWebElement _cancelButton;
 
         [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-primary']")]
+        [CacheLookup]
         private IWebElement _createButton;
 
         [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Start Month should be before End Month')]")]
+        [CacheLookup]
         private IWebElement _errorMessageStartMonth;
 
         public void SelectOption(IWebDriver driver, String value)

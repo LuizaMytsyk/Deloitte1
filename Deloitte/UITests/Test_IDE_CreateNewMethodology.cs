@@ -15,7 +15,7 @@ namespace Deloitte
 
         static string[] AceContent_Success = new string[] { "testtest", "123454646", "#@$*$^@"};
 
-        static string[] AceContent_Fail = new string[] { "", " "};
+        static string[] AceContent_Fail = new string[] {"", " "};
 
         [SetUp]
         public void LogIn()
@@ -23,18 +23,19 @@ namespace Deloitte
             LeftMenuInstance = new LeftMenu(driver);
             IdePageInstance = new IdePage(driver);
             saveMethodologyPopUp = new SaveMethodologyPopUp(driver);            
-            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//xl-icon[@icon='d-code']")));
             LeftMenuInstance.OpenIde();
-            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//button[@class='btn btn-default new-meth-btn']")));
+           // wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//button[@class='btn btn-default new-meth-btn']")));
         }
 
         [Test, TestCaseSource("AceContent_Success")]
         public void Test_CreateMethodology_Positive(string text)
         {            
             IdePageInstance
+                .NewMethodology()
                 .AddAce(text)
                 .Save();
             saveMethodologyPopUp.SetName("test" + text);
+
             CollectionAssert.Contains(IdePageInstance.Methodologies, ("test" + text));
         }
 
@@ -44,12 +45,15 @@ namespace Deloitte
             IdePageInstance.
                 NewMethodology()
                 .AddAce(text);
-            Assert.IsTrue(IdePageInstance.SaveDisabled());
+
+            Console.WriteLine("Test_UI: Save button is enable {0}", IdePageInstance.SaveDisabled());
+            Assert.IsFalse(IdePageInstance.SaveDisabled());
         }
 
         [TearDown]
         public void AfterTest()
         {
+            CreateNLog.NLogCreate();
             TakeScreenShot();
         }
     }

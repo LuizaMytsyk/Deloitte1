@@ -1,0 +1,24 @@
+2018-10-25 13:26:47.7207 | DEBUG | Logger | Deloitte.Test_IDE_CreateNewMethodology
+2018-10-25 13:26:47.7406 | DEBUG | Logger | Test_CreateMethodology_Negative("")
+2018-10-25 13:26:47.7406 | DEBUG | Logger | Failed
+2018-10-25 13:26:58.2278 | DEBUG | Logger | Deloitte.Test_IDE_CreateNewMethodology
+2018-10-25 13:26:58.2278 | DEBUG | Logger | Test_CreateMethodology_Negative(" ")
+2018-10-25 13:26:58.2278 | DEBUG | Logger | Failed
+2018-10-25 13:29:20.2307 | DEBUG | Logger | Deloitte.Test_IDE_CreateNewMethodology
+2018-10-25 13:29:20.2486 | DEBUG | Logger | Test_CreateMethodology_Negative("")
+2018-10-25 13:29:20.2486 | DEBUG | Logger | Failed
+2018-10-25 13:29:51.3260 | DEBUG | Logger | Deloitte.Test_IDE_CreateNewMethodology
+2018-10-25 13:29:51.3260 | DEBUG | Logger | Test_CreateMethodology_Negative(" ")
+2018-10-25 13:29:51.3260 | DEBUG | Logger | Failed
+2018-10-25 13:33:59.7844 | DEBUG | Logger | Deloitte.APITests.Test_API_AddMethodology
+2018-10-25 13:33:59.8064 | DEBUG | Logger | AddMethodologiesPageOpened_Get
+2018-10-25 13:33:59.8064 | DEBUG | Logger | Passed
+2018-10-25 13:47:56.7164 | DEBUG | Logger | Deloitte.Test_IDE_CreateNewMethodology
+2018-10-25 13:47:56.7334 | DEBUG | Logger | Test_CreateMethodology_Negative("")
+2018-10-25 13:47:56.7334 | DEBUG | Logger | Failed
+2018-10-25 13:53:47.1079 | DEBUG | Logger | Deloitte.Test_IDE_CreateNewMethodology
+2018-10-25 13:53:47.1259 | DEBUG | Logger | Test_CreateMethodology_Negative("")
+2018-10-25 13:53:47.1259 | DEBUG | Logger | Failed
+2018-10-25 13:54:35.8777 | DEBUG | Logger | Deloitte.Test_IDE_CreateNewMethodology
+2018-10-25 13:54:35.8957 | DEBUG | Logger | Test_CreateMethodology_Negative("")
+2018-10-25 13:54:35.8957 | DEBUG | Logger | Failed

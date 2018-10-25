@@ -8,6 +8,7 @@ using DeloitteLib;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Chrome;
+using Deloitte;
 
 namespace DeloitteTests
 {
@@ -81,6 +82,12 @@ namespace DeloitteTests
             LoginPageInstance.SingIn(name, password);
             Assert.IsTrue(wait.Until((d) => LoginPageInstance.IsIncorrectCredentialsMessageDisplayed()));
 
+        }
+
+        [TearDown]
+        public void AfterTests()
+        {
+            CreateNLog.NLogCreate();
         }
         
     }

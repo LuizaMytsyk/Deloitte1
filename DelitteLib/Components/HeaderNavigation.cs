@@ -11,6 +11,7 @@ namespace DeloitteLib
 
 
         [FindsBy(How = How.Id, Using = "clients")]
+        [CacheLookup]
         private IWebElement _clients;
                 
         public void SelectClient(string name)

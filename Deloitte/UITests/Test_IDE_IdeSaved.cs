@@ -14,7 +14,6 @@ namespace Deloitte
         SaveMethodologyPopUp saveMethodologyPopUp;
 
         static string[] MethodologyName_Success = new string[] { "test", "123454646", "#@$*$^" };
-
         static string[] MethodologyName_Fail = new string[] { "", " " };
 
         [SetUp]
@@ -31,20 +30,23 @@ namespace Deloitte
         [Test, TestCaseSource("MethodologyName_Success")]
         public void Test_SavedMsg_Positive(string text)
         {
-            IdePageInstance.
-                AddAce("testtest")
+            IdePageInstance
+                .NewMethodology()
+                .AddAce("testtest")
                 .Save();
             saveMethodologyPopUp
                 .SetName(text)
                 .Save();
+            Console.WriteLine();
             Assert.AreEqual(saveMethodologyPopUp.GetMsg(), (text + ": methodology was saved successfully."));
         }
 
         [Test, TestCaseSource("MethodologyName_Fail")]
         public void Test_SavedMsg_Negative(string text)
         {
-            IdePageInstance.
-                AddAce("testtest")
+            IdePageInstance
+                .NewMethodology()
+                .AddAce("testtest")
                 .Save();
             saveMethodologyPopUp.
                 SetName(text)
@@ -55,11 +57,8 @@ namespace Deloitte
         [TearDown]
         public void tearDownTest()
         {
-            TakeScreenShot();
-            saveMethodologyPopUp.CloseMsg();
-            LeftMenuInstance.OpenProjects();
-            saveMethodologyPopUp.Cancel();
-            
+            CreateNLog.NLogCreate();
+            TakeScreenShot();            
         }
 
     }
