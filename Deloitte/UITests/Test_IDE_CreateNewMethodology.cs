@@ -9,48 +9,40 @@ namespace Deloitte
 {
     [TestFixture]
     public class Test_IDE_CreateNewMethodology : BaseTest
-    {
-        IdePage IdePageInstance; 
-        SaveMethodologyPopUp saveMethodologyPopUp;
-
+    {        
         static string[] AceContent_Success = new string[] { "testtest", "123454646", "#@$*$^@"};
 
         static string[] AceContent_Fail = new string[] { "", " "};
 
-        [SetUp]
-        public void LogIn()
-        {
-            LeftMenuInstance = new LeftMenu(driver);
-            IdePageInstance = new IdePage(driver);
-            saveMethodologyPopUp = new SaveMethodologyPopUp(driver);            
-            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//xl-icon[@icon='d-code']")));
-            LeftMenuInstance.OpenIde();
-            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//button[@class='btn btn-default new-meth-btn']")));
-        }
+        //[SetUp]
+        //public void LogIn()
+        //{
+        //    LeftMenuInstance = new LeftMenu(driver);
+        //    IdePageInstance = new IdePage(driver);
+        //    saveMethodologyPopUp = new SaveMethodologyPopUp(driver);            
+        //    wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//xl-icon[@icon='d-code']")));
+        //    LeftMenuInstance.OpenIde();
+        //    wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//button[@class='btn btn-default new-meth-btn']")));
+        //}
 
         [Test, TestCaseSource("AceContent_Success")]
         public void Test_CreateMethodology_Positive(string text)
         {            
-            IdePageInstance
+            Pages.IdePageInstance
                 .AddAce(text)
                 .Save();
-            saveMethodologyPopUp.SetName("test" + text);
-            CollectionAssert.Contains(IdePageInstance.Methodologies, ("test" + text));
+            Pages.SaveMethodologyPopUpInstance.SetName("test" + text);
+            CollectionAssert.Contains(Pages.IdePageInstance.Methodologies, ("test" + text));
         }
 
         [Test, TestCaseSource("AceContent_Fail")]
         public void Test_CreateMethodology_Negative(string text)
         {              
-            IdePageInstance.
-                NewMethodology()
+            Pages.IdePageInstance
+                .NewMethodology()
                 .AddAce(text);
-            Assert.IsTrue(IdePageInstance.SaveDisabled());
+            Assert.IsTrue(Pages.IdePageInstance.SaveDisabled());
         }
-
-        [TearDown]
-        public void AfterTest()
-        {
-            TakeScreenShot();
-        }
+       
     }
 }

@@ -16,7 +16,7 @@ namespace Deloitte
         [Test]
         public void TestMethod1()
         {
-            foreach(var i in ProjectsPageInstance.Items)
+            foreach(var i in Pages.ProjectsPageInstance.Items)
             {
                 Console.WriteLine(i.Name);
             }

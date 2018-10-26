@@ -19,7 +19,7 @@ namespace DeloitteTests
         protected WebDriverWait wait;
         protected string baseURL;
         protected PageObjectsList Pages;
-
+        protected ScreenShotMaker ScreenShotMakerInstance;
 
 
         [OneTimeSetUp]
@@ -34,47 +34,33 @@ namespace DeloitteTests
             baseURL = "https://int1.exalinkservices.com";
             driver.Navigate().GoToUrl(baseURL);
 
+            ScreenShotMakerInstance = new ScreenShotMaker(driver);
+
             Pages = new PageObjectsList(driver);
             
-            Pages.LoginPageInstance().SingIn("gp_integrator", "Dummy#123");
-            wait.Until((d) => Pages.ProjectsPageInstance().IsProjectPageDisplayed());
-            Pages.NewHeaderNavigation().SelectClient("Umbrella Corporation");
+            Pages.LoginPageInstance.SingIn("gp_integrator", "Dummy#123");
+            wait.Until((d) => Pages.ProjectsPageInstance.IsProjectPageDisplayed());
+            Pages.HeaderNavigationInstance.SelectClient("Umbrella Corporation");
         }
 
-        private string ScreenShotFileName
+        public virtual void TearDown()
         {
-            get
-            {
-                var filename = TestContext.CurrentContext.Test.Name + "_" + DateTime.UtcNow.ToString("yyyy-MM-dd-HH-mm") + ".jpg";
 
-                foreach (char c in Path.GetInvalidFileNameChars())
-                    filename = filename.Replace(c.ToString(), String.Empty);
-
-                string screenShotFolder = @"c:\Temp\Screenshots";
-
-                var path = Path.Combine(screenShotFolder, filename);
-
-                if (path.Length > 250)
-                {
-                    throw new Exception("File path too long");
-                }
-
-                return path;
-            }
         }
 
-        public void TakeScreenShot()
+
+        [TearDown]
+       
+
+        public void AfterTest()
         {
-            if (TestContext.CurrentContext.Result.Outcome.Equals(ResultState.Failure) ||
-                TestContext.CurrentContext.Result.Outcome.Equals(ResultState.Error) ||
-                TestContext.CurrentContext.Result.Outcome.Equals(ResultState.SetUpFailure) ||
-                TestContext.CurrentContext.Result.Outcome.Equals(ResultState.SetUpError))
-            {
-                ((ITakesScreenshot)driver)?.GetScreenshot().SaveAsFile(ScreenShotFileName, ScreenshotImageFormat.Jpeg);
-            }
+            ScreenShotMakerInstance.TakeScreenShot();
+            TearDown();
         }
 
        
+
+
         [OneTimeTearDown]
         public void OneTimeTearDown()
         {

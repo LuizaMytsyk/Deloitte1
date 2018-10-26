@@ -13,16 +13,14 @@ namespace DeloitteTests
 {
     public class Tests_AddingNewProject : BaseTest
     {
+        
        
         public void AddingProjectAndSaving()
         {
-            var projectPage = Pages.ProjectsPageInstance();
-            var addProgect = Pages.AddProjectInstance();
-            projectPage.ClickAddProject();
+            
+           Pages.ProjectsPageInstance.ClickAddProject();
 
-            wait.Until((d) => addProgect.IsAddProjectDisplayed());
-
-            addProgect
+            Pages.AddProjectInstance
                 .SetType("Adhoc")
                 .SetProject("DP2")
                 .SetProjectName("auto_test31")
@@ -32,22 +30,20 @@ namespace DeloitteTests
                 .ClickCreate();
 
             driver.Navigate().Refresh();
-            wait.Until((d) => projectPage.IsProjectPageDisplayed());
                        
-            Assert.True(projectPage.VerifyProjectAdded("Adhoc: auto_test31"));
+            Assert.True(Pages.ProjectsPageInstance.VerifyProjectAdded("Adhoc: auto_test31"));
         }
 
         [Test]
 
         public void AddingProjectAndCanceling()
         {
-            var projectPage = Pages.ProjectsPageInstance();
-            var addProgect = Pages.AddProjectInstance();
-            projectPage.ClickAddProject();
 
-            wait.Until((d) => addProgect.IsAddProjectDisplayed());
+            Pages.ProjectsPageInstance.ClickAddProject();
 
-            addProgect
+            wait.Until((d) => Pages.AddProjectInstance.IsAddProjectDisplayed());
+
+            Pages.AddProjectInstance
                  .SetType("Adhoc")
                 .SetProject("DP2")
                 .SetProjectName("auto_test41")
@@ -57,35 +53,27 @@ namespace DeloitteTests
                 .ClickCancel();
 
             driver.Navigate().Refresh();
-            wait.Until((d) => projectPage.IsProjectPageDisplayed());
 
-            Assert.False(projectPage.VerifyProjectAdded("Adhoc: auto_test41"));
+            Assert.False(Pages.ProjectsPageInstance.VerifyProjectAdded("Adhoc: auto_test41"));
         }
 
         [Test]
 
         public void AddingProjectStartDateError()
         {
-            var projectPage = Pages.ProjectsPageInstance();
-            var addProgect = Pages.AddProjectInstance();
-            projectPage.ClickAddProject();
+           
+            Pages.ProjectsPageInstance.ClickAddProject();
 
-            wait.Until((d) => addProgect.IsAddProjectDisplayed());
 
-            addProgect
+            Pages.AddProjectInstance
                 .SetType("Adhoc")
                 .SetProject("DP2")
                 .SetProjectName("test111")
                 .SetStartMonth("Jul 2019")
                 .SetEndMonth("Dec 2018");
 
-            Assert.True(addProgect.IsErrorMessageStartMonthDisplayed());
+            Assert.True(Pages.AddProjectInstance.IsErrorMessageStartMonthDisplayed());
         }
-
-        [TearDown]
-        public void AfterTest()
-        {
-            TakeScreenShot();
-        }
+       
     }
 }
