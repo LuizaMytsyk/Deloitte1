@@ -4,3 +4,6 @@
 2018-10-26 12:24:03.1416 | DEBUG | Logger | DeloitteTests.Tests_LogInPage
 2018-10-26 12:24:03.1416 | DEBUG | Logger | LoginWithValidCredentials
 2018-10-26 12:24:03.1416 | DEBUG | Logger | Passed
+2018-10-26 17:27:33.6528 | DEBUG | Logger | Deloitte.Test_IDE_CreateNewMethodology
+2018-10-26 17:27:33.6816 | DEBUG | Logger | Test_CreateMethodology_Empty
+2018-10-26 17:27:33.6845 | DEBUG | Logger | Passed

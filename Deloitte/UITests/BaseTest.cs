@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using NUnit.Framework.Interfaces;
 using DelitteLib;
+using Deloitte;
 
 namespace DeloitteTests
 {
@@ -45,17 +46,6 @@ namespace DeloitteTests
 
         public virtual void TearDown()
         {
-<<<<<<< HEAD
-            get
-            {
-                var filename = TestContext.CurrentContext.Test.Name + "_" + DateTime.UtcNow.ToString("yyyy-MM-dd-HH-mm") + ".jpg";
-
-                foreach (char c in Path.GetInvalidFileNameChars())
-                    filename = filename.Replace(c.ToString(), String.Empty);
-
-                string screenShotFolder = @"C:\Users\tmanu\source\repos\DeloitteWeb\Deloitte1\TestResults\Temp\Screenshots";
-=======
->>>>>>> PageGenerator2ForMerging
 
         }
 
@@ -66,14 +56,10 @@ namespace DeloitteTests
         public void AfterTest()
         {
             ScreenShotMakerInstance.TakeScreenShot();
+            CreateNLog.NLogCreate();
             TearDown();
         }
 
-<<<<<<< HEAD
-=======
-       
-
->>>>>>> PageGenerator2ForMerging
 
         [OneTimeTearDown]
         public void OneTimeTearDown()

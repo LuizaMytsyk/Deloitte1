@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using DeloitteLib;
-<<<<<<< HEAD
 using Deloitte;
-=======
 using OpenQA.Selenium;
 using System.Threading;
 using DelitteLib;
->>>>>>> PageGenerator2ForMerging
 
 namespace DeloitteTests
 {
@@ -73,19 +70,8 @@ namespace DeloitteTests
                 .SetStartMonth("Jul 2019")
                 .SetEndMonth("Dec 2018");
 
-<<<<<<< HEAD
-            Assert.True(AddProjectInstance.IsErrorMessageStartMonthDisplayed());
-        }
-
-        [TearDown]
-        public void AfterTest()
-        {
-            CreateNLog.NLogCreate();
-            TakeScreenShot();
-=======
             Assert.True(Pages.AddProjectInstance.IsErrorMessageStartMonthDisplayed());
->>>>>>> PageGenerator2ForMerging
         }
-       
+      
     }
 }
