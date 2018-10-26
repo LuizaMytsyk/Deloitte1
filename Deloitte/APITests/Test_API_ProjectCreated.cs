@@ -27,6 +27,7 @@ namespace Deloitte
             var JSONObj = deserial.Deserialize<Dictionary<string, string>>(responce);
             string status = JSONObj["status"];
 
+            Console.WriteLine("Test_API: Add Project PopUp Opened with status {0}", status);
             Assert.AreEqual("success", status);
         }
 
@@ -58,8 +59,9 @@ namespace Deloitte
             var JSONObj = deserial.Deserialize<Dictionary<string, string>>(responce);
             string status = JSONObj["status"];
 
+            Console.WriteLine("Test_API: Project is created with status {0}", status);
             Assert.AreEqual("success", status);
         }
-
+                
     }
 }

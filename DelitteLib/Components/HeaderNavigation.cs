@@ -11,6 +11,7 @@ namespace DeloitteLib
 
 
         [FindsBy(How = How.Id, Using = "clients")]
+        [CacheLookup]
         private IWebElement _clients;
                 
         public void SelectClient(string name)
@@ -18,7 +19,6 @@ namespace DeloitteLib
             _clients.Click();
             String path = "//span[contains(text(),'"+name+"')]";
             driver.FindElement(By.XPath(path)).Click();
-
         }
         //'Umbrella Corporation'
     }

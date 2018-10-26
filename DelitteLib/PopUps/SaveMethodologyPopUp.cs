@@ -22,7 +22,15 @@ namespace DeloitteLib
         }
         public bool SaveDisabled()
         {
-            return _saveButton.GetAttribute("disabled").Equals("disabled");
+            bool displayedBtn;
+
+            if (_saveButton.GetAttribute("disabled").Equals("disabled"))
+            {
+                displayedBtn = true;
+            }
+            displayedBtn = false;
+
+            return displayedBtn;
         }
         public SaveMethodologyPopUp Close()
         {
@@ -53,23 +61,29 @@ namespace DeloitteLib
 
 
         [FindsBy(How = How.Id, Using = "name")]
+        [CacheLookup]
         private IWebElement _nameField;
 
         [FindsBy(How = How.XPath, Using = "//span[contains(text(),'×')]")]
+        [CacheLookup]
         private IWebElement _closeButton;
 
         [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-default']")]
+        [CacheLookup]
         private IWebElement _cancelButton;
 
         [FindsBy(How = How.XPath, Using = "//div[@class='toastr-message-text toast-message']")]
+        [CacheLookup]
         private IWebElement _Msg;
         //methodology was saved successfully
         //Error: Failed saving methodology.
 
         [FindsBy(How = How.XPath, Using = "//button[@class='action-btn toast-close-button']")]
+        [CacheLookup]
         private IWebElement _closeErrorMsg;
 
         [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-primary']")]
+        [CacheLookup]
         private IWebElement _saveButton;
     }
 }

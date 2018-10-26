@@ -31,9 +31,11 @@ namespace DeloitteLib
         public List<ProjectBlock> Items => _allProjects.Select(i => new ProjectBlock(i, driver)).ToList();
 
         [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-primary pull-right']")]
+        [CacheLookup]
         private IWebElement _addProjectButton;
 
         [FindsBy(How = How.XPath, Using = "//div[@class='panel panel-default']")]
+        [CacheLookup]
         private IList<IWebElement> _allProjects;
 
         public void ClickAddProject()

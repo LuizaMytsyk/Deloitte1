@@ -1,0 +1,1 @@
+<Playlist Version="1.0"><Add Test="DeloitteTests.Tests_LogInPage.Test_NavigateToLink_LoginPageOpened" /><Add Test="DeloitteTests.Tests_LogInPage.LoginWithValidCredentials" /><Add Test="DeloitteTests.Tests_LogInPage.LoginWithInValidCredentials" /><Add Test="Deloitte.UnitTest1.Test_CreateMethodology_Negative" /></Playlist>

@@ -21,15 +21,19 @@ namespace DeloitteLib
         }
 
         [FindsBy(How = How.Id, Using = "username")]
+        [CacheLookup]
         private IWebElement _username;
 
         [FindsBy(How = How.XPath, Using = "//input[@placeholder='Password']")]
+        [CacheLookup]
         private IWebElement _password;
 
         [FindsBy(How = How.Id, Using = "login-submit")]
+        [CacheLookup]
         private IWebElement _submitButton;
 
         [FindsBy(How = How.XPath, Using = "//p[@class='ng-binding']")]
+        [CacheLookup]
         private IWebElement _incorrectCredentialsMessage;
 
         public bool IsIncorrectCredentialsMessageDisplayed()
