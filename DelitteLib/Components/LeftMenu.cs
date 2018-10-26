@@ -10,13 +10,16 @@ namespace DeloitteLib
         public LeftMenu(IWebDriver driver) : base(driver) { }
 
         [FindsBy(How = How.Id, Using = "service-nav-toggle")]
+        [CacheLookup]
         private IWebElement _navToggle;
 
         [FindsBy(How = How.XPath, Using = "//xl-icon[@icon='d-code']")]
+        [CacheLookup]
         private IWebElement _ide;
 
 
         [FindsBy(How = How.XPath, Using = "//xl-icon[@icon='d-list']")]
+        [CacheLookup]
         private IWebElement _projects;
 
         public LeftMenu OpenIde()

@@ -55,7 +55,7 @@ namespace DeloitteTests
                 foreach (char c in Path.GetInvalidFileNameChars())
                     filename = filename.Replace(c.ToString(), String.Empty);
 
-                string screenShotFolder = @"c:\Temp\Screenshots";
+                string screenShotFolder = @"C:\Users\tmanu\source\repos\DeloitteWeb\Deloitte1\TestResults\Temp\Screenshots";
 
                 var path = Path.Combine(screenShotFolder, filename);
 
@@ -79,13 +79,13 @@ namespace DeloitteTests
             }
         }
 
-       
+
         [OneTimeTearDown]
         public void OneTimeTearDown()
         {
             driver.Close();
             driver.Quit();
-        }        
+        }
 
     }
 }

@@ -38,6 +38,12 @@ namespace Deloitte
             Assert.Warn(sessionId);
 
         }
-      
+
+        [TearDown]
+        public void AfterTests()
+        {
+            CreateNLog.NLogCreate();
+        }
+
     }
 }

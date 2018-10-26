@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
 using DeloitteLib;
-using OpenQA.Selenium;
-using System.Threading;
+using Deloitte;
 
 namespace DeloitteTests
 {
@@ -41,7 +37,7 @@ namespace DeloitteTests
                 .SetProjectName("auto_test31")
                 .SetStartMonth("Jul 2018")
                 .SetEndMonth("Dec 2019")
-                .SetDueDate("Dec 2019")                
+                .SetDueDate("Dec 2019")  
                 .ClickCreate();
 
             driver.Navigate().Refresh();
@@ -94,6 +90,7 @@ namespace DeloitteTests
         [TearDown]
         public void AfterTest()
         {
+            CreateNLog.NLogCreate();
             TakeScreenShot();
         }
     }

@@ -12,10 +12,9 @@ namespace Deloitte
     {
         IdePage IdePageInstance; 
         SaveMethodologyPopUp saveMethodologyPopUp;
+        public string methodologyName = "Test_12345";
 
-        static string[] AceContent_Success = new string[] { "testtest", "123454646", "#@$*$^@"};
-
-        static string[] AceContent_Fail = new string[] { "", " "};
+      //  static string[] AceContent_Success = new string[] { "testtest", "123454646", "#@$*$^@"};
 
         [SetUp]
         public void LogIn()
@@ -23,33 +22,35 @@ namespace Deloitte
             LeftMenuInstance = new LeftMenu(driver);
             IdePageInstance = new IdePage(driver);
             saveMethodologyPopUp = new SaveMethodologyPopUp(driver);            
-            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//xl-icon[@icon='d-code']")));
             LeftMenuInstance.OpenIde();
-            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//button[@class='btn btn-default new-meth-btn']")));
+           // wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//button[@class='btn btn-default new-meth-btn']")));
         }
 
-        [Test, TestCaseSource("AceContent_Success")]
-        public void Test_CreateMethodology_Positive(string text)
+        [Test]
+        public void Test_CreateMethodology_Positive()
         {            
             IdePageInstance
-                .AddAce(text)
+                .NewMethodology()
+                .AddAce("testtest")
                 .Save();
-            saveMethodologyPopUp.SetName("test" + text);
-            CollectionAssert.Contains(IdePageInstance.Methodologies, ("test" + text));
+            saveMethodologyPopUp.SetName(methodologyName);
+
+            CollectionAssert.Contains(IdePageInstance.Methodologies, methodologyName, "Methodology displayed in list");
         }
 
-        [Test, TestCaseSource("AceContent_Fail")]
-        public void Test_CreateMethodology_Negative(string text)
-        {              
+        [Test]
+        public void Test_CreateMethodology_Empty()
+        {
             IdePageInstance.
-                NewMethodology()
-                .AddAce(text);
-            Assert.IsTrue(IdePageInstance.SaveDisabled());
+                NewMethodology(); 
+
+            Assert.IsFalse(IdePageInstance.SaveDisabled(), "Save button is disable");
         }
 
         [TearDown]
         public void AfterTest()
         {
+            CreateNLog.NLogCreate();
             TakeScreenShot();
         }
     }

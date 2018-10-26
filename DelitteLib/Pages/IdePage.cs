@@ -31,7 +31,15 @@ namespace DeloitteLib
 
         public bool SaveDisabled()
         {
-            return _saveButton.GetAttribute("disabled").Equals("disabled");
+            bool displayedBtn;
+
+            if (_saveButton.GetAttribute("disabled").Equals("disabled"))
+            {
+                displayedBtn = true;
+            }
+            displayedBtn = false;
+
+            return displayedBtn;
         }
 
         public IdePage NewMethodology()
@@ -42,23 +50,24 @@ namespace DeloitteLib
         }
         public IdePage AddAce(string code)
         {
-            _aceContent.SendKeys(Keys.Enter);
-            _aceContent.SendKeys(Keys.Up);
-            _aceContent.SendKeys(Keys.Delete);
             _aceContent.SendKeys(code);
             return this;
         }
         
         [FindsBy(How = How.XPath, Using = "//textarea[@class = 'ace_text-input']")]
+        [CacheLookup]
         private IWebElement _aceContent;
 
         [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-primary save']")]
+        [CacheLookup]
         private IWebElement _saveButton;
 
         [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-default new-meth-btn']")]
+        [CacheLookup]
         private IWebElement _newMethodologyBtn;
 
         [FindsBy(How = How.XPath, Using = "//span[contains(@class, 'name overlapping')]")]
+        [CacheLookup]
         private IList<IWebElement> _allMethodologies;
                
     }

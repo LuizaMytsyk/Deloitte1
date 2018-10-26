@@ -201,3 +201,6 @@ C:\Users\lmyts\Documents\Deloitte123\Deloitte1\Deloitte\obj\Debug\Tests.csproj.C
 C:\Users\lmyts\Documents\Deloitte123\Deloitte1\Deloitte\obj\Debug\Tests.csproj.CopyComplete
 C:\Users\lmyts\Documents\Deloitte123\Deloitte1\Deloitte\obj\Debug\Deloitte.dll
 C:\Users\lmyts\Documents\Deloitte123\Deloitte1\Deloitte\obj\Debug\Deloitte.pdb
+C:\Users\tmanu\source\repos\DeloitteWeb\Deloitte1\Deloitte\bin\Debug\NLog.config
+C:\Users\tmanu\source\repos\DeloitteWeb\Deloitte1\Deloitte\bin\Debug\NLog.dll
+C:\Users\tmanu\source\repos\DeloitteWeb\Deloitte1\Deloitte\bin\Debug\NLog.xml
