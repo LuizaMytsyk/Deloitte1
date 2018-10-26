@@ -37,7 +37,7 @@ namespace DeloitteTests
                 .SetProjectName("auto_test31")
                 .SetStartMonth("Jul 2018")
                 .SetEndMonth("Dec 2019")
-                .SetDueDate("Dec 2019")                
+                .SetDueDate("Dec 2019")  
                 .ClickCreate();
 
             driver.Navigate().Refresh();

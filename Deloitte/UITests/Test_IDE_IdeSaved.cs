@@ -11,10 +11,8 @@ namespace Deloitte
     public class Test_IDE_IdeSaved : BaseTest
     {
         IdePage IdePageInstance;
-        SaveMethodologyPopUp saveMethodologyPopUp;
+        SaveMethodologyPopUp saveMethodologyPopUp;              
 
-        static string[] MethodologyName_Success = new string[] { "test", "123454646", "#@$*$^" };
-        static string[] MethodologyName_Fail = new string[] { "", " " };
 
         [SetUp]
         public void LogIn()
@@ -22,36 +20,30 @@ namespace Deloitte
             LeftMenuInstance = new LeftMenu(driver);
             IdePageInstance = new IdePage(driver);
             saveMethodologyPopUp = new SaveMethodologyPopUp(driver);
-            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//xl-icon[@icon='d-code']")));
             LeftMenuInstance.OpenIde();
-            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//button[@class='btn btn-default new-meth-btn']")));
         }
 
         [Test, TestCaseSource("MethodologyName_Success")]
-        public void Test_SavedMsg_Positive(string text)
+        public void Test_SavedMethodology_Positive(string text)
         {
             IdePageInstance
                 .NewMethodology()
                 .AddAce("testtest")
                 .Save();
             saveMethodologyPopUp
-                .SetName(text)
-                .Save();
-            Console.WriteLine();
-            Assert.AreEqual(saveMethodologyPopUp.GetMsg(), (text + ": methodology was saved successfully."));
+                .SetName("123454646");
+            Assert.IsFalse(saveMethodologyPopUp.SaveDisabled(), "Save methodology button is disable");
         }
 
-        [Test, TestCaseSource("MethodologyName_Fail")]
-        public void Test_SavedMsg_Negative(string text)
+        [Test]
+        public void Test_SavedMethodology_Negative()
         {
             IdePageInstance
                 .NewMethodology()
                 .AddAce("testtest")
                 .Save();
-            saveMethodologyPopUp.
-                SetName(text)
-                .Cancel();
-            Assert.AreEqual(saveMethodologyPopUp.GetMsg(), "Error: Failed saving methodology.");
+            
+            Assert.IsTrue(saveMethodologyPopUp.SaveDisabled(), "Save methodology button is disable");
         }
 
         [TearDown]

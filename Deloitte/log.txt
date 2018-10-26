@@ -1,0 +1,6 @@
+2018-10-26 12:23:53.7435 | DEBUG | Logger | DeloitteTests.Tests_LogInPage
+2018-10-26 12:23:53.7634 | DEBUG | Logger | Test_NavigateToLink_LoginPageOpened
+2018-10-26 12:23:53.7634 | DEBUG | Logger | Passed
+2018-10-26 12:24:03.1416 | DEBUG | Logger | DeloitteTests.Tests_LogInPage
+2018-10-26 12:24:03.1416 | DEBUG | Logger | LoginWithValidCredentials
+2018-10-26 12:24:03.1416 | DEBUG | Logger | Passed

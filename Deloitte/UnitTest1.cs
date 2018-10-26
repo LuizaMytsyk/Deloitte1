@@ -8,7 +8,7 @@ using System;
 
 namespace Deloitte
 {
-    [TestFixture]
+    [TestFixture, ]
     public class UnitTest1 : BaseTest
     {
         IdePage IdePageInstance;

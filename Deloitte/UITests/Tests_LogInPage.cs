@@ -12,7 +12,7 @@ using Deloitte;
 
 namespace DeloitteTests
 {
-    [TestFixture]
+    [TestFixture, Order (1)]
     public class Tests_LogInPage 
     {
 

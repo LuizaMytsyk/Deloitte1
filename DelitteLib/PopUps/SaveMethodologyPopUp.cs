@@ -22,7 +22,15 @@ namespace DeloitteLib
         }
         public bool SaveDisabled()
         {
-            return _saveButton.GetAttribute("disabled").Equals("disabled");
+            bool displayedBtn;
+
+            if (_saveButton.GetAttribute("disabled").Equals("disabled"))
+            {
+                displayedBtn = true;
+            }
+            displayedBtn = false;
+
+            return displayedBtn;
         }
         public SaveMethodologyPopUp Close()
         {

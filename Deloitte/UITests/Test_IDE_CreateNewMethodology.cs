@@ -12,8 +12,9 @@ namespace Deloitte
     {
         IdePage IdePageInstance; 
         SaveMethodologyPopUp saveMethodologyPopUp;
+        public string methodologyName = "Test_12345";
 
-        static string[] AceContent_Success = new string[] { "testtest", "123454646", "#@$*$^@"};
+      //  static string[] AceContent_Success = new string[] { "testtest", "123454646", "#@$*$^@"};
 
         [SetUp]
         public void LogIn()
@@ -25,27 +26,25 @@ namespace Deloitte
            // wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//button[@class='btn btn-default new-meth-btn']")));
         }
 
-        [Test, TestCaseSource("AceContent_Success")]
-        public void Test_CreateMethodology_Positive(string text)
+        [Test]
+        public void Test_CreateMethodology_Positive()
         {            
             IdePageInstance
                 .NewMethodology()
-                .AddAce(text)
+                .AddAce("testtest")
                 .Save();
-            saveMethodologyPopUp.SetName("test" + text);
+            saveMethodologyPopUp.SetName(methodologyName);
 
-            CollectionAssert.Contains(IdePageInstance.Methodologies, ("test" + text));
+            CollectionAssert.Contains(IdePageInstance.Methodologies, methodologyName, "Methodology displayed in list");
         }
 
         [Test]
-        public void Test_CreateMethodology_Empty(string text)
-        {              
+        public void Test_CreateMethodology_Empty()
+        {
             IdePageInstance.
-                NewMethodology()
-                .AddAce(text);
+                NewMethodology(); 
 
-            Console.WriteLine("Test_UI: Save button is enable {0}", IdePageInstance.SaveDisabled());
-            Assert.IsFalse(IdePageInstance.SaveDisabled());
+            Assert.IsFalse(IdePageInstance.SaveDisabled(), "Save button is disable");
         }
 
         [TearDown]
