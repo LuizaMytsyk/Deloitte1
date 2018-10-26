@@ -55,10 +55,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PageObjectsList.cs" />
     <Compile Include="Pages\ViewProject.cs" />
     <Compile Include="PopUps\ConfigureProjectPopUp.cs" />
     <Compile Include="PopUps\AddProjectPopUp.cs" />
-    <Compile Include="BasePage.cs" />
+    <Compile Include="BaseClass.cs" />
     <Compile Include="Components\HeaderNavigation.cs" />
     <Compile Include="Pages\IdePage.cs" />
     <Compile Include="Components\LeftMenu.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="ProjectBlock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PopUps\SaveMethodologyPopUp.cs" />
+    <Compile Include="ScreenShotMaker.cs" />
     <Compile Include="WebDriverExtensions.cs" />
   </ItemGroup>
   <ItemGroup>

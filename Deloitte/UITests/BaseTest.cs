@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using NUnit.Framework.Interfaces;
+using DelitteLib;
 
 namespace DeloitteTests
 {
@@ -17,13 +18,8 @@ namespace DeloitteTests
         protected IWebDriver driver;
         protected WebDriverWait wait;
         protected string baseURL;
-        protected LoginPage LoginPageInstance;
-
-        protected ProjectsPage ProjectsPageInstance;
-        protected HeaderNavigation HeaderNavigationInstance;
-
-        protected LeftMenu LeftMenuInstance;
-
+        protected PageObjectsList Pages;
+        protected ScreenShotMaker ScreenShotMakerInstance;
 
 
         [OneTimeSetUp]
@@ -37,17 +33,19 @@ namespace DeloitteTests
 
             baseURL = "https://int1.exalinkservices.com";
             driver.Navigate().GoToUrl(baseURL);
-            LoginPageInstance = new LoginPage(driver);
-            ProjectsPageInstance = new ProjectsPage(driver);
-            HeaderNavigationInstance = new HeaderNavigation(driver);
 
-            LoginPageInstance.SingIn("gp_integrator", "Dummy#123");
-            wait.Until((d) => ProjectsPageInstance.IsProjectPageDisplayed());
-            HeaderNavigationInstance.SelectClient("Umbrella Corporation");
+            ScreenShotMakerInstance = new ScreenShotMaker(driver);
+
+            Pages = new PageObjectsList(driver);
+            
+            Pages.LoginPageInstance.SingIn("gp_integrator", "Dummy#123");
+            wait.Until((d) => Pages.ProjectsPageInstance.IsProjectPageDisplayed());
+            Pages.HeaderNavigationInstance.SelectClient("Umbrella Corporation");
         }
 
-        private string ScreenShotFileName
+        public virtual void TearDown()
         {
+<<<<<<< HEAD
             get
             {
                 var filename = TestContext.CurrentContext.Test.Name + "_" + DateTime.UtcNow.ToString("yyyy-MM-dd-HH-mm") + ".jpg";
@@ -56,29 +54,26 @@ namespace DeloitteTests
                     filename = filename.Replace(c.ToString(), String.Empty);
 
                 string screenShotFolder = @"C:\Users\tmanu\source\repos\DeloitteWeb\Deloitte1\TestResults\Temp\Screenshots";
+=======
+>>>>>>> PageGenerator2ForMerging
 
-                var path = Path.Combine(screenShotFolder, filename);
-
-                if (path.Length > 250)
-                {
-                    throw new Exception("File path too long");
-                }
-
-                return path;
-            }
         }
 
-        public void TakeScreenShot()
+
+        [TearDown]
+       
+
+        public void AfterTest()
         {
-            if (TestContext.CurrentContext.Result.Outcome.Equals(ResultState.Failure) ||
-                TestContext.CurrentContext.Result.Outcome.Equals(ResultState.Error) ||
-                TestContext.CurrentContext.Result.Outcome.Equals(ResultState.SetUpFailure) ||
-                TestContext.CurrentContext.Result.Outcome.Equals(ResultState.SetUpError))
-            {
-                ((ITakesScreenshot)driver)?.GetScreenshot().SaveAsFile(ScreenShotFileName, ScreenshotImageFormat.Jpeg);
-            }
+            ScreenShotMakerInstance.TakeScreenShot();
+            TearDown();
         }
 
+<<<<<<< HEAD
+=======
+       
+
+>>>>>>> PageGenerator2ForMerging
 
         [OneTimeTearDown]
         public void OneTimeTearDown()

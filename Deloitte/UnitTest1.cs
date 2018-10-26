@@ -26,11 +26,18 @@ namespace Deloitte
         [Test]
         public void Test_CreateMethodology_Negative()
         {
+<<<<<<< HEAD
             IdePageInstance.
                 NewMethodology();
 
             Console.WriteLine("Test_UI: Save button is enable {0}", IdePageInstance.SaveDisabled());
             Assert.IsFalse(IdePageInstance.SaveDisabled());
+=======
+            foreach(var i in Pages.ProjectsPageInstance.Items)
+            {
+                Console.WriteLine(i.Name);
+            }
+>>>>>>> PageGenerator2ForMerging
         }
     }
 }
