@@ -8,7 +8,7 @@ using System;
 
 namespace Deloitte
 {
-    [TestFixture, ]
+    [TestFixture]
     public class UnitTest1 : BaseTest
     {
         IdePage IdePageInstance;
@@ -22,6 +22,7 @@ namespace Deloitte
             saveMethodologyPopUp = new SaveMethodologyPopUp(driver);
             LeftMenuInstance.OpenIde();
         }
+
 
         [Test]
         public void Test_CreateMethodology_Negative()

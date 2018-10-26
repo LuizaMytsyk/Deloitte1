@@ -12,9 +12,8 @@ namespace Deloitte
     {
         IdePage IdePageInstance; 
         SaveMethodologyPopUp saveMethodologyPopUp;
-        public string methodologyName = "Test_12345";
 
-      //  static string[] AceContent_Success = new string[] { "testtest", "123454646", "#@$*$^@"};
+        static string[] AceContent_Success = new string[] { "testtest", "123454646", "#@$*$^@"};
 
         [SetUp]
         public void LogIn()
@@ -26,16 +25,16 @@ namespace Deloitte
            // wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//button[@class='btn btn-default new-meth-btn']")));
         }
 
-        [Test]
-        public void Test_CreateMethodology_Positive()
+        [Test, TestCaseSource("AceContent_Success")]
+        public void Test_CreateMethodology_Positive(string text)
         {            
             IdePageInstance
                 .NewMethodology()
                 .AddAce("testtest")
                 .Save();
-            saveMethodologyPopUp.SetName(methodologyName);
+            saveMethodologyPopUp.SetName(text);
 
-            CollectionAssert.Contains(IdePageInstance.Methodologies, methodologyName, "Methodology displayed in list");
+            CollectionAssert.Contains(IdePageInstance.Methodologies, text, "Methodology displayed in list");
         }
 
         [Test]
