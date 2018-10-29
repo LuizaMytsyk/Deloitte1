@@ -15,13 +15,13 @@ namespace DeloitteTests
        
         public void AddingProjectAndSaving()
         {
-            
-           Pages.ProjectsPageInstance.ClickAddProject();
+            string name = NameGenerator.GetRandomAlphaNumeric();
+            Pages.ProjectsPageInstance.ClickAddProject();
 
             Pages.AddProjectInstance
                 .SetType("Adhoc")
                 .SetProject("DP2")
-                .SetProjectName("auto_test31")
+                .SetProjectName(name)
                 .SetStartMonth("Jul 2018")
                 .SetEndMonth("Dec 2019")
                 .SetDueDate("Dec 2019")  
@@ -29,14 +29,14 @@ namespace DeloitteTests
 
             driver.Navigate().Refresh();
                        
-            Assert.True(Pages.ProjectsPageInstance.VerifyProjectAdded("Adhoc: auto_test31"));
+            Assert.True(Pages.ProjectsPageInstance.VerifyProjectAdded("Adhoc: "+ name));
         }
 
         [Test]
 
         public void AddingProjectAndCanceling()
         {
-
+            string name = NameGenerator.GetRandomAlphaNumeric();
             Pages.ProjectsPageInstance.ClickAddProject();
 
             wait.Until((d) => Pages.AddProjectInstance.IsAddProjectDisplayed());
@@ -44,7 +44,7 @@ namespace DeloitteTests
             Pages.AddProjectInstance
                  .SetType("Adhoc")
                 .SetProject("DP2")
-                .SetProjectName("auto_test41")
+                .SetProjectName(name)
                 .SetStartMonth("Jul 2018")
                 .SetEndMonth("Dec 2019")
                 .SetDueDate("Dec 2019")                
@@ -52,21 +52,20 @@ namespace DeloitteTests
 
             driver.Navigate().Refresh();
 
-            Assert.False(Pages.ProjectsPageInstance.VerifyProjectAdded("Adhoc: auto_test41"));
+            Assert.False(Pages.ProjectsPageInstance.VerifyProjectAdded("Adhoc: "+ name));
         }
 
         [Test]
 
         public void AddingProjectStartDateError()
         {
-           
+            string name = NameGenerator.GetRandomAlphaNumeric();
             Pages.ProjectsPageInstance.ClickAddProject();
-
-
+            
             Pages.AddProjectInstance
                 .SetType("Adhoc")
                 .SetProject("DP2")
-                .SetProjectName("test111")
+                .SetProjectName(name)
                 .SetStartMonth("Jul 2019")
                 .SetEndMonth("Dec 2018");
 

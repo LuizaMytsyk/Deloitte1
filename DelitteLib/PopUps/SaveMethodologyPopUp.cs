@@ -8,57 +8,6 @@ namespace DeloitteLib
         public SaveMethodologyPopUp(IWebDriver driver) : base(driver)
         {
         }
-        public SaveMethodologyPopUp SetName(string name)
-        {
-            _nameField.Clear();
-            _nameField.SendKeys(name);
-            return this;
-        }
-
-        public SaveMethodologyPopUp Save()
-        {
-            _saveButton.Click();
-            return this;
-        }
-        public bool SaveDisabled()
-        {
-            bool displayedBtn;
-
-            if (_saveButton.GetAttribute("disabled").Equals("disabled"))
-            {
-                displayedBtn = true;
-            }
-            displayedBtn = false;
-
-            return displayedBtn;
-        }
-        public SaveMethodologyPopUp Close()
-        {
-            _closeButton.Click();
-            return this;
-        }
-
-        public SaveMethodologyPopUp Cancel()
-        {
-            _cancelButton.Click();
-            return this;
-        }
-
-        public bool MsgDisplayed()
-        {
-            return _Msg.Displayed;
-        }
-
-        public SaveMethodologyPopUp CloseMsg()
-        {
-            _closeErrorMsg.Click();
-            return this;
-        }
-        public string GetMsg()
-        {
-            return _Msg.GetAttribute("text");
-        }
-
 
         [FindsBy(How = How.Id, Using = "name")]
         [CacheLookup]
@@ -85,6 +34,62 @@ namespace DeloitteLib
         [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-primary']")]
         [CacheLookup]
         private IWebElement _saveButton;
+
+
+        public SaveMethodologyPopUp SetName(string name)
+        {
+            _nameField.Clear();
+            _nameField.SendKeys(name);
+            return this;
+        }
+
+        public SaveMethodologyPopUp Save()
+        {
+            _saveButton.Click();
+            return this;
+        }
+        
+        public SaveMethodologyPopUp Close()
+        {
+            _closeButton.Click();
+            return this;
+        }
+
+        public SaveMethodologyPopUp Cancel()
+        {
+            _cancelButton.Click();
+            return this;
+        }
+
+        public bool MsgDisplayed()
+        {
+            return _Msg.Displayed;
+        }
+
+        public bool SaveDisabled()
+        {
+            bool displayedBtn;
+
+            if (_saveButton.GetAttribute("disabled").Equals("disabled"))
+            {
+                displayedBtn = true;
+            }
+            displayedBtn = false;
+
+            return displayedBtn;
+        }
+        public SaveMethodologyPopUp CloseMsg()
+        {
+            _closeErrorMsg.Click();
+            return this;
+        }
+        public string GetMsg()
+        {
+            return _Msg.GetAttribute("text");
+        }
+
+
+        
     }
 }
 

@@ -7,3 +7,12 @@
 2018-10-26 17:27:33.6528 | DEBUG | Logger | Deloitte.Test_IDE_CreateNewMethodology
 2018-10-26 17:27:33.6816 | DEBUG | Logger | Test_CreateMethodology_Empty
 2018-10-26 17:27:33.6845 | DEBUG | Logger | Passed
+2018-10-26 17:49:51.8287 | DEBUG | Logger | Deloitte.APITests.Test_API_AddMethodology
+2018-10-26 17:49:51.8457 | DEBUG | Logger | AddMethodologiesPageOpened_Get
+2018-10-26 17:49:51.8507 | DEBUG | Logger | Passed
+2018-10-29 13:57:27.6547 | DEBUG | Logger | Deloitte.APITests.Test_API_AddMethodology
+2018-10-29 13:57:27.6717 | DEBUG | Logger | AddMethodologiesPageOpened_Get
+2018-10-29 13:57:27.6717 | DEBUG | Logger | Failed
+2018-10-29 13:58:07.3991 | DEBUG | Logger | Deloitte.APITests.Test_API_AddMethodology
+2018-10-29 13:58:07.4171 | DEBUG | Logger | AddMethodologiesPageOpened_Get
+2018-10-29 13:58:07.4171 | DEBUG | Logger | Passed

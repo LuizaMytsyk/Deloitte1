@@ -4,6 +4,7 @@ using DeloitteTests;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium;
 using System;
+using DelitteLib;
 
 namespace Deloitte
 {
@@ -14,19 +15,21 @@ namespace Deloitte
         [SetUp]
         public void LogIn()
         {            
-            Pages.LeftMenuInstance.OpenIde();
+            Pages.LeftMenuInstance.OpenIde();            
         }
 
 
         [Test, TestCaseSource("MethodologyName_Success")]
         public void Test_SavedMethodology_Positive(string text)
         {
+            string name = NameGenerator.GetRandomAlphaNumeric();
+
             Pages.IdePageInstance
                 .NewMethodology()
                 .AddAce("testtest")
                 .Save();
             Pages.SaveMethodologyPopUpInstance
-                .SetName("123454646");
+                .SetName(name);
             Assert.IsFalse(Pages.SaveMethodologyPopUpInstance.SaveDisabled(), "Save methodology button is disable");
         }
 

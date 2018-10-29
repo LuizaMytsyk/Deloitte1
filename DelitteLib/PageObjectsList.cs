@@ -16,12 +16,9 @@ namespace DelitteLib
         private ProjectsPage projectsPageInstance;
         private IdePage idePageInstance;
         private AddProject addProjectInstance;
-        private ConfigureProject configureProjectInstance;
         private SaveMethodologyPopUp saveMethodologyPopUpInstance;
         private HeaderNavigation headerNavigationInstance;   
         private LeftMenu leftMenuInstance;
-       // private BaseClass baseClassInstance;
-
 
         public LoginPage LoginPageInstance
         {
@@ -70,19 +67,7 @@ namespace DelitteLib
                 }
             }
         }
-
-        public ConfigureProject ConfigureProjectInstance
-        {
-            get
-            {
-                if (configureProjectInstance != null) return configureProjectInstance;
-                else
-                {
-                    return new ConfigureProject(driver);
-                }
-            }
-        }
-
+              
         public SaveMethodologyPopUp SaveMethodologyPopUpInstance
         {
             get
@@ -117,23 +102,6 @@ namespace DelitteLib
                     return new LeftMenu(driver);
                 }
             }
-        }
-
-        //public BaseClass BaseClassInstance
-        //{
-        //    get
-        //    {
-        //        if (baseClassInstance != null) return baseClassInstance;
-        //        else
-        //        {
-        //            return new BaseClass(driver);
-        //        }
-        //    }
-        //}
-
-
-
+        }        
     }
-
-
 }

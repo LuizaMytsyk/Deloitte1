@@ -4,22 +4,17 @@ using DeloitteTests;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium;
 using System;
+using DelitteLib;
 
 namespace Deloitte
 {
     [TestFixture]
  
     public class Test_IDE_CreateNewMethodology : BaseTest
-    {
-        
-        public string methodologyName = "Test_12345";
-
-        //  static string[] AceContent_Success = new string[] { "testtest", "123454646", "#@$*$^@"};
-
+    {      
         [SetUp]
         public void LogIn()
-        {
-          
+        {          
             Pages.LeftMenuInstance.OpenIde();
             // wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//button[@class='btn btn-default new-meth-btn']")));
         }
@@ -27,13 +22,15 @@ namespace Deloitte
         [Test]
         public void Test_CreateMethodology_Positive()
         {
+            string name = NameGenerator.GetRandomAlphaNumeric();
+
             Pages.IdePageInstance
                 .NewMethodology()
                 .AddAce("testtest")
                 .Save();
-            Pages.SaveMethodologyPopUpInstance.SetName(methodologyName);
+            Pages.SaveMethodologyPopUpInstance.SetName(name);
 
-            CollectionAssert.Contains(Pages.IdePageInstance.Methodologies, methodologyName, "Methodology displayed in list");
+            CollectionAssert.Contains(Pages.IdePageInstance.Methodologies, name, "Methodology displayed in list");
         }
 
         [Test]
