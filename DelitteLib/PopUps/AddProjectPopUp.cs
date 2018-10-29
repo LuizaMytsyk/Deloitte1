@@ -49,14 +49,7 @@ namespace DeloitteLib
         [FindsBy(How = How.XPath, Using = "//span[contains(text(),'Start Month should be before End Month')]")]
         [CacheLookup]
         private IWebElement _errorMessageStartMonth;
-
-        public void SelectOption(IWebDriver driver, String value)
-        {
-            String path = "//span[text() = '" + value + "']";
-            driver.FindElement(By.XPath(path)).Click();
-        }
-
-
+               
         public AddProject SetType(string value)
         {
             _selectProjectTypeButton.Click();
@@ -109,15 +102,15 @@ namespace DeloitteLib
             return this;
         }
 
-        public void ClickCreate()
+        public AddProject ClickCreate()
         {
             _createButton.Click();
-
+            return this;
         }
-        public void ClickCancel()
+        public AddProject ClickCancel()
         {
             _cancelButton.Click();
-
+            return this;
         }
 
         public bool IsAddProjectDisplayed()
@@ -137,5 +130,10 @@ namespace DeloitteLib
                true : false;
         }
 
+        public void SelectOption(IWebDriver driver, String value)
+        {
+            String path = "//span[text() = '" + value + "']";
+            driver.FindElement(By.XPath(path)).Click();
+        }
     }
 }
