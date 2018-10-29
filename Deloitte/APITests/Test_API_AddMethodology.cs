@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using DelitteLib;
+using NUnit.Framework;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -6,11 +7,11 @@ using System.Collections.Generic;
 namespace Deloitte.APITests
 {
     class Test_API_AddMethodology : API_Base_Test
-    {
-
+    {       
         [Test]
         public void AddMethodology_Post()
         {
+            string name = NameGenerator.GetRandomAlphaNumeric();
             RestClient restClient = new RestClient("https://perf.exalinkservices.com:8443/gpmeth/v1/methodologies/");
             RestRequest restRequest = new RestRequest(Method.POST);
             restRequest.AddHeader("Content-type", "application/json");
@@ -21,7 +22,7 @@ namespace Deloitte.APITests
                 new
                 {
                     data = "This is test",
-                    name = "APITestName"
+                    name = "\""+name+"\""
                 });
 
             IRestResponse responce = restClient.Execute(restRequest);
@@ -30,8 +31,7 @@ namespace Deloitte.APITests
             var JSONObj = deserial.Deserialize<Dictionary<string, string>>(responce);
             string status = JSONObj["status"];
 
-            Console.WriteLine("Test_API: Methodology created with status - {0}", status);
-            Assert.AreEqual("success", status);
+            Assert.AreEqual("success", status, "Test_API: Methodology created with status - {0}", status);
         }
 
         [Test]
@@ -49,8 +49,7 @@ namespace Deloitte.APITests
             var JSONObj = deserial.Deserialize<Dictionary<string, string>>(responce);
             string status = JSONObj["status"];
 
-            Console.WriteLine("Test_API: Add Methodologies Page Opened -   is opened with status {0}", status);
-            Assert.AreEqual("success", status);
+            Assert.AreEqual("success", status, "Test_API: Add Methodologies Page Opened - is opened with status {0}", status);
         }        
 
     }
