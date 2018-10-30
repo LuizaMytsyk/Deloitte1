@@ -55,7 +55,6 @@ C:\Users\lmyts\Documents\GitHub\Deloitte1\DelitteLib\obj\Debug\PageObjects.cspro
 C:\Users\lmyts\Documents\GitHub\Deloitte1\DelitteLib\obj\Debug\PageObjects.csproj.CopyComplete
 C:\Users\lmyts\Documents\GitHub\Deloitte1\DelitteLib\obj\Debug\DelitteLib.dll
 C:\Users\lmyts\Documents\GitHub\Deloitte1\DelitteLib\obj\Debug\DelitteLib.pdb
-C:\Users\tmanu\source\repos\DeloitteWeb\Deloitte1\DelitteLib\obj\Debug\PageObjects.csprojAssemblyReference.cache
 C:\Users\tmanu\source\repos\DeloitteWeb\Deloitte1\DelitteLib\obj\Debug\PageObjects.csproj.CoreCompileInputs.cache
 C:\Users\tmanu\source\repos\DeloitteWeb\Deloitte1\DelitteLib\obj\Debug\DelitteLib.dll
 C:\Users\tmanu\source\repos\DeloitteWeb\Deloitte1\DelitteLib\obj\Debug\DelitteLib.pdb
@@ -133,3 +132,4 @@ C:\Users\lmyts\Documents\Deloitte123\Deloitte1\DelitteLib\obj\Debug\DelitteLib.d
 C:\Users\lmyts\Documents\Deloitte123\Deloitte1\DelitteLib\obj\Debug\DelitteLib.pdb
 C:\Users\tmanu\source\repos\DeloitteWeb\Deloitte1\DelitteLib\bin\Debug\RestSharp.dll
 C:\Users\tmanu\source\repos\DeloitteWeb\Deloitte1\DelitteLib\bin\Debug\RestSharp.xml
+C:\Users\tmanu\source\repos\DeloitteWeb\Deloitte1\DelitteLib\obj\Debug\PageObjects.csprojAssemblyReference.cache

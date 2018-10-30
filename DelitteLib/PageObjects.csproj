@@ -60,7 +60,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\API_Header.cs" />
-    <Compile Include="API\BodiesForProject.cs" />
+    <Compile Include="API\ProjectBody.cs" />
+    <Compile Include="API\MethodologyBody.cs" />
     <Compile Include="NameGenerator.cs" />
     <Compile Include="PageObjectsList.cs" />
     <Compile Include="Pages\ViewProject.cs" />

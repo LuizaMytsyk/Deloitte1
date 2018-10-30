@@ -18,7 +18,7 @@ namespace DeloitteLib
                 List<String> list = new List<String>();
                 foreach (var element in _allMethodologies)
                 {
-                    string method = element.GetAttribute("title");
+                    string method = element.Text;
                     list.Add(method.ToLower());
                 }
                 return list;
@@ -67,7 +67,7 @@ namespace DeloitteLib
         [CacheLookup]
         private IWebElement _newMethodologyBtn;
 
-        [FindsBy(How = How.XPath, Using = "//span[@class='name overlapping']")]
+        [FindsBy(How = How.XPath, Using = "//span[@class='name overlapping']")]                          //"//span[@class='name overlapping']")
         [CacheLookup]
         private IList<IWebElement> _allMethodologies;
                

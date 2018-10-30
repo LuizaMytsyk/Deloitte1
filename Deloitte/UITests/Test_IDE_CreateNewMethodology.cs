@@ -31,9 +31,9 @@ namespace Deloitte
             Pages.SaveMethodologyPopUpInstance
                 .SetName(name)
                 .Save();
-           
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//span[@class='name overlapping']")));
             
-            CollectionAssert.Contains(Pages.IdePageInstance.Methodologies, "wa3iyej4", "Methodology displayed in list");
+            CollectionAssert.Contains(Pages.IdePageInstance.Methodologies, name, "Methodology displayed in list");
         }
         
         [Test]
