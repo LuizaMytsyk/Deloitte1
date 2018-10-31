@@ -36,7 +36,7 @@ namespace Deloitte
         [Test]
         public void CreateProject_Post()
         {
-            string name = NameGenerator.GetRandomAlphaNumeric();
+            string name = "TestAPI1"+NameGenerator.GetRandomAlphaNumeric();
             RestClient restClient = new RestClient("https://perf.exalinkservices.com:8443/gpproj/v1/projects/");
             RestRequest restRequest = new RestRequest(Method.POST);
             restRequest.AddHeader("Content-type", "application/json");
@@ -49,7 +49,7 @@ namespace Deloitte
                     due_date = "2018-10-26",
                     end_month = "12",
                     end_year = "2018",
-                    name = "\""+name+"\"",
+                    name = "\""+name+"\"",                   
                     start_month = "05",
                     start_year = "2018",
                     type = "Adhoc"

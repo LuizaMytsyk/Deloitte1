@@ -16,7 +16,8 @@ namespace Deloitte
         public void LogIn()
         {          
             Pages.LeftMenuInstance.OpenIde();
-            // wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//button[@class='btn btn-default new-meth-btn']")));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//button[@class='btn btn-default new-meth-btn']")));
+
         }
 
         [Test]
@@ -25,12 +26,15 @@ namespace Deloitte
             string name = NameGenerator.GetRandomAlphaNumeric();
 
             Pages.IdePageInstance
-                .NewMethodology()
-                .AddAce("testtest")
-                .Save();
-            Pages.SaveMethodologyPopUpInstance.SetName(name);
+                 .NewMethodology();
+           
 
-            CollectionAssert.Contains(Pages.IdePageInstance.Methodologies, name, "Methodology displayed in list");
+            Pages.IdePageInstance.AddAce("testtest")
+               .Save();
+
+            Pages.SaveMethodologyPopUpInstance
+              .SetName(name)
+              .Save();
         }
 
         [Test]

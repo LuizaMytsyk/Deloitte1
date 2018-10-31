@@ -131,3 +131,5 @@ C:\Users\lmyts\Documents\Deloitte123\Deloitte1\DelitteLib\obj\Debug\PageObjects.
 C:\Users\lmyts\Documents\Deloitte123\Deloitte1\DelitteLib\obj\Debug\PageObjects.csproj.CopyComplete
 C:\Users\lmyts\Documents\Deloitte123\Deloitte1\DelitteLib\obj\Debug\DelitteLib.dll
 C:\Users\lmyts\Documents\Deloitte123\Deloitte1\DelitteLib\obj\Debug\DelitteLib.pdb
+C:\Users\lmyts\Documents\Deloitte123\Deloitte1\DelitteLib\bin\Debug\Newtonsoft.Json.dll
+C:\Users\lmyts\Documents\Deloitte123\Deloitte1\DelitteLib\bin\Debug\Newtonsoft.Json.xml

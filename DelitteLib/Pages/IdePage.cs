@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
 using System.Collections.Generic;
@@ -50,6 +51,8 @@ namespace DeloitteLib
         }
         public IdePage AddAce(string code)
         {
+            Actions builder = new Actions(driver);
+            builder.SendKeys(Keys.Tab).Build().Perform();
             _aceContent.SendKeys(code);
             return this;
         }
