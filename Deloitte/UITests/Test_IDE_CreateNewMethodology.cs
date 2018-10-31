@@ -16,7 +16,7 @@ namespace Deloitte
         public void LogIn()
         {          
             Pages.LeftMenuInstance.OpenIde();
-            // wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//button[@class='btn btn-default new-meth-btn']")));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//button[@class='btn btn-default new-meth-btn']")));
         }
 
         [Test]
@@ -28,11 +28,14 @@ namespace Deloitte
                 .NewMethodology()
                 .AddAce("testtest")
                 .Save();
-            Pages.SaveMethodologyPopUpInstance.SetName(name);
-
+            Pages.SaveMethodologyPopUpInstance
+                .SetName(name)
+                .Save();
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//span[@class='name overlapping']")));
+            
             CollectionAssert.Contains(Pages.IdePageInstance.Methodologies, name, "Methodology displayed in list");
         }
-
+        
         [Test]
         public void Test_CreateMethodology_Empty()
         {
