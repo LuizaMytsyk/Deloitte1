@@ -37,7 +37,7 @@ namespace Deloitte
         public void CreateProject_Post()
         {
             string name = NameGenerator.GetRandomAlphaNumeric();
-            RestClient restClient = new RestClient("https://perf.exalinkservices.com:8443/gpproj/v1/projects/");
+            RestClient restClient = new RestClient("https://int1.exalinkservices.com:8443/gpproj/v1/projects/");
             RestRequest restRequest = new RestRequest(Method.POST);
             restRequest.AddHeader("Content-type", "application/json");
             restRequest.AddHeader("x-client", "umbrella");
