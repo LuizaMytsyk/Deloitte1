@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="JsonBodiesAll\JsonCreateMethodology.cs" />
+    <Compile Include="JsonBodiesAll\JsonCreateProject.cs" />
     <Compile Include="NameGenerator.cs" />
     <Compile Include="PageObjectsList.cs" />
     <Compile Include="Pages\ViewProject.cs" />
