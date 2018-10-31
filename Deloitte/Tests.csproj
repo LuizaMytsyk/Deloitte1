@@ -77,6 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APITests\API_Base_Test.cs" />
+    <Compile Include="APITests\Test_API_EndToEndMethAndProj.cs" />
     <Compile Include="APITests\Test_API_SelectReportTemplate.cs" />
     <Compile Include="APITests\Test_API_AddMethodology.cs" />
     <Compile Include="APITests\Test_API_ProjectCreated.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="UITests\Tests_AddingNewProject.cs" />
     <Compile Include="UITests\BaseTest.cs" />
     <Compile Include="APITests\Test_API_ConfigureProject.cs" />
+    <Compile Include="UITests\Test_EndToEndMethAndProj.cs" />
     <Compile Include="UITests\Test_IDE_CreateNewMethodology.cs" />
     <Compile Include="UITests\Tests_LogInPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
