@@ -27,8 +27,7 @@ namespace DelitteLib
                 foreach (char c in Path.GetInvalidFileNameChars())
                     filename = filename.Replace(c.ToString(), String.Empty);
 
-                string screenShotFolder = @"c:\Temp\Screenshots";
-
+                string screenShotFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Screenshots");
                 var path = Path.Combine(screenShotFolder, filename);
 
                 if (path.Length > 250)

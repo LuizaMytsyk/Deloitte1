@@ -51,8 +51,6 @@ namespace DeloitteTests
 
 
         [TearDown]
-       
-
         public void AfterTest()
         {
             ScreenShotMakerInstance.TakeScreenShot();
