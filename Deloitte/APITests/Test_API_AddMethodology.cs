@@ -1,4 +1,5 @@
 ﻿using DelitteLib;
+using DelitteLib.JsonBodies;
 using NUnit.Framework;
 using RestSharp;
 using System;
@@ -7,30 +8,30 @@ using System.Collections.Generic;
 namespace Deloitte.APITests
 {
     class Test_API_AddMethodology : API_Base_Test
-    {       
+    {
         [Test]
         public void AddMethodology_Post()
         {
-            string name = NameGenerator.GetRandomAlphaNumeric();
-            RestClient restClient = new RestClient("https://perf.exalinkservices.com:8443/gpmeth/v1/methodologies/");
+            string methName = "APITestMethodology" + NameGenerator.GetRandomAlphaNumeric();
+
+            RestClient restClient = new RestClient("https://int1.exalinkservices.com:8443/gpmeth/v1/methodologies/");
             RestRequest restRequest = new RestRequest(Method.POST);
             restRequest.AddHeader("Content-type", "application/json");
             restRequest.AddHeader("x-client", "umbrella");
             restRequest.AddHeader("Authorization", "SessionID " + sessionId);
 
-            restRequest.AddJsonBody(
-                new
-                {
-                    data = "This is test",
-                    name = "\""+name+"\""
-                });
+            JsonCreateMethodology jsonCreateMethodology = new JsonCreateMethodology("this is test data", methName);
+
+            restRequest.AddJsonBody(jsonCreateMethodology);
 
             IRestResponse responce = restClient.Execute(restRequest);
 
             RestSharp.Deserializers.JsonDeserializer deserial = new RestSharp.Deserializers.JsonDeserializer();
             var JSONObj = deserial.Deserialize<Dictionary<string, string>>(responce);
+
             string status = JSONObj["status"];
 
+            Console.WriteLine(JSONObj["data"]);
             Assert.AreEqual("success", status, "Test_API: Methodology created with status - {0}", status);
         }
 
@@ -50,9 +51,7 @@ namespace Deloitte.APITests
             string status = JSONObj["status"];
 
             Assert.AreEqual("success", status, "Test_API: Add Methodologies Page Opened - is opened with status {0}", status);
-        }        
+        }
 
     }
 }
-
-    
