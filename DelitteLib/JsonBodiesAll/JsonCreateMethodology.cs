@@ -8,10 +8,10 @@ namespace DelitteLib.JsonBodies
 {
     public class JsonCreateMethodology
     {
-        public JsonCreateMethodology(string data, string name)
+        public JsonCreateMethodology()
         {
-            this.data = data;
-            this.name = name;
+             data = "Test data " + DateTime.Now.ToString("yyyyMMddHHmm");
+ ;           name = "Test_methodology_" + DateTime.Now.ToString("yyyyMMddHHmm");
         }
 
         public string data { get; set; }
