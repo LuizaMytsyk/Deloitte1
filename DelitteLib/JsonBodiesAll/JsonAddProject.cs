@@ -8,6 +8,10 @@ namespace DelitteLib.JsonBodiesAll
 {
     public class JsonAddProject
     {
+        public JsonAddProject()
+        {
+        }
+
         public JsonAddProject(string due_date, string end_month, string end_year, string name, string start_month, string start_year, string type)
         {
             this.due_date = due_date;

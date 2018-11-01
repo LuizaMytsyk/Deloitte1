@@ -13,12 +13,6 @@ namespace DeloitteLib
         public LoginPage(IWebDriver driver) : base(driver)
         {
         }
-        public void SingIn(string userName, string password)
-        {
-            _username.SendKeys(userName);
-            _password.SendKeys(password);
-            _submitButton.Click();
-        }
 
         [FindsBy(How = How.Id, Using = "username")]
         [CacheLookup]
@@ -35,6 +29,13 @@ namespace DeloitteLib
         [FindsBy(How = How.XPath, Using = "//p[@class='ng-binding']")]
         [CacheLookup]
         private IWebElement _incorrectCredentialsMessage;
+        public void SingIn(string userName, string password)
+        {
+            _username.SendKeys(userName);
+            _password.SendKeys(password);
+            _submitButton.Click();
+        }
+      
 
         public bool IsIncorrectCredentialsMessageDisplayed()
         {

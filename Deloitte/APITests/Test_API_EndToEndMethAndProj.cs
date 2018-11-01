@@ -51,19 +51,18 @@ namespace Deloitte.APITests
         public void CreateProject_Post()
         {
             string projName = "TestAPI1" + NameGenerator.GetRandomAlphaNumeric();
-           // List<string> methodologies = new List<string>() {"f05248ed-dea8-4ccd-9af0-48196949259c"};        
+            // List<string> methodologies = new List<string>() {"f05248ed-dea8-4ccd-9af0-48196949259c"}; 
+            JsonAddProject jsonAddProject = new JsonAddProject("2018-10-26", "07", "2018", "nameoftestproject", "05", "2017", "Adhoc");
 
             RestClient restClient = new RestClient("https://int1.exalinkservices.com:8443/gpproj/v1/projects/");
             RestRequest restRequest = new RestRequest(Method.POST);
             restRequest.AddHeader("Content-type", "application/json");
             restRequest.AddHeader("x-client", "umbrella");
             restRequest.AddHeader("Authorization", "SessionID " + sessionId);
+                
+             //restRequest.AddParameter("application/json", JsonConvert.SerializeObject(jsonAddProject), ParameterType.RequestBody);
 
-            JsonAddProject jsonAddProject = new JsonAddProject("2018-10-26", "07", "2018", "nameoftestproject", "05", "2017", "Adhoc");
-            
-            restRequest.AddParameter("application/json", JsonConvert.SerializeObject(jsonAddProject), ParameterType.RequestBody);
-
-             //restRequest.AddJsonBody(jsonAddProject);
+            restRequest.AddJsonBody(jsonAddProject);
 
             IRestResponse responce = restClient.Execute(restRequest);
 

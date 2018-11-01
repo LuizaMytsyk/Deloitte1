@@ -13,7 +13,7 @@ namespace Deloitte.APITests
     {
 
         [Test]
-        public void AddMethodology()
+        public void SelectReportTemplate()
         {
             RestClient restClient = new RestClient("https://perf.exalinkservices.com:8443/gpmeth/v1/methodology_templates/942f1cfe-a0c9-49f6-835d-d2d7ef2c5d2e");
             RestRequest restRequest = new RestRequest(Method.POST);
