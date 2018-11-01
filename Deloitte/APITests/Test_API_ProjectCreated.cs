@@ -42,7 +42,7 @@ namespace Deloitte
             restRequest.AddHeader("x-client", "umbrella");
             restRequest.AddHeader("Authorization", "SessionID " + sessionId);
 
-            JsonAddProject jsonAddProject = new JsonAddProject("2018-10-26", "07", "2018", name, "05", "2017", "Adhoc");
+            JsonAddProject jsonAddProject = new JsonAddProject();
 
             restRequest.AddJsonBody(jsonAddProject);
 
