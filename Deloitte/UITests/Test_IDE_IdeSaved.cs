@@ -17,10 +17,9 @@ namespace Deloitte
         {            
             Pages.LeftMenuInstance.OpenIde();            
         }
-
-
-        [Test, TestCaseSource("MethodologyName_Success")]
-        public void Test_SavedMethodology_Positive(string text)
+        
+        [Test]
+        public void Test_SavedMethodology_Positive()
         {
             string name = NameGenerator.GetRandomAlphaNumeric();
 

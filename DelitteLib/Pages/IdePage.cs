@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 
@@ -12,7 +13,7 @@ namespace DeloitteLib
         }
 
         public List<String> Methodologies
-        {
+        {           
             get
             {
                 List<String> list = new List<String>();
@@ -44,7 +45,9 @@ namespace DeloitteLib
         }
 
         public IdePage NewMethodology()
-        {            
+        {
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//button[@class='btn btn-default new-meth-btn']")));
             _newMethodologyBtn.Click();
             return this;
 
