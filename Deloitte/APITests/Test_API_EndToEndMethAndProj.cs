@@ -28,10 +28,10 @@ namespace Deloitte.APITests
             restRequest.AddHeader("Authorization", "SessionID " + sessionId);
 
             //создаю объект типа JsonCreateMethodology и присваиваю полям значения
-            JsonCreateMethodology jsonCreateMethodology = new JsonCreateMethodology("this is test data", methName);
+          //  JsonCreateMethodology jsonCreateMethodology = new JsonCreateMethodology("this is test data", methName);
 
             //запихиваю этот объект в боди 
-            restRequest.AddJsonBody(jsonCreateMethodology);
+          //  restRequest.AddJsonBody(jsonCreateMethodology);
 
             //в переменную responce записываю результат выполнения реквеста
             IRestResponse responce = restClient.Execute(restRequest);

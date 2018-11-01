@@ -11,8 +11,7 @@ namespace Deloitte.APITests
     {
         [Test]
         public void AddMethodology_Post()
-        {
-            string methName = "APITestMethodology" + NameGenerator.GetRandomAlphaNumeric();
+        {          
 
             RestClient restClient = new RestClient("https://int1.exalinkservices.com:8443/gpmeth/v1/methodologies/");
             RestRequest restRequest = new RestRequest(Method.POST);
@@ -20,7 +19,7 @@ namespace Deloitte.APITests
             restRequest.AddHeader("x-client", "umbrella");
             restRequest.AddHeader("Authorization", "SessionID " + sessionId);
 
-            JsonCreateMethodology jsonCreateMethodology = new JsonCreateMethodology("this is test data", methName);
+            JsonCreateMethodology jsonCreateMethodology = new JsonCreateMethodology();
 
             restRequest.AddJsonBody(jsonCreateMethodology);
 

@@ -8,13 +8,13 @@ namespace DelitteLib.JsonBodiesAll
 {
     public class JsonConfigureProject
     {
-        public JsonConfigureProject(string due_date, string end_month, string end_year, string start_month, string start_year)
+        public JsonConfigureProject()
         {
-            this.due_date = due_date;
-            this.end_month = end_month;
-            this.end_year = end_year;
-            this.start_month = start_month;
-            this.start_year = start_year;
+            this.due_date = DateTime.Now.ToString("yyyy-MM-dd");
+            this.end_month = DateTime.Now.AddMonths(2).Month.ToString("00");
+            this.end_year = DateTime.Now.AddYears(1).ToString("yyyy");
+            this.start_month = DateTime.Now.Month.ToString("00");
+            this.start_year = DateTime.Now.ToString("yyyy");
         }
 
         public string due_date { get; set; }

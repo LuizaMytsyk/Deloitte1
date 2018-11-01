@@ -14,25 +14,25 @@ namespace DelitteLib.JsonBodiesAll
 
         public JsonAddProject(string due_date, string end_month, string end_year, string name, string start_month, string start_year, string type)
         {
-            this.due_date = due_date;
-            this.end_month = end_month;
-            this.end_year = end_year;
-            this.name = name;
-            this.start_month = start_month;
-            this.start_year = start_year;
-            this.type = type;
+            due_date = DateTime.Now.ToString("yyyy-MM-dd");
+            end_month = DateTime.Now.AddMonths(2).Month.ToString("00");
+            end_year = DateTime.Now.AddYears(1).ToString("yyyy"); 
+            name = "test_project_" + DateTime.Now.ToString("yyyyMMddHHmm");
+            start_month = DateTime.Now.Month.ToString("00");
+            start_year = DateTime.Now.ToString("yyyy");
+            type = "Adhoc";
         }
 
         public JsonAddProject(string due_date, string end_month, string end_year, string name, List<string> methodologies, string start_month, string start_year, string type)
         {
-            this.due_date = due_date;
-            this.end_month = end_month;
-            this.end_year = end_year;
-            this.name = name;
+            due_date = DateTime.Now.ToString("yyyy-MM-dd");
+            end_month = DateTime.Now.AddMonths(2).Month.ToString("00");
+            end_year = DateTime.Now.AddYears(1).ToString("yyyy");
+            name = "test_project_" + DateTime.Now.ToString("yyyyMMddHHmm");
             this.methodologies = methodologies;
-            this.start_month = start_month;
-            this.start_year = start_year;
-            this.type = type;
+            start_month = DateTime.Now.Month.ToString("00");
+            start_year = DateTime.Now.ToString("yyyy");
+            type = "Adhoc";
         }
 
         public string due_date { get; set; }
