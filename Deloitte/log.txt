@@ -184,3 +184,6 @@
 2018-11-01 17:58:45.2599 | DEBUG | Logger | Deloitte.Test_API_ConfigureProject
 2018-11-01 17:58:45.2812 | DEBUG | Logger | ConfigureProject_Post
 2018-11-01 17:58:45.2812 | DEBUG | Logger | Passed
+2018-11-01 18:11:30.0853 | DEBUG | Logger | Deloitte.Test_API_ProjectCreated
+2018-11-01 18:11:30.1031 | DEBUG | Logger | CreateProject_Post
+2018-11-01 18:11:30.1031 | DEBUG | Logger | Failed

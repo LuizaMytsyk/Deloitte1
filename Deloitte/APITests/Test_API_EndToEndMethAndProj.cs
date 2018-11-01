@@ -52,7 +52,7 @@ namespace Deloitte.APITests
         {
             string projName = "TestAPI1" + NameGenerator.GetRandomAlphaNumeric();
             // List<string> methodologies = new List<string>() {"f05248ed-dea8-4ccd-9af0-48196949259c"}; 
-            JsonAddProject jsonAddProject = new JsonAddProject("2018-10-26", "07", "2018", "nameoftestproject", "05", "2017", "Adhoc");
+            JsonAddProject jsonAddProject = new JsonAddProject();
 
             RestClient restClient = new RestClient("https://int1.exalinkservices.com:8443/gpproj/v1/projects/");
             RestRequest restRequest = new RestRequest(Method.POST);
