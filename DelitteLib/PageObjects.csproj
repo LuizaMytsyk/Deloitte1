@@ -66,6 +66,7 @@
     <Compile Include="JsonBodiesAll\JsonConfigureProject.cs" />
     <Compile Include="JsonBodiesAll\JsonCreateMethodology.cs" />
     <Compile Include="JsonBodiesAll\JsonLogin.cs" />
+    <Compile Include="JsonBodiesAll\JsonSelectTemplate.cs" />
     <Compile Include="NameGenerator.cs" />
     <Compile Include="PageObjectsList.cs" />
     <Compile Include="Pages\ViewProject.cs" />

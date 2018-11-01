@@ -15,7 +15,7 @@ namespace Deloitte.APITests
         [Test]
         public void SelectReportTemplate()
         {
-            RestClient restClient = new RestClient("https://perf.exalinkservices.com:8443/gpmeth/v1/methodology_templates/942f1cfe-a0c9-49f6-835d-d2d7ef2c5d2e");
+            RestClient restClient = new RestClient("https://int1.exalinkservices.com:8443/gpmeth/v1/methodology_templates/942f1cfe-a0c9-49f6-835d-d2d7ef2c5d2e");
             RestRequest restRequest = new RestRequest(Method.POST);
             restRequest.AddHeader("Content-type", "application/json");
             restRequest.AddHeader("x-client", "umbrella");
