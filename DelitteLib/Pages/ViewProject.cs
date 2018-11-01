@@ -12,7 +12,7 @@ namespace DeloitteLib
     {
         public ViewProject(IWebDriver driver) : base(driver)
         {
-        }        
+        }
 
 
     }
