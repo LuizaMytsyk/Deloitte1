@@ -15,7 +15,7 @@ namespace DelitteLib.JsonBodiesAll
             end_month = DateTime.Now.AddMonths(2).Month.ToString("00");
             end_year = DateTime.Now.AddYears(1).ToString("yyyy");
             name = "test_project_" + DateTime.Now.ToString("yyyyMMddHHmm");
-            this.methodologies = methodologies;
+            //this.methodologies = methodologies;
             start_month = DateTime.Now.Month.ToString("00");
             start_year = DateTime.Now.ToString("yyyy");
             type = "Adhoc";
