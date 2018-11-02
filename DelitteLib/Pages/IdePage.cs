@@ -12,7 +12,21 @@ namespace DeloitteLib
         {
         }
 
-<<<<<<< HEAD
+        [FindsBy(How = How.XPath, Using = "//textarea[@class = 'ace_text-input']")]
+        [CacheLookup]
+        private IWebElement _aceContent;
+
+        [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-primary save']")]
+        [CacheLookup]
+        private IWebElement _saveButton;
+
+        [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-default new-meth-btn']")]
+        [CacheLookup]
+        private IWebElement _newMethodologyBtn;
+
+        [FindsBy(How = How.XPath, Using = "//span[@class='name overlapping']")]
+        [CacheLookup]
+        private IList<IWebElement> _allMethodologies;
         public List<String> Methodologies
         {           
             get
@@ -26,25 +40,7 @@ namespace DeloitteLib
                 return list;
             }
         }
-=======
-        [FindsBy(How = How.XPath, Using = "//textarea[@class = 'ace_text-input']")]
-        [CacheLookup]
-        private IWebElement _aceContent;
-
-        [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-primary save']")]
-        [CacheLookup]
-        private IWebElement _saveButton;
-
-        [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-default new-meth-btn']")]
-        [CacheLookup]
-        private IWebElement _newMethodologyBtn;
-
-        [FindsBy(How = How.XPath, Using = "//span[@class='name overlapping']")]                          //"//span[@class='name overlapping']")
-        [CacheLookup]
-        private IList<IWebElement> _allMethodologies;
-
->>>>>>> development
-
+        
         public void Save()
         {
             _saveButton.Click();
@@ -65,11 +61,8 @@ namespace DeloitteLib
 
         public IdePage NewMethodology()
         {
-<<<<<<< HEAD
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//button[@class='btn btn-default new-meth-btn']")));
-=======
->>>>>>> development
             _newMethodologyBtn.Click();
             return this;
 
@@ -78,23 +71,6 @@ namespace DeloitteLib
         {
             _aceContent.SendKeys(code);
             return this;
-        }
-
-        public List<String> Methodologies
-        {
-            get
-            {
-                List<String> list = new List<String>();
-                foreach (var element in _allMethodologies)
-                {
-                    string method = element.Text;
-                    list.Add(method.ToLower());
-                }
-                return list;
-            }
-        }
-
-
-
+        }    
     }
 }
