@@ -19,14 +19,14 @@ namespace Deloitte
         }
 
 
-        [Test, TestCaseSource("MethodologyName_Success")]
+        [Test]
         public void Test_SavedMethodology_Positive(string text)
         {
             string name = NameGenerator.GetRandomAlphaNumeric();
 
             Pages.IdePageInstance
                 .NewMethodology()
-                .AddAce("testtest")
+                .AddAce("Test data " + DateTime.Now.ToString("yyyyMMddHHmm"))
                 .Save();
             Pages.SaveMethodologyPopUpInstance
                 .SetName(name);
@@ -38,7 +38,7 @@ namespace Deloitte
         {
             Pages.IdePageInstance
                 .NewMethodology()
-                .AddAce("testtest")
+                .AddAce("Test data " + DateTime.Now.ToString("yyyyMMddHHmm"))
                 .Save();
 
             Assert.IsTrue(Pages.SaveMethodologyPopUpInstance.SaveDisabled(), "Save methodology button is disable");

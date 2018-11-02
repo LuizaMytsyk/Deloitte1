@@ -22,9 +22,9 @@ namespace DeloitteTests
                 .SetType("Adhoc")
                 .SetProject("DP2")
                 .SetProjectName(name)
-                .SetStartMonth("Jul 2018")
-                .SetEndMonth("Dec 2019")
-                .SetDueDate("Dec 2019")  
+                .SetStartMonth(DateTime.Now.ToString("MMM yyyy"))
+                .SetEndMonth(DateTime.Now.AddMonths(2).Month.ToString("MMM yyyy"))
+                .SetDueDate(DateTime.Now.AddMonths(2).Month.ToString("MMM yyyy"))  
                 .ClickCreate();
 
             driver.Navigate().Refresh();
@@ -45,9 +45,9 @@ namespace DeloitteTests
                  .SetType("Adhoc")
                 .SetProject("DP2")
                 .SetProjectName(name)
-                .SetStartMonth("Jul 2018")
-                .SetEndMonth("Dec 2019")
-                .SetDueDate("Dec 2019")                
+                .SetStartMonth(DateTime.Now.ToString("MMM yyyy"))
+                .SetEndMonth(DateTime.Now.AddMonths(2).Month.ToString("MMM yyyy"))
+                .SetDueDate(DateTime.Now.AddMonths(2).Month.ToString("MMM yyyy"))
                 .ClickCancel();
 
             driver.Navigate().Refresh();
@@ -61,13 +61,13 @@ namespace DeloitteTests
         {
             string name = NameGenerator.GetRandomAlphaNumeric();
             Pages.ProjectsPageInstance.ClickAddProject();
-            
+
             Pages.AddProjectInstance
                 .SetType("Adhoc")
                 .SetProject("DP2")
                 .SetProjectName(name)
-                .SetStartMonth("Jul 2019")
-                .SetEndMonth("Dec 2018");
+                .SetStartMonth(DateTime.Now.ToString("MMM yyyy"))
+                .SetEndMonth(DateTime.Now.AddMonths(2).Month.ToString("MMM yyyy"));
 
             Assert.True(Pages.AddProjectInstance.IsErrorMessageStartMonthDisplayed());
         }

@@ -22,11 +22,11 @@ namespace Deloitte
         [Test]
         public void Test_CreateMethodology_Positive()
         {
-            string name = NameGenerator.GetRandomAlphaNumeric();
+            string name = "Test_methodology_" + NameGenerator.GetRandomAlphaNumeric();
 
             Pages.IdePageInstance
                 .NewMethodology()
-                .AddAce("testtest")
+                .AddAce("Test data " + DateTime.Now.ToString("yyyyMMddHHmm"))
                 .Save();
             Pages.SaveMethodologyPopUpInstance
                 .SetName(name)
