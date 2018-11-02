@@ -6,6 +6,8 @@ using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium;
 using RestSharp;
 using System.Collections.Generic;
+using DelitteLib.JsonBodies;
+using DelitteLib.JsonBodiesAll;
 
 namespace Deloitte
 {
@@ -15,30 +17,26 @@ namespace Deloitte
         [Test]
         public void ConfigureProject_Post()
         {
-            RestClient restClient = new RestClient("https://perf.exalinkservices.com:8443/gpproj/v1/projects/200612e3-ab5e-4c1b-ae3b-23282e35f010");
+                  
+            RestClient restClient = new RestClient("https://int1.exalinkservices.com:8443/gpproj/v1/projects/2cd68b94-c3f9-4349-be99-d5357594d3d1");
             RestRequest restRequest = new RestRequest(Method.PUT);
             restRequest.AddHeader("Content-type", "application/json");
             restRequest.AddHeader("x-client", "umbrella");
             restRequest.AddHeader("Authorization", "SessionID " + sessionId);
 
-            restRequest.AddJsonBody(
-               new
-               {
-                   due_date = "2018-10-31",
-                   end_month = "12",
-                   end_year = "2018",                   
-                   start_month = "04",
-                   start_year = "2018"                  
-               });
+            JsonConfigureProject jsonConfigureProject = new JsonConfigureProject();
+
+            restRequest.AddJsonBody(jsonConfigureProject);
 
             IRestResponse responce = restClient.Execute(restRequest);
 
             RestSharp.Deserializers.JsonDeserializer deserial = new RestSharp.Deserializers.JsonDeserializer();
             var JSONObj = deserial.Deserialize<Dictionary<string, string>>(responce);
             string status = JSONObj["status"];
+            Console.WriteLine(JSONObj["data"]);
 
             Assert.AreEqual("success", status);
         }
 
-    }  
+    }
 }
