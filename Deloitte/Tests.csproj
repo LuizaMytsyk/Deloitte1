@@ -90,7 +90,6 @@
     <Compile Include="UITests\Tests_LogInPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UITests\Test_IDE_IdeSaved.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Performance\MultipleLogin.cs" />
   </ItemGroup>
   <ItemGroup>

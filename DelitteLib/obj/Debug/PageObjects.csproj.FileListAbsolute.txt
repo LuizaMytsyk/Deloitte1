@@ -132,7 +132,6 @@ C:\Users\lmyts\Documents\Deloitte123\Deloitte1\DelitteLib\obj\Debug\DelitteLib.d
 C:\Users\lmyts\Documents\Deloitte123\Deloitte1\DelitteLib\obj\Debug\DelitteLib.pdb
 C:\Users\tmanu\source\repos\DeloitteWeb\Deloitte1\DelitteLib\bin\Debug\RestSharp.dll
 C:\Users\tmanu\source\repos\DeloitteWeb\Deloitte1\DelitteLib\bin\Debug\RestSharp.xml
-C:\Users\tmanu\source\repos\DeloitteWeb\Deloitte1\DelitteLib\obj\Debug\PageObjects.csprojAssemblyReference.cache
 C:\Users\lmyts\Documents\Deloitte777\Deloitte1\DelitteLib\bin\Debug\NUnit3.TestAdapter.dll
 C:\Users\lmyts\Documents\Deloitte777\Deloitte1\DelitteLib\bin\Debug\NUnit3.TestAdapter.pdb
 C:\Users\lmyts\Documents\Deloitte777\Deloitte1\DelitteLib\bin\Debug\nunit.engine.dll
