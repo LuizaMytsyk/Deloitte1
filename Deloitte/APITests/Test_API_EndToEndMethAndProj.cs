@@ -48,9 +48,8 @@ namespace Deloitte.APITests
         }
 
         [Test]
-        public void CreateProject_Post()
-        {
-            string projName = "TestAPI1" + NameGenerator.GetRandomAlphaNumeric();
+        public void CreateProject_Post()        {
+           
             // List<string> methodologies = new List<string>() {"f05248ed-dea8-4ccd-9af0-48196949259c"}; 
             JsonAddProject jsonAddProject = new JsonAddProject();
 
@@ -60,8 +59,6 @@ namespace Deloitte.APITests
             restRequest.AddHeader("x-client", "umbrella");
             restRequest.AddHeader("Authorization", "SessionID " + sessionId);
 
-            //restRequest.AddParameter("application/json", JsonConvert.SerializeObject(jsonAddProject), ParameterType.RequestBody);
-
             restRequest.AddJsonBody(jsonAddProject);
 
             IRestResponse responce = restClient.Execute(restRequest);
@@ -70,7 +67,6 @@ namespace Deloitte.APITests
             var JSONObj = deserial.Deserialize<Dictionary<string, string>>(responce);
             string status = JSONObj["status"];
 
-            // Console.WriteLine("Test_API: Project is created with status {0}", status);
             //Assert.AreEqual("success", status);
         }
 

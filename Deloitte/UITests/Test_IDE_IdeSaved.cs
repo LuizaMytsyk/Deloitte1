@@ -17,10 +17,16 @@ namespace Deloitte
         {            
             Pages.LeftMenuInstance.OpenIde();            
         }
+<<<<<<< HEAD
+        
+        [Test]
+        public void Test_SavedMethodology_Positive()
+=======
 
 
         [Test]
         public void Test_SavedMethodology_Positive(string text)
+>>>>>>> CreateReaderFromXML
         {
             string name = NameGenerator.GetRandomAlphaNumeric();
 

@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 
@@ -11,6 +12,21 @@ namespace DeloitteLib
         {
         }
 
+<<<<<<< HEAD
+        public List<String> Methodologies
+        {           
+            get
+            {
+                List<String> list = new List<String>();
+                foreach (var element in _allMethodologies)
+                {
+                    string method = element.Text;
+                    list.Add(method.ToLower());
+                }
+                return list;
+            }
+        }
+=======
         [FindsBy(How = How.XPath, Using = "//textarea[@class = 'ace_text-input']")]
         [CacheLookup]
         private IWebElement _aceContent;
@@ -27,6 +43,7 @@ namespace DeloitteLib
         [CacheLookup]
         private IList<IWebElement> _allMethodologies;
 
+>>>>>>> development
 
         public void Save()
         {
@@ -48,6 +65,11 @@ namespace DeloitteLib
 
         public IdePage NewMethodology()
         {
+<<<<<<< HEAD
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//button[@class='btn btn-default new-meth-btn']")));
+=======
+>>>>>>> development
             _newMethodologyBtn.Click();
             return this;
 

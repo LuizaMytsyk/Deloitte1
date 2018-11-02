@@ -15,8 +15,7 @@ namespace Deloitte
         [SetUp]
         public void LogIn()
         {          
-            Pages.LeftMenuInstance.OpenIde();
-            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//button[@class='btn btn-default new-meth-btn']")));
+            Pages.LeftMenuInstance.OpenIde();           
         }
 
         [Test]

@@ -22,9 +22,13 @@ namespace DeloitteTests
         protected PageObjectsList Pages;
         protected ScreenShotMaker ScreenShotMakerInstance;
 
+        private string username = "gp_integrator";
+        private string password = "Dummy#123";
+        private string x_client = "Umbrella Corporation";
+
+        List<string> projectInfo = new List<string> { "Adhoc",  };
 
         [OneTimeSetUp]
-
         public void OneTimeSetUp()
         {
             driver = new ChromeDriver();
@@ -39,23 +43,16 @@ namespace DeloitteTests
 
             Pages = new PageObjectsList(driver);
             
-            Pages.LoginPageInstance.SingIn("gp_integrator", "Dummy#123");
+            Pages.LoginPageInstance.SingIn(username, password);
             wait.Until((d) => Pages.ProjectsPageInstance.IsProjectPageDisplayed());
-            Pages.HeaderNavigationInstance.SelectClient("Umbrella Corporation");
-        }
-
-        public virtual void TearDown()
-        {
-
-        }
-
+            Pages.HeaderNavigationInstance.SelectClient(x_client);
+        }        
 
         [TearDown]
         public void AfterTest()
         {
             ScreenShotMakerInstance.TakeScreenShot();
             CreateNLog.NLogCreate();
-            TearDown();
         }
 
 
