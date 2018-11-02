@@ -96,6 +96,7 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="TestsData.xml" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>

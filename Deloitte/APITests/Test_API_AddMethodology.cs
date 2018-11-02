@@ -13,7 +13,7 @@ namespace Deloitte.APITests
         public void AddMethodology_Post()
         {          
 
-            RestClient restClient = new RestClient("https://int1.exalinkservices.com:8443/gpmeth/v1/methodologies/");
+            RestClient restClient = new RestClient(baseUrl+"/gpmeth/v1/methodologies/");
             RestRequest restRequest = new RestRequest(Method.POST);
             restRequest.AddHeader("Content-type", "application/json");
             restRequest.AddHeader("x-client", "umbrella");
@@ -37,7 +37,7 @@ namespace Deloitte.APITests
         [Test]
         public void AddMethodologiesPageOpened_Get()
         {
-            RestClient restClient = new RestClient("https://perf.exalinkservices.com:8443/gpmeth/v1/methodologies/");
+            RestClient restClient = new RestClient(baseUrl+"/gpmeth/v1/methodologies/");
             RestRequest restRequest = new RestRequest(Method.GET);
             restRequest.AddHeader("Content-type", "application/json");
             restRequest.AddHeader("x-client", "umbrella");

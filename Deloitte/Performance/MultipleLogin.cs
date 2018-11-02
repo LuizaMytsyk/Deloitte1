@@ -22,11 +22,12 @@ namespace Deloitte
                 tasks.Add(Login());
             }
             await Task.WhenAll(tasks.ToArray());
+            
             Console.WriteLine("finished");
         }
         async Task Login()
         {
-            RestClient restClient = new RestClient("https://int1.exalinkservices.com:8443/apigateway/v1/sessions");
+            RestClient restClient = new RestClient("https://perf.exalinkservices.com:8443/apigateway/v1/sessions");
             RestRequest restRequest = new RestRequest(Method.POST);
             restRequest.AddHeader("Content-type", "application/json");
             restRequest.AddJsonBody(
@@ -41,6 +42,8 @@ namespace Deloitte
             RestSharp.Deserializers.JsonDeserializer deserial = new RestSharp.Deserializers.JsonDeserializer();
             var JSONObj = deserial.Deserialize<Dictionary<string, string>>(responce);
             string sessionId = JSONObj["sessionId"];
+
+            Assert.Warn(sessionId);
         }
     }
 }
