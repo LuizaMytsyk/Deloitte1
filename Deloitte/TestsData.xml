@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Data>
+  <username>gp_integrator</username>
+  <password>Dummy#123</password>
+  <content-type>application/json</content-type>
+  <x-client>umbrella</x-client>
+</Data>

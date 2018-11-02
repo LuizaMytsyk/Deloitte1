@@ -22,7 +22,7 @@ namespace Deloitte
 
             Pages.IdePageInstance
                 .NewMethodology()
-                .AddAce("testtest")
+                .AddAce("Test data " + DateTime.Now.ToString("yyyyMMddHHmm"))
                 .Save();
 
             Pages.SaveMethodologyPopUpInstance
@@ -44,9 +44,9 @@ namespace Deloitte
                 .SetType("Adhoc")
                 .SetProject("DP2")
                 .SetProjectName(projName)
-                .SetStartMonth("Jul 2018")
-                .SetEndMonth("Dec 2019")
-                .SetDueDate("Dec 2019")
+                .SetStartMonth(DateTime.Now.ToString("MMM yyyy"))
+                .SetEndMonth(DateTime.Now.AddMonths(2).Month.ToString("MMM yyyy"))
+                .SetDueDate(DateTime.Now.AddMonths(2).Month.ToString("MMM yyyy"))
                 .SetMethodology(methName)
                 .ClickCreate();
 
