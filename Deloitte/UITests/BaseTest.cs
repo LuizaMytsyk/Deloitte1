@@ -55,7 +55,6 @@ namespace DeloitteTests
             CreateNLog.NLogCreate();
         }
 
-
         [OneTimeTearDown]
         public void OneTimeTearDown()
         {

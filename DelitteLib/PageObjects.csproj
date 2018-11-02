@@ -64,7 +64,7 @@
     <Compile Include="JsonBodiesAll\JsonAddProject.cs" />
     <Compile Include="JsonBodiesAll\JsonLogin.cs" />
     <Compile Include="JsonBodiesAll\JsonSelectTemplate.cs" />
-    <Compile Include="NameGenerator.cs" />
+    <Compile Include="Practice\NameGenerator.cs" />
     <Compile Include="PageObjectsList.cs" />
     <Compile Include="Pages\ViewProject.cs" />
     <Compile Include="PopUps\AddProjectPopUp.cs" />
@@ -77,8 +77,9 @@
     <Compile Include="Practice\ProjectBlock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PopUps\SaveMethodologyPopUp.cs" />
-    <Compile Include="ScreenShotMaker.cs" />
+    <Compile Include="Practice\ScreenShotMaker.cs" />
     <Compile Include="Practice\WebDriverExtensions.cs" />
+    <Compile Include="Practice\ReaderXml.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
