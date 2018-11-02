@@ -18,10 +18,7 @@ namespace Deloitte
         [Test, Order(1)]
         public void Test_CreateMethodology()
         {
-
             Pages.LeftMenuInstance.OpenIde();
-            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//button[@class='btn btn-default new-meth-btn']")));
-
 
             Pages.IdePageInstance
                 .NewMethodology()
