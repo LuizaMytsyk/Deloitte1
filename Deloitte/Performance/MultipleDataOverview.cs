@@ -12,7 +12,7 @@ namespace Deloitte
     public class MultipleDataOverview : API_Base_Test
     {
         [Test]
-        public void TestMethod1()
+        public void Test_DataOverview_14_Requests()
         {
             Stopwatch stopWatch = new Stopwatch();
             Console.WriteLine("Start");
