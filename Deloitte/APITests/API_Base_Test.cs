@@ -15,7 +15,7 @@ namespace Deloitte
     [TestFixture]
     public class API_Base_Test
     {
-        public string sessionId;
+        public string sessionId;    
 
         [OneTimeSetUp]
         public void Login()

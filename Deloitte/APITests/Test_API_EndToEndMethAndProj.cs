@@ -19,13 +19,15 @@ namespace Deloitte.APITests
 
         public string Filepath = @"C:\Users\lmyts\Documents\Deloitte1\Deloitte1\Deloitte\bin\Debug\ExternalData\methId.txt";
 
-        public static string methId;       
+        public static string methId;
 
         [Test, Order(1)]
-      
+
         public void AddMethodology_Post()
         {
+
             RestClient restClient = new RestClient("https://perf.exalinkservices.com:8443/gpmeth/v1/methodologies/");
+
             RestRequest restRequest = new RestRequest(Method.POST);
             restRequest.AddHeader("Content-type", "application/json");
             restRequest.AddHeader("x-client", "umbrella");
@@ -38,7 +40,7 @@ namespace Deloitte.APITests
             var JSONObj = deserial.Deserialize<ResponseBodyCreateProject>(responce);
 
             methId = JSONObj.data.meth_id;
-           
+
             string status = JSONObj.status;
             Assert.AreEqual("success", status, "Test_API: Methodology created with status - {0}", status);
 
@@ -51,10 +53,10 @@ namespace Deloitte.APITests
         [Test, Order(2)]
         public void CreateProject_Post() {
 
-            string methId = File.ReadAllText(Filepath); 
+            string methId = File.ReadAllText(Filepath);
 
             List<string> methodologies = new List<string>() {methId};
-          
+
             JsonAddProject jsonAddProject = new JsonAddProject(methodologies);
 
             RestClient restClient = new RestClient("https://perf.exalinkservices.com:8443/gpproj/v1/projects/");
