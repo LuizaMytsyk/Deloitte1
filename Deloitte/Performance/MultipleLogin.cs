@@ -1,12 +1,10 @@
 ﻿using System;
 using NUnit.Framework;
-using DeloitteLib;
-using DeloitteTests;
-using OpenQA.Selenium.Support.UI;
-using OpenQA.Selenium;
 using System.Threading.Tasks;
 using RestSharp;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 
 namespace Deloitte
 {
@@ -16,16 +14,14 @@ namespace Deloitte
         [Test]
         public async Task TestLogin_14_Users()
         {
-            var tasks = new List<Task>();
-            for (int i = 0; i < 4; i++)
-            {
-                tasks.Add(Login());
-            }
-            await Task.WhenAll(tasks.ToArray());
-            
-            Console.WriteLine("finished");
+            Stopwatch stopWatch = new Stopwatch();
+            Console.WriteLine("Start");
+            stopWatch.Start();
+            Parallel.For(0, 4, i => Login(i));
+            stopWatch.Stop();
+            Console.WriteLine("Runtime "+ stopWatch.Elapsed);
         }
-        async Task Login()
+        async Task Login(int i)
         {
             RestClient restClient = new RestClient("https://perf.exalinkservices.com:8443/apigateway/v1/sessions");
             RestRequest restRequest = new RestRequest(Method.POST);
@@ -38,12 +34,8 @@ namespace Deloitte
                 });
 
             IRestResponse responce = restClient.Execute(restRequest);
-
-            RestSharp.Deserializers.JsonDeserializer deserial = new RestSharp.Deserializers.JsonDeserializer();
-            var JSONObj = deserial.Deserialize<Dictionary<string, string>>(responce);
-            string sessionId = JSONObj["sessionId"];
-
-            Assert.Warn(sessionId);
+            Console.WriteLine("Thread: " + i);
+           
         }
     }
 }
