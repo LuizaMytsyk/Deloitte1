@@ -21,7 +21,7 @@ namespace Deloitte.APITests
             string methName = "APITestMethodology" + NameGenerator.GetRandomAlphaNumeric();
 
             //создаю рест клиента, рест запрос и задаю хедеры
-            RestClient restClient = new RestClient("https://int1.exalinkservices.com:8443/gpmeth/v1/methodologies/");
+            RestClient restClient = new RestClient(baseUrl+"/gpmeth/v1/methodologies/");
             RestRequest restRequest = new RestRequest(Method.POST);
             restRequest.AddHeader("Content-type", "application/json");
             restRequest.AddHeader("x-client", "umbrella");
@@ -53,7 +53,7 @@ namespace Deloitte.APITests
             // List<string> methodologies = new List<string>() {"f05248ed-dea8-4ccd-9af0-48196949259c"}; 
             JsonAddProject jsonAddProject = new JsonAddProject();
 
-            RestClient restClient = new RestClient("https://int1.exalinkservices.com:8443/gpproj/v1/projects/");
+            RestClient restClient = new RestClient(baseUrl+"/gpproj/v1/projects/");
             RestRequest restRequest = new RestRequest(Method.POST);
             restRequest.AddHeader("Content-type", "application/json");
             restRequest.AddHeader("x-client", "umbrella");

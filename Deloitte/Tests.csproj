@@ -91,11 +91,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UITests\Test_IDE_IdeSaved.cs" />
     <Compile Include="Performance\MultipleLogin.cs" />
+    <Compile Include="Performance\MultipleDataOverview.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="TestsData.xml" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>

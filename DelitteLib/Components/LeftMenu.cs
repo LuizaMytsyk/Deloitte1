@@ -16,15 +16,24 @@ namespace DeloitteLib
         [FindsBy(How = How.XPath, Using = "//xl-icon[@icon='d-code']")]
         [CacheLookup]
         private IWebElement _ide;
-
-
+        
         [FindsBy(How = How.XPath, Using = "//xl-icon[@icon='d-list']")]
         [CacheLookup]
         private IWebElement _projects;
 
+        [FindsBy(How = How.XPath, Using = "//xl-icon[@icon='d-data']")]
+        [CacheLookup]
+        private IWebElement _data;
+
         public LeftMenu OpenIde()
         {
             _ide.Click();
+            return this;
+        }
+
+        public LeftMenu OpenData()
+        {
+            _data.Click();
             return this;
         }
         public LeftMenu OpenProjects()

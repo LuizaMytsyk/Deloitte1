@@ -153,3 +153,4 @@ C:\Users\lmyts\Documents\Deloitte777\Deloitte1\DelitteLib\obj\Debug\PageObjects.
 C:\Users\lmyts\Documents\Deloitte777\Deloitte1\DelitteLib\obj\Debug\PageObjects.csproj.CopyComplete
 C:\Users\lmyts\Documents\Deloitte777\Deloitte1\DelitteLib\obj\Debug\DelitteLib.dll
 C:\Users\lmyts\Documents\Deloitte777\Deloitte1\DelitteLib\obj\Debug\DelitteLib.pdb
+C:\Users\tmanu\source\repos\DeloitteWeb\Deloitte1\DelitteLib\obj\Debug\PageObjects.csprojAssemblyReference.cache
