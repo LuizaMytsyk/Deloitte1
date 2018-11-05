@@ -12,14 +12,27 @@ namespace Deloitte
     public class MultipleDataOverview : API_Base_Test
     {
         [Test]
-        public void Test_DataOverview_14_Requests()
+         public void Test_DataOverview_14_Requests()
         {
             Stopwatch stopWatch = new Stopwatch();
             Console.WriteLine("Start");
+            List<Task> tasks = new List<Task>();
+            for(int i =0; i < 14; i++)
+            {
+                Task t = new Task(() => DataOverView(i));
+                t.Start();
+                tasks.Add(t);
+            }
             stopWatch.Start();
-            Parallel.For(0, 14, i => DataOverView(i));
+            Task.WaitAll(tasks.ToArray());
+//           
             stopWatch.Stop();
-            Console.WriteLine("Runtime " + stopWatch.Elapsed);
+            Console.WriteLine("Runtime Tasks " + stopWatch.Elapsed);
+            stopWatch.Reset();
+            //stopWatch.Start();
+            //Parallel.For(0, 14, i => DataOverView(i));
+            //stopWatch.Stop();
+            Console.WriteLine("Runtime Parallel " + stopWatch.Elapsed);
         }
 
         async Task DataOverView(int i)
