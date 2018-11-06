@@ -10,50 +10,56 @@ using DelitteLib;
 using DelitteLib.JsonBodies;
 using Newtonsoft.Json;
 using DelitteLib.JsonBodiesAll;
+using System.IO;
 
 namespace Deloitte.APITests
 {
     class Test_API_EndToEndMethAndProj : API_Base_Test
     {
-        [Test]
+
+        public string Filepath = @"C:\Users\lmyts\Documents\Deloitte1\Deloitte1\Deloitte\bin\Debug\ExternalData\methId.txt";
+
+        public static string methId;
+
+        [Test, Order(1)]
+
         public void AddMethodology_Post()
         {
-            string methName = "APITestMethodology" + NameGenerator.GetRandomAlphaNumeric();
 
-            //создаю рест клиента, рест запрос и задаю хедеры
-            RestClient restClient = new RestClient(baseUrl+"/gpmeth/v1/methodologies/");
+            RestClient restClient = new RestClient("https://perf.exalinkservices.com:8443/gpmeth/v1/methodologies/");
+
             RestRequest restRequest = new RestRequest(Method.POST);
             restRequest.AddHeader("Content-type", "application/json");
             restRequest.AddHeader("x-client", "umbrella");
             restRequest.AddHeader("Authorization", "SessionID " + sessionId);
-
-            //создаю объект типа JsonCreateMethodology и присваиваю полям значения
-          //  JsonCreateMethodology jsonCreateMethodology = new JsonCreateMethodology("this is test data", methName);
-
-            //запихиваю этот объект в боди 
-          //  restRequest.AddJsonBody(jsonCreateMethodology);
-
-            //в переменную responce записываю результат выполнения реквеста
+            JsonCreateMethodology jsonCreateMethodology = new JsonCreateMethodology();
+            restRequest.AddJsonBody(jsonCreateMethodology);
             IRestResponse responce = restClient.Execute(restRequest);
 
-            //десериализирую ответ в словарь
             RestSharp.Deserializers.JsonDeserializer deserial = new RestSharp.Deserializers.JsonDeserializer();
-            var JSONObj = deserial.Deserialize<Dictionary<string, string>>(responce);
+            var JSONObj = deserial.Deserialize<ResponseBodyCreateProject>(responce);
+
+            methId = JSONObj.data.meth_id;
+
+            string status = JSONObj.status;
+            Assert.AreEqual("success", status, "Test_API: Methodology created with status - {0}", status);
 
 
-            //хочу узнать значение по ключу "status"
-            string status = JSONObj["status"];
-
+            File.WriteAllText(Filepath, methId);
 
         }
 
-        [Test]
-        public void CreateProject_Post()        {
-           
-            // List<string> methodologies = new List<string>() {"f05248ed-dea8-4ccd-9af0-48196949259c"}; 
-            JsonAddProject jsonAddProject = new JsonAddProject();
 
-            RestClient restClient = new RestClient(baseUrl+"/gpproj/v1/projects/");
+        [Test, Order(2)]
+        public void CreateProject_Post() {
+
+            string methId = File.ReadAllText(Filepath);
+
+            List<string> methodologies = new List<string>() {methId};
+
+            JsonAddProject jsonAddProject = new JsonAddProject(methodologies);
+
+            RestClient restClient = new RestClient("https://perf.exalinkservices.com:8443/gpproj/v1/projects/");
             RestRequest restRequest = new RestRequest(Method.POST);
             restRequest.AddHeader("Content-type", "application/json");
             restRequest.AddHeader("x-client", "umbrella");
@@ -67,7 +73,7 @@ namespace Deloitte.APITests
             var JSONObj = deserial.Deserialize<Dictionary<string, string>>(responce);
             string status = JSONObj["status"];
 
-            //Assert.AreEqual("success", status);
+            Assert.AreEqual("success", status);
         }
 
     }
