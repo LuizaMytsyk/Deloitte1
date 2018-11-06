@@ -12,7 +12,7 @@ namespace Deloitte
     public class MultipleDataOverview : API_Base_Test
     {
         [Test]
-         public void Test_DataOverview_14_Requests()
+         public async Task Test_DataOverview_14_Requests()
         {
             Stopwatch stopWatch = new Stopwatch();
             Console.WriteLine("Start");
@@ -24,7 +24,7 @@ namespace Deloitte
                 tasks.Add(t);
             }
             stopWatch.Start();
-            Task.WaitAll(tasks.ToArray());
+            await Task.WhenAll(tasks.ToArray());
 //           
             stopWatch.Stop();
             Console.WriteLine("Runtime Tasks " + stopWatch.Elapsed);
@@ -43,7 +43,6 @@ namespace Deloitte
             restRequest.AddHeader("x-client", "umbrella");
             restRequest.AddHeader("Authorization", "SessionID " + sessionId);
             Console.WriteLine("Thread is run " + i);
-
             IRestResponse responce = restClient.Execute(restRequest);
         }
     }
