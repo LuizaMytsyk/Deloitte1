@@ -15,17 +15,19 @@ namespace Deloitte
     [TestFixture]
     public class API_Base_Test
     {
-        public string sessionId;    
+        public string sessionId;
+        public string baseUrl;
 
         [OneTimeSetUp]
         public void Login()
         {
+            baseUrl = "https://perf.exalinkservices.com:8443";
             string login = "gp_integrator";
             string password = "Dummy#123";
 
             JsonLogin jsonLogin = new JsonLogin(login, password);
 
-            RestClient restClient = new RestClient("https://perf.exalinkservices.com:8443/apigateway/v1/sessions");
+            RestClient restClient = new RestClient(baseUrl+"/apigateway/v1/sessions");
             RestRequest restRequest = new RestRequest(Method.POST);
             restRequest.AddHeader("Content-type", "application/json");
             restRequest.AddJsonBody(jsonLogin);

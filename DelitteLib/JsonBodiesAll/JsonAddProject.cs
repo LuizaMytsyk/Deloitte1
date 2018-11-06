@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace DelitteLib.JsonBodiesAll
 {
     public class JsonAddProject
-    {                 
+    {
 
-        public JsonAddProject(List <string> methid)
+        public JsonAddProject(List<string> methid)
         {
             due_date = DateTime.Now.ToString("yyyy-MM-dd");
             end_month = DateTime.Now.AddMonths(2).Month.ToString("00");
@@ -41,7 +41,10 @@ namespace DelitteLib.JsonBodiesAll
         public string start_month { get; set; }
         public string start_year { get; set; }
         public string type { get; set; }
+
+
+
     }
 
-    public 
-}
+
+    }

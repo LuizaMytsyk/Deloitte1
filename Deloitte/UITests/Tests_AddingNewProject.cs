@@ -15,7 +15,7 @@ namespace DeloitteTests
        
         public void AddingProjectAndSaving()
         {
-            string name = NameGenerator.GetRandomAlphaNumeric();
+            string name = RandomGenerator.GetRandomAlphaNumeric();
             Pages.ProjectsPageInstance.ClickAddProject();
 
             Pages.AddProjectInstance
@@ -36,7 +36,7 @@ namespace DeloitteTests
 
         public void AddingProjectAndCanceling()
         {
-            string name = NameGenerator.GetRandomAlphaNumeric();
+            string name = RandomGenerator.GetRandomAlphaNumeric();
             Pages.ProjectsPageInstance.ClickAddProject();
 
             wait.Until((d) => Pages.AddProjectInstance.IsAddProjectDisplayed());
@@ -59,7 +59,7 @@ namespace DeloitteTests
 
         public void AddingProjectStartDateError()
         {
-            string name = NameGenerator.GetRandomAlphaNumeric();
+            string name = RandomGenerator.GetRandomAlphaNumeric();
             Pages.ProjectsPageInstance.ClickAddProject();
 
             Pages.AddProjectInstance

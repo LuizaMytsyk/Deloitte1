@@ -77,6 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APITests\API_Base_Test.cs" />
+    <Compile Include="APITests\Test_API_GetAllMeth.cs" />
     <Compile Include="APITests\Test_API_EndToEndMethAndProj.cs" />
     <Compile Include="APITests\Test_API_SelectReportTemplate.cs" />
     <Compile Include="APITests\Test_API_AddMethodology.cs" />

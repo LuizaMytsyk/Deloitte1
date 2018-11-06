@@ -21,7 +21,7 @@ namespace Deloitte
         [Test]
         public void Test_CreateMethodology_Positive()
         {
-            string name = "Test_methodology_" + NameGenerator.GetRandomAlphaNumeric();
+            string name = "Test_methodology_" + RandomGenerator.GetRandomAlphaNumeric();
 
             Pages.IdePageInstance
                 .NewMethodology()
