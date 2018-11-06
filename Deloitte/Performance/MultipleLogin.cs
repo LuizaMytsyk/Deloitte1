@@ -15,9 +15,17 @@ namespace Deloitte
         public async Task TestLogin_14_Users()
         {
             Stopwatch stopWatch = new Stopwatch();
+            
+            List<Task> tasks = new List<Task>();
+            for (int i = 0; i < 14; i++)
+            {
+                Task t = new Task(() => Login(i));
+                t.Start();
+                tasks.Add(t);
+            }
             Console.WriteLine("Start");
             stopWatch.Start();
-            Parallel.For(0, 14, i => Login(i));
+            await Task.WhenAll(tasks.ToArray());
             stopWatch.Stop();
             Console.WriteLine("Runtime "+ stopWatch.Elapsed);
         }

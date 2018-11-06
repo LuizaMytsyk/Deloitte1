@@ -24,8 +24,7 @@ namespace Deloitte
                 tasks.Add(t);
             }
             stopWatch.Start();
-            await Task.WhenAll(tasks.ToArray());
-//           
+            await Task.WhenAll(tasks.ToArray());          
             stopWatch.Stop();
             Console.WriteLine("Runtime Tasks " + stopWatch.Elapsed);
             stopWatch.Reset();
