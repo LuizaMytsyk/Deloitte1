@@ -16,12 +16,21 @@ namespace DelitteLib
             return new string(chars.Select(c => chars[random.Next(chars.Length)]).Take(8).ToArray());
         }
 
-        //Get random element from list
+ 
         public static int GetRandomNumber(int count)
         {
             int r = random.Next(count);
             return r;
         }
+
+        public static string SelectRandomElementFromFile(List<string> IDList)
+        {
+            string ID;
+            int randomNumber = RandomGenerator.GetRandomNumber(IDList.Count);
+            ID = IDList[randomNumber];
+            return ID;
+        }
+
 
 
     }

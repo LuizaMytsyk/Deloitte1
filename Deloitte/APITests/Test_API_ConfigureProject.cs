@@ -17,6 +17,8 @@ namespace Deloitte
     public class Test_API_ConfigureProject : API_Base_Test
     {
         string projectID;
+        string path = @"C:\Users\lmyts\Documents\Deloitte1\Deloitte1\Deloitte\bin\Debug\ExternalData\projId.txt";
+
 
         [Test, Order(1)]
         public void GetAllProjectsAndOneRandomId()
@@ -45,11 +47,11 @@ namespace Deloitte
                 all_IDs.Add(item.proj_id);
             }
 
-            //Select random element from list and wright to File
+            //Select random element from list            
+            projectID =  RandomGenerator.SelectRandomElementFromFile(all_IDs);
 
-            int r = RandomGenerator.GetRandomNumber(all_IDs.Count);
-            projectID = all_IDs[r];
-            File.WriteAllText(Filepath_ProjectID, projectID);
+            //Write to file
+            File.WriteAllText(path, projectID);
 
             //Check status
             string status = JSONObj.status;
@@ -61,7 +63,7 @@ namespace Deloitte
         [Test, Order(2)]
         public void ConfigureRandomProject_Post()
         {
-            projectID = File.ReadAllText(Filepath_ProjectID);
+            projectID = File.ReadAllText(path);
             RestClient restClient = new RestClient(baseUrl+"/gpproj/v1/projects/" + projectID);
             RestRequest restRequest = new RestRequest(Method.PUT);
             restRequest.AddHeader("Content-type", "application/json");

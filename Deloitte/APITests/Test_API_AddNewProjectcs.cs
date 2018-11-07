@@ -14,7 +14,10 @@ namespace Deloitte
 {
     [TestFixture]
     public class Test_API_AddNewProject : API_Base_Test
-    {       
+    {
+        public string path = @"C:\Users\lmyts\Documents\Deloitte1\Deloitte1\Deloitte\bin\Debug\ExternalData\methId.txt";
+        public string methId;
+
 
         [Test, Order(1)]
         public void AddProjectPopUpOpened_Projects_Get()
@@ -64,9 +67,10 @@ namespace Deloitte
 
             //Select random element from list and wright to File
 
-            int r = RandomGenerator.GetRandomNumber(all_IDs.Count);
-            methId = all_IDs[r];
-            File.WriteAllText(Filepath_MethodologyID, methId);
+            methId = RandomGenerator.SelectRandomElementFromFile(all_IDs);
+
+            //Write to File
+            File.WriteAllText(path, methId);
 
             //Check status
             string status = JSONObj.status;
@@ -77,7 +81,7 @@ namespace Deloitte
         [Test, Order (3)]
         public void CreateProjectWithRandomMethodology_Post()
         {
-            methId = File.ReadAllText(Filepath_MethodologyID);
+            methId = File.ReadAllText(path);
             List<string> methodologies = new List<string>() { methId };
 
             JsonAddProject jsonAddProject = new JsonAddProject(methodologies);

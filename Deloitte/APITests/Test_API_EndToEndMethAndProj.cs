@@ -15,7 +15,9 @@ using System.IO;
 namespace Deloitte.APITests
 {
     class Test_API_EndToEndMethAndProj : API_Base_Test
-    {        
+    {
+        public string path = @"C:\Users\lmyts\Documents\Deloitte1\Deloitte1\Deloitte\bin\Debug\ExternalData\methId.txt";
+        public string methId;
 
         [Test, Order(1)]
 
@@ -40,8 +42,7 @@ namespace Deloitte.APITests
             string status = JSONObj.status;
             Assert.AreEqual("success", status, "Test_API: Methodology created with status - {0}", status);
 
-
-            File.WriteAllText(Filepath_MethodologyID, methId);
+            File.WriteAllText(path, methId);
 
         }
 
@@ -49,8 +50,7 @@ namespace Deloitte.APITests
         [Test, Order(2)]
         public void CreateProject_Post() {
 
-
-            string methId = File.ReadAllText(Filepath_MethodologyID);
+            string methId = File.ReadAllText(path);
 
             List<string> methodologies = new List<string>() {methId};
 
