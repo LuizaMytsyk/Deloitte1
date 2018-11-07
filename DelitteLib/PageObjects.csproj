@@ -65,7 +65,9 @@
     <Compile Include="JsonBodiesAll\JsonLogin.cs" />
     <Compile Include="JsonBodiesAll\JsonSelectTemplate.cs" />
     <Compile Include="JsonBodiesAll\ResponseBodyCreateProject.cs" />
-    <Compile Include="Practice\NameGenerator.cs" />
+    <Compile Include="JsonBodiesAll\ResponseBodyGetAllProjects.cs" />
+    <Compile Include="JsonBodiesAll\ResponseBodyGetAllMeth.cs" />
+    <Compile Include="Practice\RandomGenerator.cs" />
     <Compile Include="PageObjectsList.cs" />
     <Compile Include="Pages\ViewProject.cs" />
     <Compile Include="PopUps\AddProjectPopUp.cs" />
