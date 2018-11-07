@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using Deloitte;
 using DeloitteLib;
+using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Chrome;
-using Deloitte;
+using OpenQA.Selenium.Support.UI;
+using System;
 
 namespace DeloitteTests
 {
@@ -43,7 +39,7 @@ namespace DeloitteTests
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             driver.Manage().Window.Maximize();
 
-            baseURL = "https://int1.exalinkservices.com";
+            baseURL = "https://perf.exalinkservices.com";
                       
            
         }
@@ -72,7 +68,7 @@ namespace DeloitteTests
         public void LoginWithValidCredentials()
         {
             LoginPageInstance.SingIn("gp_integrator", "Dummy#123");
-            Assert.IsTrue(wait.Until((d) => ProjectsPageInstance.IsProjectPageDisplayed()));
+            Assert.IsTrue(ProjectsPageInstance.IsProjectPageDisplayed());
 
         }
 
@@ -81,7 +77,7 @@ namespace DeloitteTests
         public void LoginWithInValidCredentials(string name, string password)
         {
             LoginPageInstance.SingIn(name, password);
-            Assert.IsTrue(wait.Until((d) => LoginPageInstance.IsIncorrectCredentialsMessageDisplayed()));
+            Assert.IsTrue(LoginPageInstance.IsIncorrectCredentialsMessageDisplayed());
 
         }
 

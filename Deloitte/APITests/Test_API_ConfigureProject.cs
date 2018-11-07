@@ -1,15 +1,9 @@
-﻿using System;
-using NUnit.Framework;
-using DeloitteLib;
-using DeloitteTests;
-using OpenQA.Selenium.Support.UI;
-using OpenQA.Selenium;
-using RestSharp;
-using System.Collections.Generic;
-using DelitteLib.JsonBodies;
+﻿using DelitteLib;
 using DelitteLib.JsonBodiesAll;
-using DelitteLib;
-using System.IO;
+using NUnit.Framework;
+using RestSharp;
+using System;
+using System.Collections.Generic;
 
 namespace Deloitte
 {
@@ -17,8 +11,6 @@ namespace Deloitte
     public class Test_API_ConfigureProject : API_Base_Test
     {
         string projectID;
-        string path = @"C:\Users\lmyts\Documents\Deloitte1\Deloitte1\Deloitte\bin\Debug\ExternalData\projId.txt";
-
 
         [Test, Order(1)]
         public void GetAllProjectsAndOneRandomId()
@@ -49,10 +41,7 @@ namespace Deloitte
 
             //Select random element from list            
             projectID =  RandomGenerator.SelectRandomElementFromList(all_IDs);
-
-            //Write to file
-            File.WriteAllText(path, projectID);
-
+           
             //Check status
             string status = JSONObj.status;
             Assert.AreEqual("success", status);
@@ -63,7 +52,7 @@ namespace Deloitte
         [Test, Order(2)]
         public void ConfigureRandomProject_Post()
         {
-            projectID = File.ReadAllText(path);
+          
             RestClient restClient = new RestClient(baseUrl+"/gpproj/v1/projects/" + projectID);
             RestRequest restRequest = new RestRequest(Method.PUT);
             restRequest.AddHeader("Content-type", "application/json");

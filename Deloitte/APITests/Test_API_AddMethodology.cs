@@ -1,5 +1,4 @@
-﻿using DelitteLib;
-using DelitteLib.JsonBodies;
+﻿using DelitteLib.JsonBodies;
 using NUnit.Framework;
 using RestSharp;
 using System;

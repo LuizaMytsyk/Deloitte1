@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using DelitteLib;
 
 namespace DeloitteLib
 {
@@ -39,16 +40,12 @@ namespace DeloitteLib
 
         public bool IsIncorrectCredentialsMessageDisplayed()
         {
-            return driver.FindElements(By.XPath("//p[@class='ng-binding']")).Count > 0 ?
-                true : false;
+            return  WebDriverExtensions.ElementIsExist(driver, By.XPath("//p[@class='ng-binding']"), 10);
         }
 
         public bool IsLoginPageOpened()
-        {
-            return driver.FindElements(By.Id("username")).Count > 0 &
-                driver.FindElements(By.XPath("//input[@placeholder='Password']")).Count > 0 &
-                driver.FindElements(By.Id("login-submit")).Count > 0 ?
-                true : false;
+        {                     
+            return WebDriverExtensions.ElementIsExist(driver, By.Id("username"), 10);
         }
     }
 }

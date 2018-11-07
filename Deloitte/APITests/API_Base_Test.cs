@@ -1,14 +1,7 @@
-﻿using System;
+﻿using DelitteLib.JsonBodies;
 using NUnit.Framework;
-using DeloitteLib;
-using DeloitteTests;
-using OpenQA.Selenium.Support.UI;
-using OpenQA.Selenium;
 using RestSharp;
 using System.Collections.Generic;
-using System.IO;
-using NUnit.Framework.Interfaces;
-using DelitteLib.JsonBodies;
 
 namespace Deloitte
 {

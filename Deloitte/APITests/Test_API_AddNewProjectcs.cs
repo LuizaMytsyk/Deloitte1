@@ -1,21 +1,15 @@
-﻿using System;
-using NUnit.Framework;
-using DeloitteLib;
-using DeloitteTests;
-using OpenQA.Selenium.Support.UI;
-using OpenQA.Selenium;
-using RestSharp;
-using System.Collections.Generic;
-using DelitteLib;
+﻿using DelitteLib;
 using DelitteLib.JsonBodiesAll;
-using System.IO;
+using NUnit.Framework;
+using RestSharp;
+using System;
+using System.Collections.Generic;
 
 namespace Deloitte
 {
     [TestFixture]
     public class Test_API_AddNewProject : API_Base_Test
     {
-        public string path = @"C:\Users\lmyts\Documents\Deloitte1\Deloitte1\Deloitte\bin\Debug\ExternalData\methId.txt";
         public string methId;
 
 
@@ -65,13 +59,9 @@ namespace Deloitte
                 all_IDs.Add(item.meth_id);
             }
 
-            //Select random element from list and wright to File
-
+            //Select random element from list 
             methId = RandomGenerator.SelectRandomElementFromList(all_IDs);
-
-            //Write to File
-            File.WriteAllText(path, methId);
-
+                       
             //Check status
             string status = JSONObj.status;
             Assert.AreEqual("success", status);
@@ -81,7 +71,7 @@ namespace Deloitte
         [Test, Order (3)]
         public void CreateProjectWithRandomMethodology_Post()
         {
-            methId = File.ReadAllText(path);
+            
             List<string> methodologies = new List<string>() { methId };
 
             JsonAddProject jsonAddProject = new JsonAddProject(methodologies);
