@@ -5,6 +5,7 @@ using RestSharp;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 
 namespace Deloitte
 {
@@ -14,19 +15,23 @@ namespace Deloitte
         [Test]
          public void Test_DataOverview_14_Requests()
         {
-            Stopwatch stopWatch = new Stopwatch();
-            Console.WriteLine("Start");
-            List<Task> tasks = new List<Task>();
-            for(int i =0; i < 14; i++)
+            Stopwatch stopWatch = new Stopwatch();            
+            Task[] tasks = new Task[14];
+            
+            for (int i =0; i < 14; i++)
             {
-                Task t = new Task(() => DataOverView(i));
-                t.Start();
-                tasks.Add(t);
+                tasks[i] = new Task(() => DataOverView(i));
             }
+
+            Console.WriteLine("Start");
             stopWatch.Start();
-            Task.WaitAll(tasks.ToArray());
-//           
+            foreach (var t in tasks)
+            {
+                t.Start();
+            }
+            Task.WhenAll(tasks);          
             stopWatch.Stop();
+
             Console.WriteLine("Runtime Tasks " + stopWatch.Elapsed);
             stopWatch.Reset();
             //stopWatch.Start();
@@ -35,16 +40,17 @@ namespace Deloitte
             Console.WriteLine("Runtime Parallel " + stopWatch.Elapsed);
         }
 
-        async Task DataOverView(int i)
+        void DataOverView(int i)
         {
-            RestClient restClient = new RestClient(baseUrl + "/gptransactions/v1/overview");
+            Console.WriteLine("Thread is start " + i);
+            RestClient restClient = new RestClient(baseUrl + "/gpdomain/v1/overview");
             RestRequest restRequest = new RestRequest(Method.GET);
             restRequest.AddHeader("Content-type", "application/json");
             restRequest.AddHeader("x-client", "umbrella");
             restRequest.AddHeader("Authorization", "SessionID " + sessionId);
-            Console.WriteLine("Thread is run " + i);
-
+            
             IRestResponse responce = restClient.Execute(restRequest);
+            Console.WriteLine("Thread is stop " + i);
         }
     }
 }
