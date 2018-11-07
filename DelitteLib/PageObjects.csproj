@@ -65,6 +65,7 @@
     <Compile Include="JsonBodiesAll\JsonLogin.cs" />
     <Compile Include="JsonBodiesAll\JsonSelectTemplate.cs" />
     <Compile Include="JsonBodiesAll\ResponseBodyCreateProject.cs" />
+    <Compile Include="JsonBodiesAll\ResponseBodyGetAllProjects.cs" />
     <Compile Include="JsonBodiesAll\ResponseBodyGetAllMeth.cs" />
     <Compile Include="Practice\RandomGenerator.cs" />
     <Compile Include="PageObjectsList.cs" />
@@ -82,7 +83,6 @@
     <Compile Include="Practice\ScreenShotMaker.cs" />
     <Compile Include="Practice\WebDriverExtensions.cs" />
     <Compile Include="Practice\ReaderXml.cs" />
-    <Compile Include="SelectRandomMethodology.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

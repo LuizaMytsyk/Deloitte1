@@ -8,17 +8,61 @@ using RestSharp;
 using System.Collections.Generic;
 using DelitteLib.JsonBodies;
 using DelitteLib.JsonBodiesAll;
+using DelitteLib;
+using System.IO;
 
 namespace Deloitte
 {
     [TestFixture]
     public class Test_API_ConfigureProject : API_Base_Test
     {
-        [Test]
-        public void ConfigureProject_Post()
+        string projectID;
+
+        [Test, Order(1)]
+        public void GetAllProjectsAndOneRandomId()
         {
-                  
-            RestClient restClient = new RestClient(baseUrl+"/gpproj/v1/projects/2cd68b94-c3f9-4349-be99-d5357594d3d1");
+            //Get all projects
+            RestClient restClient = new RestClient(baseUrl + "/gpproj/v1/projects/");
+            RestRequest restRequest = new RestRequest(Method.GET);
+            restRequest.AddHeader("Content-type", "application/json");
+            restRequest.AddHeader("x-client", "umbrella");
+            restRequest.AddHeader("Authorization", "SessionID " + sessionId);
+
+            IRestResponse responce = restClient.Execute(restRequest);
+
+            RestSharp.Deserializers.JsonDeserializer deserial = new RestSharp.Deserializers.JsonDeserializer();
+            var JSONObj = deserial.Deserialize<ResponseBodyGetAllProjects>(responce);
+
+            //Add IDs of all projects to list
+
+            List<ProjectDatum> allProjects = new List<ProjectDatum>();
+            List<string> all_IDs = new List<string>();
+
+            allProjects = JSONObj.data;
+
+            foreach (var item in allProjects)
+            {
+                all_IDs.Add(item.proj_id);
+            }
+
+            //Select random element from list and wright to File
+
+            int r = RandomGenerator.GetRandomNumber(all_IDs.Count);
+            projectID = all_IDs[r];
+            File.WriteAllText(Filepath_ProjectID, projectID);
+
+            //Check status
+            string status = JSONObj.status;
+            Assert.AreEqual("success", status);
+
+        }
+
+
+        [Test, Order(2)]
+        public void ConfigureRandomProject_Post()
+        {
+            projectID = File.ReadAllText(Filepath_ProjectID);
+            RestClient restClient = new RestClient(baseUrl+"/gpproj/v1/projects/" + projectID);
             RestRequest restRequest = new RestRequest(Method.PUT);
             restRequest.AddHeader("Content-type", "application/json");
             restRequest.AddHeader("x-client", "umbrella");

@@ -17,6 +17,9 @@ namespace Deloitte
     {
         public string sessionId;
         public string baseUrl;
+        public string Filepath_MethodologyID = @"C:\Users\lmyts\Documents\Deloitte1\Deloitte1\Deloitte\bin\Debug\ExternalData\methId.txt";
+        public string Filepath_ProjectID = @"C:\Users\lmyts\Documents\Deloitte1\Deloitte1\Deloitte\bin\Debug\ExternalData\projId.txt";
+        public string methId;
 
         [OneTimeSetUp]
         public void Login()
