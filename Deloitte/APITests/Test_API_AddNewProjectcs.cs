@@ -67,7 +67,7 @@ namespace Deloitte
 
             //Select random element from list and wright to File
 
-            methId = RandomGenerator.SelectRandomElementFromFile(all_IDs);
+            methId = RandomGenerator.SelectRandomElementFromList(all_IDs);
 
             //Write to File
             File.WriteAllText(path, methId);

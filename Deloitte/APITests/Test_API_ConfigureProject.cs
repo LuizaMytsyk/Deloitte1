@@ -48,7 +48,7 @@ namespace Deloitte
             }
 
             //Select random element from list            
-            projectID =  RandomGenerator.SelectRandomElementFromFile(all_IDs);
+            projectID =  RandomGenerator.SelectRandomElementFromList(all_IDs);
 
             //Write to file
             File.WriteAllText(path, projectID);
