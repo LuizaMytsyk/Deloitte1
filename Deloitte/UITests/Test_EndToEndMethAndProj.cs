@@ -12,8 +12,7 @@ namespace Deloitte
 
     public class Test_EndToEndMethAndProj : BaseTest
     {
-        string methName = "UITestMethName" + RandomGenerator.GetRandomAlphaNumeric();
-
+        string methName = "Test_methodology_" + DateTime.Now.ToString("yyyyMMddHHmm");
 
         [Test, Order(1)]
         public void Test_CreateMethodology()
@@ -37,7 +36,7 @@ namespace Deloitte
         public void AddingProjectWithMethFromTest1()
         {
 
-            string projName = "UIProjName" + RandomGenerator.GetRandomAlphaNumeric();
+            string projName = "UITestProjName"+ DateTime.Now.ToString("yyyyMMddHHmm");
             Pages.ProjectsPageInstance.ClickAddProject();
 
             Pages.AddProjectInstance
