@@ -56,10 +56,7 @@ namespace DeloitteLib
         }
         public bool IsProjectPageDisplayed()
         {
-            return driver.FindElements(By.Id("platform-nav")).Count > 0 &
-                driver.FindElements(By.XPath("//div[@class='service-nav-container']")).Count > 0 &
-                driver.FindElements(By.XPath("//button[@class='btn btn-primary pull-right']")).Count > 0 ?
-               true : false;
+            return WebDriverExtensions.ElementIsExist(driver, By.Id("platform-nav"), 5);
         }
 
     }
