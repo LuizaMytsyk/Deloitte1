@@ -11,7 +11,7 @@ namespace DelitteLib.JsonBodies
         public JsonCreateMethodology()
         {
              data = "Test data " + DateTime.Now.ToString("yyyyMMddHHmm");
- ;           name = "Test_methodology_" + DateTime.Now.ToString("yyyyMMddHHmm");
+ ;           name = "Test_methodology_" + DateTime.Now.ToString("yyyyMMddHHmmSS");
         }
 
         public string data { get; set; }

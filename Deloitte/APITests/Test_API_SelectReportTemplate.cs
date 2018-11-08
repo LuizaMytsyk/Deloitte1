@@ -6,6 +6,7 @@ using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium;
 using RestSharp;
 using System.Collections.Generic;
+using DelitteLib.JsonBodiesAll;
 
 namespace Deloitte.APITests
 {
@@ -15,18 +16,14 @@ namespace Deloitte.APITests
         [Test]
         public void SelectReportTemplate()
         {
-            RestClient restClient = new RestClient(baseUrl+"/gpmeth/v1/methodology_templates/942f1cfe-a0c9-49f6-835d-d2d7ef2c5d2e");
+            RestClient restClient = new RestClient(baseUrl+ "/gpmeth/v1/methodology_templates/b71fe0f8-875b-4bb7-a965-31442ea01ca8");
             RestRequest restRequest = new RestRequest(Method.POST);
             restRequest.AddHeader("Content-type", "application/json");
             restRequest.AddHeader("x-client", "umbrella");
             restRequest.AddHeader("Authorization", "SessionID " + sessionId);
+            JsonSelectTemplate jsonSelectTemplate = new JsonSelectTemplate();
 
-            restRequest.AddJsonBody(
-                new
-                {
-                    common = false,
-                    template_url = "/document/v2/docloads/1dbe7262-311c-11e8-b252-0242ac110012"
-                });
+            restRequest.AddJsonBody(jsonSelectTemplate);
 
             IRestResponse responce = restClient.Execute(restRequest);
 
