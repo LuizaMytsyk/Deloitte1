@@ -10,7 +10,7 @@ namespace Deloitte
 {
     [TestFixture]
 
-    public class Test_IDE_IdeSaved : BaseTest
+    public class Test_IDE_IdeSaveNameBtn : BaseTest
     {
         [SetUp]
         public void LogIn()
@@ -19,7 +19,7 @@ namespace Deloitte
         }
 
         [Test]
-        public void Test_SavedMethodology_Positive(string text)
+        public void Test_SavedMethodologyName_Positive(string text)
         {
             string name = RandomGenerator.GetRandomAlphaNumeric();
 
@@ -33,14 +33,22 @@ namespace Deloitte
         }
 
         [Test]
-        public void Test_SavedMethodology_Negative()
+        public void Test_SavedMethodologyName_Negative()
         {
             Pages.IdePageInstance
                 .NewMethodology()
                 .AddAce("Test data " + DateTime.Now.ToString("yyyyMMddHHmm"))
                 .Save();
 
-            Assert.IsTrue(Pages.SaveMethodologyPopUpInstance.SaveDisabled(), "Save methodology button is disable");
+            Assert.IsTrue(Pages.SaveMethodologyPopUpInstance.SaveDisabled(), "Save methodology button is enable");
+        }
+
+        [TearDown]
+        public void AfterTest()
+        {
+            Pages.LeftMenuInstance.OpenProjects();
+            ScreenShotMakerInstance.TakeScreenShot();
+            CreateNLog.NLogCreate();
         }
     }
 }

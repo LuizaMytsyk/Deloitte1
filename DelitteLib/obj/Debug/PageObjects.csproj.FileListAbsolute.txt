@@ -175,3 +175,4 @@ C:\Users\lmyts\Documents\Deloitte1\Deloitte1\DelitteLib\obj\Debug\PageObjects.cs
 C:\Users\lmyts\Documents\Deloitte1\Deloitte1\DelitteLib\obj\Debug\DelitteLib.dll
 C:\Users\lmyts\Documents\Deloitte1\Deloitte1\DelitteLib\obj\Debug\DelitteLib.pdbC:\Users\tmanu\source\repos\DeloitteWeb\Deloitte1\DelitteLib\obj\Debug\PageObjects.csprojAssemblyReference.cache
 C:\Users\lmyts\Documents\Deloitte1\Deloitte1\DelitteLib\obj\Debug\DelitteLib.pdb
+C:\Users\tmanu\source\repos\DeloitteWeb\Deloitte1\DelitteLib\obj\Debug\PageObjects.csprojAssemblyReference.cache

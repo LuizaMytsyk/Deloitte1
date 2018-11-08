@@ -22,7 +22,7 @@ namespace Deloitte
         public void Test_CreateMethodology_Positive()
         {
             string name = "Test_methodology_" + RandomGenerator.GetRandomAlphaNumeric();
-
+            driver.Navigate().Refresh();
             Pages.IdePageInstance
                 .NewMethodology()
                 .AddAce("Test data " + DateTime.Now.ToString("yyyyMMddHHmm"))
@@ -31,7 +31,7 @@ namespace Deloitte
                 .SetName(name)
                 .Save();
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//span[@class='name overlapping']")));
-            
+
             CollectionAssert.Contains(Pages.IdePageInstance.Methodologies, name, "Methodology displayed in list");
         }
         
@@ -41,8 +41,14 @@ namespace Deloitte
             Pages.IdePageInstance.
                 NewMethodology();
 
-            Assert.IsFalse(Pages.IdePageInstance.SaveDisabled(), "Save button is disable");
+            Assert.IsTrue(Pages.IdePageInstance.SaveDisabled(), "Save button is enable");
         }
-       
+        [TearDown]
+        public void AfterTest()
+        {
+            Pages.LeftMenuInstance.OpenProjects();
+            ScreenShotMakerInstance.TakeScreenShot();
+            CreateNLog.NLogCreate();
+        }
     }
 }

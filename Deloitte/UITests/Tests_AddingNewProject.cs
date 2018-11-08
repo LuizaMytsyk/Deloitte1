@@ -71,6 +71,11 @@ namespace DeloitteTests
 
             Assert.True(Pages.AddProjectInstance.IsErrorMessageStartMonthDisplayed());
         }
-      
+        [TearDown]
+        public void AfterTest()
+        {
+            ScreenShotMakerInstance.TakeScreenShot();
+            CreateNLog.NLogCreate();
+        }
     }
 }

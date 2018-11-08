@@ -36,7 +36,7 @@ namespace DeloitteTests
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             driver.Manage().Window.Maximize();
 
-            baseURL = "https://int1.exalinkservices.com";
+            baseURL = "https://perf.exalinkservices.com";
             driver.Navigate().GoToUrl(baseURL);
 
             ScreenShotMakerInstance = new ScreenShotMaker(driver);
@@ -46,14 +46,9 @@ namespace DeloitteTests
             Pages.LoginPageInstance.SingIn(username, password);
             wait.Until((d) => Pages.ProjectsPageInstance.IsProjectPageDisplayed());
             Pages.HeaderNavigationInstance.SelectClient(x_client);
-        }        
-
-        [TearDown]
-        public void AfterTest()
-        {
-            ScreenShotMakerInstance.TakeScreenShot();
-            CreateNLog.NLogCreate();
         }
+
+        
 
         [OneTimeTearDown]
         public void OneTimeTearDown()

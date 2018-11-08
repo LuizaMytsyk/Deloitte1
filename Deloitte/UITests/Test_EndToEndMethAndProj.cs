@@ -55,5 +55,11 @@ namespace Deloitte
             Assert.True(Pages.ProjectsPageInstance.VerifyProjectAdded("Adhoc: " + projName));
         }
 
+        [TearDown]
+        public void AfterTest()
+        {
+            ScreenShotMakerInstance.TakeScreenShot();
+            CreateNLog.NLogCreate();
+        }
     }
 }
