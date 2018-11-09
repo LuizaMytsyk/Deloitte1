@@ -36,14 +36,14 @@ namespace DeloitteTests
 
         public void AddingProjectAndCanceling()
         {
-            string name = RandomGenerator.GetRandomAlphaNumeric();
+            string name = "TestProjectName"+ RandomGenerator.GetRandomAlphaNumeric();
             Pages.ProjectsPageInstance.ClickAddProject();
 
             wait.Until((d) => Pages.AddProjectInstance.IsAddProjectDisplayed());
 
             Pages.AddProjectInstance
                  .SetType("Adhoc")
-                .SetProject("DP2")
+                .SetProject("qqqq")
                 .SetProjectName(name)
                 .SetStartMonth(DateTime.Now.ToString("MMM yyyy"))
                 .SetEndMonth(DateTime.Now.AddMonths(2).Month.ToString("MMM yyyy"))
@@ -64,7 +64,7 @@ namespace DeloitteTests
 
             Pages.AddProjectInstance
                 .SetType("Adhoc")
-                .SetProject("DP2")
+                .SetProject("qqqq")
                 .SetProjectName(name)
                 .SetStartMonth(DateTime.Now.ToString("MMM yyyy"))
                 .SetEndMonth(DateTime.Now.AddMonths(2).Month.ToString("MMM yyyy"));
