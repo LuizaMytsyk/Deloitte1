@@ -92,7 +92,6 @@
     <Compile Include="UITests\Test_IDE_IdeSaveNameBtn.cs" />
     <Compile Include="Performance\MultipleLogin.cs" />
     <Compile Include="Performance\MultipleDataOverview.cs" />
-    <Compile Include="UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="NLog.config">

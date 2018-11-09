@@ -41,7 +41,7 @@ namespace DelitteLib
                     wait.Until(drv => drv.FindElement(by));
                 }
             }
-            catch(NoSuchElementException)
+            catch(Exception)
             {
                 result = false;
             }

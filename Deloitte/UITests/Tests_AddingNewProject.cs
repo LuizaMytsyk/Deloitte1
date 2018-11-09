@@ -10,9 +10,7 @@ using DelitteLib;
 namespace DeloitteTests
 {
     public class Tests_AddingNewProject : BaseTest
-    {
-        
-       
+    {     
         public void AddingProjectAndSaving()
         {
             string name = RandomGenerator.GetRandomAlphaNumeric();
@@ -71,11 +69,6 @@ namespace DeloitteTests
 
             Assert.True(Pages.AddProjectInstance.IsErrorMessageStartMonthDisplayed());
         }
-        [TearDown]
-        public void AfterTest()
-        {
-            ScreenShotMakerInstance.TakeScreenShot();
-            CreateNLog.NLogCreate();
-        }
+       
     }
 }
