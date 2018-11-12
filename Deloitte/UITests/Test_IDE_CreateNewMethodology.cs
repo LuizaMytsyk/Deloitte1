@@ -21,13 +21,13 @@ namespace Deloitte
                 .AddAce("Test data " + DateTime.Now.ToString("yyyyMMddHHmm"))
                 .Save();
             Pages.SaveMethodologyPopUpInstance
-                .SetName(name);
-                //.Save()
-                //.CloseMsg();
+                .SetName(name)
+                .Save()
+                .CloseMsg();
 
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//span[@class='name overlapping']")));
 
-            CollectionAssert.Contains(Pages.IdePageInstance.Methodologies, "asdfasdf", "Methodology is not found");
+            CollectionAssert.Contains(Pages.IdePageInstance.Methodologies, name, "Methodology is not found");
         }
         
         [Test, Order(1)]
