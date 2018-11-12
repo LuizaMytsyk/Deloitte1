@@ -31,7 +31,6 @@ namespace DeloitteTests
         };
 
         [OneTimeSetUp]
-
         public void OneTimeSetUp()
         {
             driver = new ChromeDriver();
@@ -56,7 +55,6 @@ namespace DeloitteTests
         }
 
         [Test]
-
         public void Test_NavigateToLink_LoginPageOpened()
         {           
             Assert.IsTrue(LoginPageInstance.IsLoginPageOpened());
@@ -64,7 +62,6 @@ namespace DeloitteTests
         }
 
         [Test]
-
         public void LoginWithValidCredentials()
         {
             LoginPageInstance.SingIn("gp_integrator", "Dummy#123");
@@ -73,7 +70,6 @@ namespace DeloitteTests
         }
 
         [Test, TestCaseSource("InvalidCredentials")]
-
         public void LoginWithInValidCredentials(string name, string password)
         {
             LoginPageInstance.SingIn(name, password);

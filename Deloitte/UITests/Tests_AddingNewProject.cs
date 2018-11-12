@@ -11,6 +11,7 @@ namespace DeloitteTests
 {
     public class Tests_AddingNewProject : BaseTest
     {     
+        [Test]
         public void AddingProjectAndSaving()
         {
             string name = RandomGenerator.GetRandomAlphaNumeric();
@@ -31,7 +32,6 @@ namespace DeloitteTests
         }
 
         [Test]
-
         public void AddingProjectAndCanceling()
         {
             string name = "TestProjectName"+ RandomGenerator.GetRandomAlphaNumeric();
@@ -54,7 +54,6 @@ namespace DeloitteTests
         }
 
         [Test]
-
         public void AddingProjectStartDateError()
         {
             string name = RandomGenerator.GetRandomAlphaNumeric();
