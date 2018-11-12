@@ -16,12 +16,8 @@ namespace Deloitte
         [Test, Order(2)]
         public void Test_CreateMethodology_Positive()
         {
-
-            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//xl-icon[@icon='d-code']")));
-            Pages.LeftMenuInstance.OpenIde();
             string name = "Test_methodology_" + RandomGenerator.GetRandomAlphaNumeric();
             Pages.IdePageInstance
-                .NewMethodology()
                 .AddAce("Test data " + DateTime.Now.ToString("yyyyMMddHHmm"))
                 .Save();
             Pages.SaveMethodologyPopUpInstance
@@ -29,7 +25,7 @@ namespace Deloitte
                 //.Save()
                 //.CloseMsg();
 
-            //wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//span[@class='name overlapping']")));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//span[@class='name overlapping']")));
 
             CollectionAssert.Contains(Pages.IdePageInstance.Methodologies, "asdfasdf", "Methodology is not found");
         }

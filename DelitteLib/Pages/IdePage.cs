@@ -71,8 +71,15 @@ namespace DeloitteLib
         }
         public IdePage AddAce(string code)
         {
-            _aceContent.Click();
-            _aceContent.SendKeys(code);
+            By by = By.XPath("//textarea[@class = 'ace_text-input']");
+            //if (WebDriverExtensions.ElementIsExist(driver, by, 15))
+            //{
+            //    _aceContent.SendKeys(code);
+            //}
+            //driver.Navigate().Refresh();
+            //_newMethodologyBtn.Click();
+            IWebElement ace = WebDriverExtensions.FindElementOnPage(driver, by);
+            ace.SendKeys(code);
             return this;
         }
         public IdePage AddAce()
