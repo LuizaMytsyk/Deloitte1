@@ -14,7 +14,7 @@ namespace DelitteLib.JsonBodiesAll
             due_date = DateTime.Now.ToString("yyyy-MM-dd");
             end_month = DateTime.Now.AddMonths(2).Month.ToString("00");
             end_year = DateTime.Now.AddYears(1).ToString("yyyy");
-            name = "test_project_" + DateTime.Now.ToString("yyyyMMddHHmm");
+            name = "test_project_" + DateTime.Now.ToString("yyyyMMddHHmmSS");
             methodologies = methid;
             start_month = DateTime.Now.Month.ToString("00");
             start_year = DateTime.Now.ToString("yyyy");
