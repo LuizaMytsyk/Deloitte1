@@ -3,6 +3,7 @@ using OpenQA.Selenium.Support.UI;
 using System;
 using DeloitteLib;
 using System.Collections.ObjectModel;
+using OpenQA.Selenium.Remote;
 
 namespace DelitteLib
 {
@@ -29,7 +30,12 @@ namespace DelitteLib
                 return driver.FindElements(by);
                        
         }
-
+        public static IWebElement FindElementOnPage(this IWebDriver driver, By by)
+        {
+            RemoteWebElement element = (RemoteWebElement)driver.FindElement(by);
+            var hack = element.LocationOnScreenOnceScrolledIntoView;
+            return element;
+        }
         public static bool ElementIsExist(this IWebDriver driver, By by, int timeoutInSeconds)
         {
             bool result= true;
@@ -41,7 +47,7 @@ namespace DelitteLib
                     wait.Until(drv => drv.FindElement(by));
                 }
             }
-            catch(NoSuchElementException)
+            catch(ElementNotVisibleException)
             {
                 result = false;
             }

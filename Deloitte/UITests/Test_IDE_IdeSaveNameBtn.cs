@@ -12,43 +12,30 @@ namespace Deloitte
 
     public class Test_IDE_IdeSaveNameBtn : BaseTest
     {
-        [SetUp]
-        public void LogIn()
-        {            
-            Pages.LeftMenuInstance.OpenIde();            
-        }
-
-        [Test]
-        public void Test_SavedMethodologyName_Positive(string text)
+        [Test, Order(2)]
+        public void Test_SavedMethodologyName_Positive()
         {
             string name = RandomGenerator.GetRandomAlphaNumeric();
 
-            Pages.IdePageInstance
-                .NewMethodology()
-                .AddAce("Test data " + DateTime.Now.ToString("yyyyMMddHHmm"))
-                .Save();
             Pages.SaveMethodologyPopUpInstance
                 .SetName(name);
-            Assert.IsFalse(Pages.SaveMethodologyPopUpInstance.SaveDisabled(), "Save methodology button is disable");
+            bool result = Pages.SaveMethodologyPopUpInstance.SaveEnabled();
+            Assert.IsTrue(result, "Save methodology button is disable");
         }
 
-        [Test]
+        [Test, Order(1)]
         public void Test_SavedMethodologyName_Negative()
         {
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//xl-icon[@icon='d-code']")));
+            Pages.LeftMenuInstance.OpenIde();
+
             Pages.IdePageInstance
                 .NewMethodology()
                 .AddAce("Test data " + DateTime.Now.ToString("yyyyMMddHHmm"))
                 .Save();
-
-            Assert.IsTrue(Pages.SaveMethodologyPopUpInstance.SaveDisabled(), "Save methodology button is enable");
+            bool result = Pages.SaveMethodologyPopUpInstance.SaveEnabled();            
+            Assert.IsFalse(result, "Save methodology button is enable");
         }
-
-        [TearDown]
-        public void AfterTest()
-        {
-            Pages.LeftMenuInstance.OpenProjects();
-            ScreenShotMakerInstance.TakeScreenShot();
-            CreateNLog.NLogCreate();
-        }
+                
     }
 }
