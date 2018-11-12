@@ -13,7 +13,7 @@ namespace Deloitte
     public class MultipleDataOverview : API_Base_Test
     {
         [Test]
-         public void Test_DataOverview_14_Requests()
+         public async Task Test_DataOverview_14_Requests()
         {
             Stopwatch stopWatch = new Stopwatch();            
             Task[] tasks = new Task[14];
@@ -28,8 +28,9 @@ namespace Deloitte
             foreach (var t in tasks)
             {
                 t.Start();
+                
             }
-            Task.WhenAll(tasks);          
+            await Task.WhenAll(tasks);
             stopWatch.Stop();
 
             Console.WriteLine("Runtime Tasks " + stopWatch.Elapsed);
@@ -37,10 +38,10 @@ namespace Deloitte
             //stopWatch.Start();
             //Parallel.For(0, 14, i => DataOverView(i));
             //stopWatch.Stop();
-            Console.WriteLine("Runtime Parallel " + stopWatch.Elapsed);
+            //Console.WriteLine("Runtime Parallel " + stopWatch.Elapsed);
         }
 
-        void DataOverView(int i)
+        async Task DataOverView(int i)
         {
             Console.WriteLine("Thread is start " + i);
             RestClient restClient = new RestClient(baseUrl + "/gpdomain/v1/overview");
