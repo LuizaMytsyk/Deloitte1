@@ -37,6 +37,9 @@ namespace DeloitteLib
         {
             get
             {
+                var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
+                wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//span[@class='name overlapping']")));
+
                 List<String> list = new List<String>();
                 foreach (var element in _allMethodologies)
                 {

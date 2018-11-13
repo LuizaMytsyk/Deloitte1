@@ -23,9 +23,7 @@ namespace Deloitte
             Pages.SaveMethodologyPopUpInstance
                 .SetName(name)
                 .Save()
-                .CloseMsg();
-
-            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//span[@class='name overlapping']")));
+                .CloseMsg();           
 
             CollectionAssert.Contains(Pages.IdePageInstance.Methodologies, name, "Methodology is not found");
         }
