@@ -26,7 +26,6 @@ namespace Deloitte
         [Test, Order(1)]
         public void Test_SavedMethodologyName_Negative()
         {
-            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//xl-icon[@icon='d-code']")));
             Pages.LeftMenuInstance.OpenIde();
 
             Pages.IdePageInstance

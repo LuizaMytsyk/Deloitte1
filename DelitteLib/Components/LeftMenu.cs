@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium.Support.UI;
 using System;
 
 namespace DeloitteLib
@@ -27,6 +28,8 @@ namespace DeloitteLib
 
         public LeftMenu OpenIde()
         {
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//xl-icon[@icon='d-code']")));
             _ide.Click();
             return this;
         }
