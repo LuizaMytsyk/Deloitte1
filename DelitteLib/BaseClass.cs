@@ -10,7 +10,7 @@ namespace DeloitteLib
         {
             this.driver = driver;
 
-            PageFactory.InitElements(this, new RetryingElementLocator(driver, TimeSpan.FromSeconds(15)));
+            PageFactory.InitElements(this, new RetryingElementLocator(driver, TimeSpan.FromSeconds(20)));
         }
 
         protected IWebDriver driver;

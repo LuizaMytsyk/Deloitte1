@@ -48,7 +48,12 @@ namespace DeloitteTests
             Pages.HeaderNavigationInstance.SelectClient(x_client);
         }
 
-        
+        [TearDown]
+        public void AfterTest()
+        {
+            ScreenShotMakerInstance.TakeScreenShot();
+            CreateNLog.NLogCreate();
+        }
 
         [OneTimeTearDown]
         public void OneTimeTearDown()

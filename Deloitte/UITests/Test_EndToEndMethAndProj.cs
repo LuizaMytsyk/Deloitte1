@@ -17,6 +17,7 @@ namespace Deloitte
         [Test, Order(1)]
         public void Test_CreateMethodology()
         {
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//xl-icon[@icon='d-code']")));
             Pages.LeftMenuInstance.OpenIde();
 
             Pages.IdePageInstance
@@ -53,12 +54,6 @@ namespace Deloitte
 
             Assert.True(Pages.ProjectsPageInstance.VerifyProjectAdded("Adhoc: " + projName));
         }
-
-        [TearDown]
-        public void AfterTest()
-        {
-            ScreenShotMakerInstance.TakeScreenShot();
-            CreateNLog.NLogCreate();
-        }
+       
     }
 }

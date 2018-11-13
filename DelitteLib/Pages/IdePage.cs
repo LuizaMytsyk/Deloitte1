@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using DelitteLib;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -27,8 +28,13 @@ namespace DeloitteLib
         [FindsBy(How = How.XPath, Using = "//span[@class='name overlapping']")]
         [CacheLookup]
         private IList<IWebElement> _allMethodologies;
+
+        [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-default']")]
+        [CacheLookup]
+        private IList<IWebElement> _okBtn;
+
         public List<String> Methodologies
-        {           
+        {
             get
             {
                 List<String> list = new List<String>();
@@ -40,23 +46,19 @@ namespace DeloitteLib
                 return list;
             }
         }
-        
+
         public void Save()
         {
             _saveButton.Click();
         }
 
-        public bool SaveDisabled()
+        public bool SaveEnabled()
         {
-            bool displayedBtn;
-
-            if (_saveButton.GetAttribute("disabled").Equals("disabled"))
+            if (_saveButton.Enabled)
             {
-                displayedBtn = true;
+                return true;
             }
-            displayedBtn = false;
-
-            return displayedBtn;
+            return false;
         }
 
         public IdePage NewMethodology()
@@ -69,8 +71,23 @@ namespace DeloitteLib
         }
         public IdePage AddAce(string code)
         {
-            _aceContent.SendKeys(code);
+            By by = By.XPath("//textarea[@class = 'ace_text-input']");
+            //if (WebDriverExtensions.ElementIsExist(driver, by, 15))
+            //{
+            //    _aceContent.SendKeys(code);
+            //}
+            //driver.Navigate().Refresh();
+            //_newMethodologyBtn.Click();
+            IWebElement ace = WebDriverExtensions.FindElementOnPage(driver, by);
+            ace.SendKeys(code);
             return this;
-        }    
+        }
+        public IdePage AddAce()
+        {
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//textarea[@class = 'ace_text-input']")));
+            _aceContent.Clear();
+            return this;
+        }
     }
 }

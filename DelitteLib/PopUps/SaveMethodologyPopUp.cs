@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using DelitteLib;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
 namespace DeloitteLib
@@ -66,17 +67,13 @@ namespace DeloitteLib
             return _Msg.Displayed;
         }
 
-        public bool SaveDisabled()
+        public bool SaveEnabled()
         {
-            bool displayedBtn;
-
-            if (_saveButton.GetAttribute("disabled").Equals("disabled"))
+            if (_saveButton.Enabled)
             {
-                displayedBtn = true;
+                return true;
             }
-            displayedBtn = false;
-
-            return displayedBtn;
+            return false;
         }
         public SaveMethodologyPopUp CloseMsg()
         {

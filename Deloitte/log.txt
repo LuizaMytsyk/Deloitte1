@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2018-11-08 12:31:49.3695 | DEBUG | Logger | Deloitte.APITests.Test_API_AddMethodology
 2018-11-08 12:31:49.3883 | DEBUG | Logger | AddMethodologiesPageOpened_Get
 2018-11-08 12:31:49.3883 | DEBUG | Logger | Passed
@@ -53,7 +54,7 @@
 2018-11-08 12:33:19.3137 | DEBUG | Logger | LoginWithInValidCredentials("gp_integrator   ","Dummy#123")
 2018-11-08 12:33:19.3137 | DEBUG | Logger | Passed
 2018-11-08 12:33:20.5841 | DEBUG | Logger | DeloitteTests.Tests_LogInPage
-2018-11-08 12:33:20.5841 | DEBUG | Logger | LoginWithInValidCredentials("GP_INTEGRATORÊ","Dummy#123")
+2018-11-08 12:33:20.5841 | DEBUG | Logger | LoginWithInValidCredentials("GP_INTEGRATORï¿½","Dummy#123")
 2018-11-08 12:33:20.5841 | DEBUG | Logger | Passed
 2018-11-08 12:33:21.8148 | DEBUG | Logger | DeloitteTests.Tests_LogInPage
 2018-11-08 12:33:21.8148 | DEBUG | Logger | LoginWithValidCredentials
@@ -281,7 +282,7 @@
 2018-11-08 13:43:09.6099 | DEBUG | Logger | LoginWithInValidCredentials("gp_integrator   ","Dummy#123")
 2018-11-08 13:43:09.6099 | DEBUG | Logger | Passed
 2018-11-08 13:43:10.9952 | DEBUG | Logger | DeloitteTests.Tests_LogInPage
-2018-11-08 13:43:10.9952 | DEBUG | Logger | LoginWithInValidCredentials("GP_INTEGRATORÊ","Dummy#123")
+2018-11-08 13:43:10.9952 | DEBUG | Logger | LoginWithInValidCredentials("GP_INTEGRATORï¿½","Dummy#123")
 2018-11-08 13:43:10.9952 | DEBUG | Logger | Passed
 2018-11-08 13:43:12.5878 | DEBUG | Logger | DeloitteTests.Tests_LogInPage
 2018-11-08 13:43:12.5878 | DEBUG | Logger | LoginWithValidCredentials
@@ -307,6 +308,7 @@
 2018-11-08 16:00:39.2157 | DEBUG | Logger | Deloitte.APITests.Test_API_EndToEndMethAndProj
 2018-11-08 16:00:39.2157 | DEBUG | Logger | CreateProject_Post
 2018-11-08 16:00:39.2157 | DEBUG | Logger | Passed
+<<<<<<< HEAD
 2018-11-09 16:42:38.6865 | DEBUG | Logger | DeloitteTests.Tests_AddingNewProject
 2018-11-09 16:42:38.7058 | DEBUG | Logger | JustTesting
 2018-11-09 16:42:38.7078 | DEBUG | Logger | Passed
@@ -470,7 +472,7 @@
 2018-11-12 14:00:22.7530 | DEBUG | Logger | LoginWithInValidCredentials("gp_integrator   ","Dummy#123")
 2018-11-12 14:00:22.7530 | DEBUG | Logger | Passed
 2018-11-12 14:00:24.0127 | DEBUG | Logger | DeloitteTests.Tests_LogInPage
-2018-11-12 14:00:24.0127 | DEBUG | Logger | LoginWithInValidCredentials("GP_INTEGRATORÊ","Dummy#123")
+2018-11-12 14:00:24.0127 | DEBUG | Logger | LoginWithInValidCredentials("GP_INTEGRATORï¿½","Dummy#123")
 2018-11-12 14:00:24.0127 | DEBUG | Logger | Passed
 2018-11-12 14:00:25.5701 | DEBUG | Logger | DeloitteTests.Tests_LogInPage
 2018-11-12 14:00:25.5701 | DEBUG | Logger | LoginWithValidCredentials
@@ -571,3 +573,19 @@
 2018-11-13 13:49:22.2700 | DEBUG | Logger | DeloitteTests.Tests_AddingNewProject
 2018-11-13 13:49:22.2720 | DEBUG | Logger | AddingProjectStartDateError
 2018-11-13 13:49:22.2720 | DEBUG | Logger | Passed
+=======
+=======
+2018-11-12 11:43:22.7791 | DEBUG | Logger | Deloitte.MultipleDataOverview
+2018-11-12 11:43:22.8001 | DEBUG | Logger | Test_DataOverview_14_Requests
+2018-11-12 11:43:22.8001 | DEBUG | Logger | Passed
+2018-11-12 11:44:45.5703 | DEBUG | Logger | Deloitte.MultipleDataOverview
+2018-11-12 11:44:45.5872 | DEBUG | Logger | Test_DataOverview_14_Requests
+2018-11-12 11:44:45.5872 | DEBUG | Logger | Passed
+2018-11-12 11:45:27.1758 | DEBUG | Logger | Deloitte.MultipleDataOverview
+2018-11-12 11:45:27.1977 | DEBUG | Logger | Test_DataOverview_14_Requests
+2018-11-12 11:45:27.1977 | DEBUG | Logger | Passed
+2018-11-12 12:13:25.5592 | DEBUG | Logger | Deloitte.MultipleDataOverview
+2018-11-12 12:13:25.5782 | DEBUG | Logger | Test_DataOverview_14_Requests
+2018-11-12 12:13:25.5782 | DEBUG | Logger | Passed
+>>>>>>> Branchtmanu
+>>>>>>> development

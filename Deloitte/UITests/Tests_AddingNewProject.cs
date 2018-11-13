@@ -18,7 +18,7 @@ namespace DeloitteTests
 
         public void AddingProjectAndSaving()
         {
-            
+
             Pages.ProjectsPageInstance.ClickAddProject();
 
             Pages.AddProjectInstance
@@ -28,9 +28,9 @@ namespace DeloitteTests
                 .SetStartMonth(DateTime.Now.ToString("MMM yyy"))
                 .SetEndMonth(DateTime.Now.AddMonths(2).ToString("MMM yyy"))
                 .SetDueDate(DateTime.Now.ToString("MM/dd/yyyy"))
-                .ClickCreate();              
+                .ClickCreate();
 
-            driver.Navigate().Refresh();       
+            driver.Navigate().Refresh();
 
             Assert.True(Pages.ProjectsPageInstance.VerifyProjectAdded(name));
         }
@@ -71,11 +71,6 @@ namespace DeloitteTests
 
             Assert.True(Pages.AddProjectInstance.IsErrorMessageStartMonthDisplayed());
         }
-        [TearDown]
-        public void AfterTest()
-        {
-            ScreenShotMakerInstance.TakeScreenShot();
-            CreateNLog.NLogCreate();
-        }
+
     }
 }

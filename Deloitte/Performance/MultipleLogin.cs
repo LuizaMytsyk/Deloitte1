@@ -12,7 +12,7 @@ namespace Deloitte
     public class MultipleLogin
     {
         [Test]
-        public void TestLogin_14_Users()
+        public async Task TestLogin_14_Users()
         {
             Stopwatch stopWatch = new Stopwatch();
             
@@ -25,11 +25,11 @@ namespace Deloitte
             }
             Console.WriteLine("Start");
             stopWatch.Start();
-            Task.WhenAll(tasks.ToArray());
+            await Task.WhenAll(tasks.ToArray());
             stopWatch.Stop();
             Console.WriteLine("Runtime "+ stopWatch.Elapsed);
         }
-        void Login(int i)
+        async Task Login(int i)
         {
             Console.WriteLine("Start " + i);
             RestClient restClient = new RestClient("https://perf.exalinkservices.com:8443/apigateway/v1/sessions");
