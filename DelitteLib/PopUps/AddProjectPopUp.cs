@@ -1,6 +1,8 @@
-﻿using OpenQA.Selenium;
+﻿using DelitteLib;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
+using System.Collections.Generic;
 
 namespace DeloitteLib
 {
@@ -60,6 +62,13 @@ namespace DeloitteLib
         {
             _projectsListButton.Click();
             SelectOption(driver, value);
+            return this;
+        }
+
+        public AddProject ClickSetProjectIcon()
+        {
+            _projectsListButton.Click();
+            System.Threading.Thread.Sleep(20);
             return this;
         }
 
@@ -134,6 +143,23 @@ namespace DeloitteLib
         {
             String path = "//span[text() = '" + value + "']";
             driver.FindElement(By.XPath(path)).Click();
+        }
+
+        public IList<IWebElement> GetAllProjects()
+        {
+            IList<IWebElement> AllProjects = new List<IWebElement>();
+            ClickSetProjectIcon();
+            AllProjects = driver.FindElements(By.XPath("//div[@class='col-sm-6']//button[@id='projectSelect']/following-sibling::*/descendant::li"));
+           
+            return AllProjects;
+        }
+
+        public AddProject SetRandomProject()
+        {
+            IList<IWebElement> AllProjects = GetAllProjects();
+            int random = RandomGenerator.GetRandomNumber(AllProjects.Count);         
+            AllProjects[random].Click();
+            return this;
         }
 
     }
