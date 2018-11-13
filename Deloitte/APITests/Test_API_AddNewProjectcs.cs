@@ -60,7 +60,7 @@ namespace Deloitte
             }
 
             //Select random element from list 
-            methId = RandomGenerator.SelectRandomElementFromList(all_IDs);
+            methId = RandomGenerator.ReturnRandomStringElementFromList(all_IDs);
                        
             //Check status
             string status = JSONObj.status;

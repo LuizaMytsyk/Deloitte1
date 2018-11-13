@@ -40,7 +40,7 @@ namespace Deloitte
             }
 
             //Select random element from list            
-            projectID =  RandomGenerator.SelectRandomElementFromList(all_IDs);
+            projectID =  RandomGenerator.ReturnRandomStringElementFromList(all_IDs);
            
             //Check status
             string status = JSONObj.status;

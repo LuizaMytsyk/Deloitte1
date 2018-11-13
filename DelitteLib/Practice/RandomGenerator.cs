@@ -23,7 +23,7 @@ namespace DelitteLib
             return r;
         }
 
-        public static string SelectRandomElementFromList(List<string> IDList)
+        public static string ReturnRandomStringElementFromList(List<string> IDList)
         {
             string ID;
             int randomNumber = RandomGenerator.GetRandomNumber(IDList.Count);

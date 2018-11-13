@@ -46,7 +46,7 @@ namespace DeloitteLib
 
         public bool VerifyProjectAdded(string projectName)
         {
-            if (Projects.First() == projectName)
+            if ((Projects.First().ToString()).Contains(projectName))
             {
                 return true;
             }

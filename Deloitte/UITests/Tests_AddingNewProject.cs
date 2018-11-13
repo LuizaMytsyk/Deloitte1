@@ -11,63 +11,63 @@ namespace DeloitteTests
 {
     public class Tests_AddingNewProject : BaseTest
     {
-        
-       
+        string name = "Test_project_" + DateTime.Now.ToString("yyyyMMddHHmm");
+        string projType = "Adhoc";
+
+        [Test]
+
         public void AddingProjectAndSaving()
         {
-            string name = RandomGenerator.GetRandomAlphaNumeric();
+            
             Pages.ProjectsPageInstance.ClickAddProject();
 
             Pages.AddProjectInstance
-                .SetType("Adhoc")
-                .SetProject("DP2")
+                .SetType(projType)
+                .SetRandomProject()
                 .SetProjectName(name)
-                .SetStartMonth(DateTime.Now.ToString("MMM yyyy"))
-                .SetEndMonth(DateTime.Now.AddMonths(2).Month.ToString("MMM yyyy"))
-                .SetDueDate(DateTime.Now.AddMonths(2).Month.ToString("MMM yyyy"))  
-                .ClickCreate();
+                .SetStartMonth(DateTime.Now.ToString("MMM yyy"))
+                .SetEndMonth(DateTime.Now.AddMonths(2).ToString("MMM yyy"))
+                .SetDueDate(DateTime.Now.ToString("MM/dd/yyyy"))
+                .ClickCreate();              
 
-            driver.Navigate().Refresh();
-                       
-            Assert.True(Pages.ProjectsPageInstance.VerifyProjectAdded("Adhoc: "+ name));
+            driver.Navigate().Refresh();       
+
+            Assert.True(Pages.ProjectsPageInstance.VerifyProjectAdded(name));
         }
 
         [Test]
 
         public void AddingProjectAndCanceling()
         {
-            string name = "TestProjectName"+ RandomGenerator.GetRandomAlphaNumeric();
             Pages.ProjectsPageInstance.ClickAddProject();
 
             wait.Until((d) => Pages.AddProjectInstance.IsAddProjectDisplayed());
-
             Pages.AddProjectInstance
-                 .SetType("Adhoc")
-                .SetProject("qqqq")
-                .SetProjectName(name)
-                .SetStartMonth(DateTime.Now.ToString("MMM yyyy"))
-                .SetEndMonth(DateTime.Now.AddMonths(2).Month.ToString("MMM yyyy"))
-                .SetDueDate(DateTime.Now.AddMonths(2).Month.ToString("MMM yyyy"))
-                .ClickCancel();
+                            .SetType(projType)
+                            .SetRandomProject()
+                            .SetProjectName(name)
+                            .SetStartMonth(DateTime.Now.ToString("MMM yyy"))
+                            .SetEndMonth(DateTime.Now.AddMonths(2).ToString("MMM yyy"))
+                            .SetDueDate(DateTime.Now.ToString("MM/dd/yyyy"))
+                            .ClickCancel();
 
             driver.Navigate().Refresh();
 
-            Assert.False(Pages.ProjectsPageInstance.VerifyProjectAdded("Adhoc: "+ name));
+            Assert.False(Pages.ProjectsPageInstance.VerifyProjectAdded(name));
         }
 
         [Test]
 
         public void AddingProjectStartDateError()
         {
-            string name = RandomGenerator.GetRandomAlphaNumeric();
             Pages.ProjectsPageInstance.ClickAddProject();
 
             Pages.AddProjectInstance
-                .SetType("Adhoc")
-                .SetProject("qqqq")
+                .SetType(projType)
+                .SetRandomProject()
                 .SetProjectName(name)
                 .SetStartMonth(DateTime.Now.ToString("MMM yyyy"))
-                .SetEndMonth(DateTime.Now.AddMonths(2).Month.ToString("MMM yyyy"));
+                .SetEndMonth(DateTime.Now.AddMonths(-2).Month.ToString("MMM yyyy"));
 
             Assert.True(Pages.AddProjectInstance.IsErrorMessageStartMonthDisplayed());
         }
